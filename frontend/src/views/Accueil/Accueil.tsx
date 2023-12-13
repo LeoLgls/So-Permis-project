@@ -5,7 +5,7 @@ const AccueilTitre = styled.h1`
 `
 
 function Accueil() {
-  return <AccueilTitre>Test</AccueilTitre>
+  return <AccueilTitre>Test Front-end</AccueilTitre>
 }
 
 export default Accueil
