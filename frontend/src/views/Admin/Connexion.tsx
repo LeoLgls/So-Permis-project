@@ -2,16 +2,18 @@
 import React, { useState, FormEvent } from 'react';
 import { ChakraProvider, CSSReset, Box, FormControl, FormLabel, Input, Button, Heading } from '@chakra-ui/react';
 
+
 interface FormState {
   identifier: string;
   password: string;
 }
 
-const Connection: React.FC = () => {
+const Connection: React.FunctionComponent = () => {
   const [formState, setFormState] = useState<FormState>({
     identifier: '',
     password: '',
   });
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -19,8 +21,7 @@ const Connection: React.FC = () => {
   };
 
   return (
-    <ChakraProvider>
-      <CSSReset />
+   
       <Box
         display="flex"
         justifyContent="center"
@@ -54,7 +55,7 @@ const Connection: React.FC = () => {
           </form>
         </Box>
       </Box>
-    </ChakraProvider>
+ 
   );
 };
 

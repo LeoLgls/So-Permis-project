@@ -6,6 +6,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import ArticleTest from './views/Article/ArticleTest'
 import ContactPage from './views/Contact/Contact'
 import Connexion from './views/Admin/Connexion'
+import InterfaceAdminPage from './views/Admin/InterfaceAdminPage'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -17,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/ArticleTest" element={<ArticleTest />}></Route>
         <Route path="/Contact" element={<ContactPage />}></Route>
         <Route path="/Admin" element={<Connexion/>}></Route>
-        <Route path="/Admin/InterfaceAdmin" ></Route>
+        <Route path="/Admin/InterfaceAdmin" element={<InterfaceAdminPage/>}></Route>
       </Routes>
     </Router>
     </ChakraProvider>
