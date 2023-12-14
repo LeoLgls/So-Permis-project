@@ -1,17 +1,21 @@
 import styled from "styled-components";
-import Forfait from "../../utils/models/models.tsx";
 import {Link} from "react-router-dom";
 import colors from "../../utils/style/colors.tsx";
 
 //CSS
 const CardContainer = styled.div`
     background-color: ${colors.vert};
-    min-width: 25rem;
+    min-width: 20rem;
     min-height: 30rem;
     border-radius: 45px 45px 20px 20px;
     box-shadow: 10px 10px 4px ${colors.noirOmbre};
     position: relative;
-    width: 25rem;
+    opacity: 0.9; /* Opacité par défaut pour la carte */
+    transition: opacity 0.25s ease-out;
+
+    &:hover {
+        opacity: 1; /* Opacité au survol pour la carte */
+    }
 `
 
 const CardInfosContainer = styled.div`
@@ -59,7 +63,8 @@ const CardButton = styled(Link)`
     text-align: center;
     padding: 1em;
     text-decoration: none;
-    transition: background-color 0.25s ease-out; /* Ajout de la transition pour la couleur de fond */
+    transition: background-color 0.25s ease-out; /* Ajout de la transition pour la couleur de fond */   
+
     
     &:hover {
         background-color: ${colors.noirHover};
@@ -74,10 +79,15 @@ const CardSousTitre = styled.div`
     font-size: 25px;
     padding-top: 1em;
 `
-
+interface CardProps {
+  titre: string;
+  sousTitre: string;
+  titreBtn: string;
+  lien: string;
+}
 
 //Composant Card
-function Card({titre, sousTitre, titreBtn, lien}:Forfait) {
+function Card({titre, sousTitre, titreBtn, lien}:CardProps) {
     return(
       <CardContainer>
         <CardInfosContainer>
@@ -89,7 +99,6 @@ function Card({titre, sousTitre, titreBtn, lien}:Forfait) {
         </CardInfosContainer>
       </CardContainer>
     )
-
 }
 
 export default Card
