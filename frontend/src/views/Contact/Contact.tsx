@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 
 const PageContainer = styled.div`
   max-width: 800px;
@@ -188,6 +190,12 @@ const ContactPage: React.FC = () => {
 							</li>
 						))}
 					</ul>
+
+					<h3>Nos reseau</h3>
+					<p>Téléphone : 02 78 34 10 63</p>
+					<span>Reseau sociaux</span>
+					<FontAwesomeIcon icon={faInstagram} size='3x' />
+					<FontAwesomeIcon icon={faSnapchat} size='3x'/>
 				</LeftFlexContainer>
 				<RightFlexContainer>
 					<MapContainer>
