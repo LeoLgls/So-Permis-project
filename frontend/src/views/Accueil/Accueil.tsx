@@ -5,7 +5,32 @@ const AccueilTitre = styled.h1`
 `
 
 function Accueil() {
-  return <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  return <>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  <AccueilTitre>Test Front-end Robin</AccueilTitre>
+  </>
 }
 
 export default Accueil
