@@ -12,7 +12,6 @@ const HeroSectionContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 25vh;
     gap: 15px;
     object-fit: cover;
 
@@ -58,11 +57,17 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
     width: 100%;
     height: ${heightTransition}px;
     left: 0;
+    top: 0;
     position: absolute;
     pointer-events: none;
   `
   console.log(couleurTransition)
 
+  const HeroImgDiv = styled.div`
+    position: absolute;
+    width: 100%;
+    top : 0;
+  `
 
 
   useEffect(() => {
@@ -81,13 +86,16 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
   }, []);
 
   return (
-    <HeroSectionContainer>
-      <HeroImg src={img} alt={"heroImg"} style={{ height: heroImgHeight }} />
+    <HeroSectionContainer style={{ height: heroImgHeight }}>
+      <HeroImgDiv>
+        <HeroImg src={img} alt={"heroImg"} style={{ height: heroImgHeight }} />
+        <Transition style={{top: (parseInt(heroImgHeight) - heightTransition), background: couleurTransition}}/>
+      </HeroImgDiv>
       <CardContainer className="card-container">
         {forfaits.map((forfait, index) => (
           <Card key={index} {...forfait} />))}
       </CardContainer>
-      <Transition style={{top: (parseInt(heroImgHeight) - heightTransition), background: couleurTransition}}/>
+
     </HeroSectionContainer>
   );
 }

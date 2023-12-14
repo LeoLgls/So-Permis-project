@@ -3,6 +3,7 @@ import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import photoImg from '../../assets/img/photo.png'
+import fontSize from "../../utils/style/font-size.tsx";
 
 const MainContainer = styled.div`
     padding-left: 15vw;
@@ -12,18 +13,34 @@ const MainContainer = styled.div`
 
 const SectionInscription = styled.div`
   background-color: ${colors.backgroundNoir};
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-template-rows: auto;
-  grid-gap: 20px;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 `
 
 const GridItem = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+
+const GridItemP = styled.p`
+    color: ${colors.txtBlanc};
+    font-size: ${fontSize.p};
+`
+
+const GridItemImg = styled.img`
+    max-width: 20vw;
+`
+
+const Grid3 = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+`
+const Grid2 = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 `
 
 function Accueil() {
@@ -32,26 +49,33 @@ function Accueil() {
     <MainContainer>
       <HeroSection img={backgroundImage} forfaits={forfaitList} transitionNoir={true}/>
       <SectionInscription>
-        <GridItem>
-          <img src={photoImg} alt={'photo'}/>
-          <p>4 photos d'idendité numérique</p>
-        </GridItem>
-        <GridItem>
-          <img src={photoImg} alt={'photo'}/>
-          <p>4 photos d'idendité numérique</p>
-        </GridItem>
-        <GridItem>
-          <img src={photoImg} alt={'photo'}/>
-          <p>4 photos d'idendité numérique</p>
-        </GridItem>
-        <GridItem>
-          <img src={photoImg} alt={'photo'}/>
-          <p>4 photos d'idendité numérique</p>
-        </GridItem>
-        <GridItem>
-          <img src={photoImg} alt={'photo'}/>
-          <p>4 photos d'idendité numérique</p>
-        </GridItem>
+
+        <Grid3>
+          <GridItem>
+            <GridItemImg src={photoImg} alt={'photo'}/>
+            <GridItemP>4 photos d'idendité numérique</GridItemP>
+          </GridItem>
+          <GridItem>
+            <GridItemImg src={photoImg} alt={'photo'}/>
+            <GridItemP>4 photos d'idendité numérique</GridItemP>
+          </GridItem>
+          <GridItem>
+            <GridItemImg src={photoImg} alt={'photo'}/>
+            <GridItemP>4 photos d'idendité numérique</GridItemP>
+          </GridItem>
+        </Grid3>
+
+        <Grid2>
+          <GridItem>
+            <GridItemImg src={photoImg} alt={'photo'}/>
+            <GridItemP>4 photos d'idendité numérique</GridItemP>
+          </GridItem>
+          <GridItem>
+            <GridItemImg src={photoImg} alt={'photo'}/>
+            <GridItemP>4 photos d'idendité numérique</GridItemP>
+          </GridItem>
+        </Grid2>
+
       </SectionInscription>
     </MainContainer>
   )
