@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import colors from "../../utils/style/colors.tsx";
+import fontSize from "../../utils/style/font-size.tsx";
 
 //CSS
 const CardContainer = styled.div`
@@ -43,8 +44,8 @@ const CardTitre = styled.h1`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 40px;
+    color: ${colors.txtBlanc};
+    font-size: ${fontSize.titre}px;
     padding-top: 1px;
 `
 
@@ -59,7 +60,7 @@ const CardButton = styled(Link)`
     display: flex;
     bottom: 3rem;
     position: absolute;
-    font-size: 20px;
+    font-size: ${fontSize.button}px;
     text-align: center;
     padding: 1em;
     text-decoration: none;
@@ -76,7 +77,7 @@ const CardSousTitre = styled.div`
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 25px;
+    font-size: ${fontSize.sousTitre}px;
     padding-top: 1em;
 `
 interface CardProps {
