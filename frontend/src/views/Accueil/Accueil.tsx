@@ -1,11 +1,20 @@
-import styled from 'styled-components'
+import {forfaitList, backgroundImage} from '../../services/service.tsx'
+import HeroSection from "../../components/HeroSection/heroSection.tsx";
+import styled from "styled-components";
 
-const AccueilTitre = styled.h1`
-  font-size: 35px;
+const MainContainer = styled.div`
+
+    padding-left: 15vw;
+    padding-right: 15vw;
+
 `
-
 function Accueil() {
-  return <AccueilTitre>Test Front-end Robin</AccueilTitre>
+
+  return (
+    <MainContainer>
+      <HeroSection img={backgroundImage} forfaits={forfaitList}/>
+    </MainContainer>
+  )
 }
 
 export default Accueil
