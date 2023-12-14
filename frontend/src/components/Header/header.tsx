@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
+import HamburgerIcon from '../../assets/img/HamburgerMenu.png'; 
 import { StyledLink } from '../../utils/style/Atoms';
 import styled from 'styled-components';
 
@@ -30,15 +31,71 @@ const BarreVerte = styled.hr<{ onTop: boolean }>`
 const MenuContainer = styled.div`
   position: fixed;
   width: 100%
-`
+`;
 
 const LinkContainer = styled.div`
   display: flex;
   align-items: center;
-`
+
+  @media (max-width: 1090px) {
+    display: none;
+  }
+`;
+
+
+
+const HamburgerIconWrapper = styled.div`
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+
+  @media (max-width: 1090px) {
+    display: block;
+    z-index: 10;
+  }
+`;
+
+const MobileMenu = styled.div<{ isOpen: boolean, onTop: boolean }>`
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background: #0F1411;
+  width: 250px;
+  flex-direction: column;
+  padding-top: ${({ onTop }) => (onTop ? '170px' : '110px')};
+
+  ${({ isOpen }) => isOpen && `
+    display: flex;
+  `}
+
+  @media (max-width: 1090px) {
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+  }
+
+  @media (min-width: 1090px) {
+    display: none;
+  }
+`;
+
+
+const MobileMenuItem = styled(Link)`
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  &:hover {
+    background: #1EC6B1;
+  }
+`;
+
+
 
 function Header() {
   const [onTop, setOnTop] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +109,10 @@ function Header() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
   
 
@@ -69,6 +130,19 @@ function Header() {
           <StyledLink to="/histoire">QUI SOMMES-NOUS ?</StyledLink>
           <StyledLink to="/contact">CONTACT</StyledLink>
         </LinkContainer>
+
+        <HamburgerIconWrapper onClick={toggleMenu}>
+          <img src={HamburgerIcon} alt="Menu" />
+        </HamburgerIconWrapper>
+
+        <MobileMenu onTop={onTop} isOpen={isMenuOpen}>
+          <MobileMenuItem to="/" onClick={toggleMenu}>ACCUEIL</MobileMenuItem>
+          <MobileMenuItem to="/permis" onClick={toggleMenu}>PERMIS DE CONDUIRE</MobileMenuItem>
+          <MobileMenuItem to="/code" onClick={toggleMenu}>CODE DE LA ROUTE</MobileMenuItem>
+          <MobileMenuItem to="/histoire" onClick={toggleMenu}>QUI SOMMES-NOUS ?</MobileMenuItem>
+          <MobileMenuItem to="/contact" onClick={toggleMenu}>CONTACT</MobileMenuItem>
+        </MobileMenu>
+
       </NavContainer>
       <BarreVerte onTop={onTop}/>
     </MenuContainer>
