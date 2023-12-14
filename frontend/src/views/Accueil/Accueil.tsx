@@ -1,47 +1,19 @@
-import styled from 'styled-components'
-import Card from "../../components/Card/card.tsx";
-import Forfait from "../../utils/models/models.tsx";
+import {forfaitList, backgroundImage} from '../../services/service.tsx'
+import HeroSection from "../../components/HeroSection/heroSection.tsx";
+import styled from "styled-components";
 
-const AccueilTitre = styled.h1`
-  font-size: 35px;
+const MainContainer = styled.div`
+
+    padding-left: 15vw;
+    padding-right: 15vw;
+
 `
-
-const ForfaitContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-`
-
 function Accueil() {
 
-  //A remplacé quand il y aura la connexion au serveur
-  const forfaitList: Forfait[] = [
-    {
-      titre: "Forfait1",
-      sousTitre:"SousTitre1",
-      titreBtn: "Click",
-      lien: '/forfait1'
-    },
-    {
-      titre: "Forfait2",
-      sousTitre:"SousTitre2",
-      titreBtn: "Click",
-      lien: '/forfait1'
-    },
-    {
-      titre: "Forfait2",
-      sousTitre:"SousTitre2",
-      titreBtn: "Click",
-      lien: '/forfait1'
-    }
-  ]
-
   return (
-    <ForfaitContainer>
-      <AccueilTitre>Test Front-end Robin</AccueilTitre>
-      {forfaitList.map((forfait, index) => (
-        <Card key={`${forfait.titre}-${index}`} {...forfait} />
-      ))}
-    </ForfaitContainer>
+    <MainContainer>
+      <HeroSection img={backgroundImage} forfaits={forfaitList}/>
+    </MainContainer>
   )
 }
 
