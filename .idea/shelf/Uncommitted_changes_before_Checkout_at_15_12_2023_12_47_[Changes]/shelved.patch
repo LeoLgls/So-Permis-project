@@ -1,0 +1,19 @@
+Index: frontend/src/main.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react'\r\nimport ReactDOM from 'react-dom/client'\r\nimport Accueil from './views/Accueil/Accueil'\r\nimport Header from './components/Header/header'\r\nimport { BrowserRouter as Router, Route, Routes } from 'react-router-dom'\r\n\r\nimport GlobalStyle from \"./utils/style/GlobalStyle.tsx\";\r\n\r\n\r\nReactDOM.createRoot(document.getElementById('root')!).render(\r\n  <React.StrictMode>\r\n    <Router>\r\n      <GlobalStyle/>\r\n      <Header />\r\n      <Routes>\r\n        <Route path=\"/\" element={<Accueil />}></Route>\r\n        <Route path=\"/ArticleTest\" element={<ArticleTest />}></Route>\r\n      </Routes>\r\n    </Router>\r\n  </React.StrictMode>,\r\n)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/main.tsx b/frontend/src/main.tsx
+--- a/frontend/src/main.tsx	
++++ b/frontend/src/main.tsx	
+@@ -14,7 +14,7 @@
+       <Header />
+       <Routes>
+         <Route path="/" element={<Accueil />}></Route>
+-        <Route path="/ArticleTest" element={<ArticleTest />}></Route>
++        <Route path="/ArticleTest" element={<Accueil />}></Route>
+       </Routes>
+     </Router>
+   </React.StrictMode>,
