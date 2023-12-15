@@ -30,9 +30,8 @@ const NavContainer = styled.nav<{ onTop: boolean }>`
 `;
 
 const BarreVerte = styled.hr<{ onTop: boolean }>`
-  border-top: 10px solid #1EC6B1;
-  margin-top: -10px;
-  opacity: ${({ onTop }) => (onTop ? '1' : '0')}; 
+  border-top: ${({ onTop }) => (onTop ? '10px solid #1EC6B1' : '4px solid #1EC6B1')}; 
+  margin-top: ${({ onTop }) => (onTop ? '-10px' : '-4px')}; 
   transition: all 0.3s ease;
   z-index: 100;
   position: sticky;
@@ -40,7 +39,8 @@ const BarreVerte = styled.hr<{ onTop: boolean }>`
 
 const MenuContainer = styled.div`
   position: fixed;
-  width: 100%
+  width: 100%;
+  z-index: 100;
 `;
 
 const LinkContainer = styled.div`
@@ -100,7 +100,7 @@ const MobileMenu = styled.div<{ isOpen: boolean, onTop: boolean }>`
   flex-direction: column;
   padding-top: ${({ onTop }) => (onTop ? '170px' : '110px')};
   transform: translateX(${({ isOpen }) => (isOpen ? '0' : '100%')});
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 
   @media (max-width: 1090px) {
     display: flex;
