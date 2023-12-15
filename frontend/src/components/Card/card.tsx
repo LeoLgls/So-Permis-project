@@ -46,7 +46,6 @@ const CardTitre = styled.h1`
     justify-content: center;
     color: ${colors.txtBlanc};
     font-size: ${fontSize.titre}px;
-    padding-top: 1px;
 `
 
 const CardButton = styled(Link)`

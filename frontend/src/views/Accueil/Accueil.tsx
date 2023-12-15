@@ -4,14 +4,16 @@ import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
+import CardAvis from "../../components/Card/cardAvis.tsx";
+import {avisList} from "../../services/service.tsx";
 
-const MainContainer = styled.div`
+const MainContainer = styled.main`
     padding-left: 15vw;
     padding-right: 15vw;
     background-color: ${colors.backgroundNoir}
 `
 
-const SectionInscription = styled.div`
+const SectionInscription = styled.section`
   background-color: ${colors.backgroundNoir};
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -27,6 +29,7 @@ const GridItem = styled.div`
 const GridItemP = styled.p`
     color: ${colors.txtBlanc};
     font-size: ${fontSize.p};
+    text-align: center;
 `
 
 const GridItemImg = styled.img`
@@ -43,13 +46,28 @@ const Grid2 = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 `
 
+const TitreSection = styled.h1`
+    color: ${colors.txtBlanc};
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+`
+
+const SectionAvis = styled.section`
+    display: flex;
+    justify-content: center;
+    gap: 8%;
+    padding-bottom: 5rem;
+`
+
+const SectionHistoire = styled.section``
+
 function Accueil() {
 
   return (
     <MainContainer>
       <HeroSection img={backgroundImage} forfaits={forfaitList} transitionNoir={true}/>
       <SectionInscription>
-
+        <TitreSection>Comment s'inscrire chez So'Permis ?</TitreSection>
         <Grid3>
           <GridItem>
             <GridItemImg src={photoImg} alt={'photo'}/>
@@ -57,26 +75,34 @@ function Accueil() {
           </GridItem>
           <GridItem>
             <GridItemImg src={photoImg} alt={'photo'}/>
-            <GridItemP>4 photos d'idendité numérique</GridItemP>
+            <GridItemP>Carte d'idendité</GridItemP>
           </GridItem>
           <GridItem>
             <GridItemImg src={photoImg} alt={'photo'}/>
-            <GridItemP>4 photos d'idendité numérique</GridItemP>
+            <GridItemP>Justificatif de domicile de moins de 6 mois</GridItemP>
           </GridItem>
         </Grid3>
 
         <Grid2>
           <GridItem>
             <GridItemImg src={photoImg} alt={'photo'}/>
-            <GridItemP>4 photos d'idendité numérique</GridItemP>
+            <GridItemP>Né(e) à partir de 1988</GridItemP>
           </GridItem>
           <GridItem>
             <GridItemImg src={photoImg} alt={'photo'}/>
-            <GridItemP>4 photos d'idendité numérique</GridItemP>
+            <GridItemP>Pour les moins de 25 ans</GridItemP>
           </GridItem>
         </Grid2>
 
       </SectionInscription>
+      <TitreSection>Avis</TitreSection>
+      <SectionAvis>
+        {avisList.map((avis, index) => (
+          <CardAvis key={index} {...avis} />))}
+      </SectionAvis>
+      <SectionHistoire>
+
+      </SectionHistoire>
     </MainContainer>
   )
 }
