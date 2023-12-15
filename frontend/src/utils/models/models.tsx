@@ -5,10 +5,13 @@ export interface Forfait {
   lien: string
 }
 
-
 export interface Avis {
   nom: string
   nbEtoile: number
   commentaire: string
 }
 
+export interface Image {
+  src: string;
+  alt: string;
+}

@@ -6,6 +6,11 @@ import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
 import CardAvis from "../../components/Card/cardAvis.tsx";
 import {avisList} from "../../services/service.tsx";
+import Carousel, {CarouselItem} from "../../components/Carousel/carousel.tsx";
+import img1 from '../../assets/img/imgTest1.jpg'
+import img2 from '../../assets/img/imgTest2.jfif'
+import img3 from '../../assets/img/imgTest3.jpg'
+
 
 const MainContainer = styled.main`
     padding-left: 15vw;
@@ -59,7 +64,19 @@ const SectionAvis = styled.section`
     padding-bottom: 5rem;
 `
 
-const SectionHistoire = styled.section``
+const CarouselContainer = styled.div`
+s
+`
+
+const SectionActus = styled.section`
+
+`
+
+const carouselData: CarouselItem[] = [
+  { index: 1, src: img1, alt: 'Image 1', lien: '/image1' },
+  { index: 2, src: img2, alt: 'Image 2', lien: '/image2' },
+  { index: 3, src: img3, alt: 'Image 3', lien: '/image3' },
+];
 
 function Accueil() {
 
@@ -100,10 +117,14 @@ function Accueil() {
         {avisList.map((avis, index) => (
           <CardAvis key={index} {...avis} />))}
       </SectionAvis>
-      <SectionHistoire>
+      <SectionActus>
+        <CarouselContainer>
+          <Carousel items={carouselData} />
+        </CarouselContainer>
+      </SectionActus>
 
-      </SectionHistoire>
     </MainContainer>
+
   )
 
 }

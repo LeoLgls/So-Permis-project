@@ -1,6 +1,6 @@
 import {Forfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
-
+import {Image} from "../utils/models/models.tsx";
 export const forfaitList: Forfait[] = [
   {
     titre: "Permis de conduire",
@@ -32,6 +32,21 @@ export const avisList: Avis[] = [
     nom: "Louanne",
     nbEtoile: 2,
     commentaire: "La C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonne"
+  },
+]
+
+export const imgList: Image[] = [
+  {
+    src: "",
+    alt: "img1"
+  },
+  {
+    src: "",
+    alt: "img2"
+  },
+  {
+    src: "",
+    alt: "img3"
   },
 ]
 
