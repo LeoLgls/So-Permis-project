@@ -79,6 +79,7 @@ function Accueil() {
       </SectionInscription>
     </MainContainer>
   )
+
 }
 
 export default Accueil
