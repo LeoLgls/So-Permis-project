@@ -14,6 +14,7 @@ const HeroSectionContainer = styled.div`
     justify-content: center;
     gap: 15px;
     object-fit: cover;
+    padding-top: 100px;
 
 `;
 
@@ -23,7 +24,7 @@ const HeroImg = styled.img`
     object-fit: cover;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 100px;
 `;
 
 const CardContainer = styled.div`
@@ -89,7 +90,7 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
     <HeroSectionContainer style={{ height: heroImgHeight }}>
       <HeroImgDiv>
         <HeroImg src={img} alt={"heroImg"} style={{ height: heroImgHeight }} />
-        <Transition style={{top: (parseInt(heroImgHeight) - heightTransition), background: couleurTransition}}/>
+        <Transition style={{top: (parseInt(heroImgHeight) - heightTransition + 100), background: couleurTransition}}/>
       </HeroImgDiv>
       <CardContainer className="card-container">
         {forfaits.map((forfait, index) => (
