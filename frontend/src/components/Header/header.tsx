@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
-import HamburgerIcon from '../../assets/img/HamburgerMenu.png'; 
 import { StyledLink } from '../../utils/style/Atoms';
 import styled from 'styled-components';
 
 const HomeLogo = styled.img<{ onTop: boolean }>`
   transition : all 0.3s ease;
   height: ${({ onTop }) => (onTop ? '45px' : '35px')};  
+  z-index: 1000;
+  position: relative;
+
+  @media (max-width: 1090px) {
+    height: 35px; 
+  }
 `;
 
 const NavContainer = styled.nav<{ onTop: boolean }>`
@@ -18,7 +23,10 @@ const NavContainer = styled.nav<{ onTop: boolean }>`
   align-items: center;
   background: #0F1411;
   height: ${({ onTop }) => (onTop ? '150px;' : '100px')};
-  
+
+  @media (max-width: 1090px) {
+    padding: ${({ onTop }) => (onTop ? '0 40px' : '0 30px')};
+  }
 `;
 
 const BarreVerte = styled.hr<{ onTop: boolean }>`
@@ -26,6 +34,8 @@ const BarreVerte = styled.hr<{ onTop: boolean }>`
   margin-top: -10px;
   opacity: ${({ onTop }) => (onTop ? '1' : '0')}; 
   transition: all 0.3s ease;
+  z-index: 100;
+  position: sticky;
 `;
 
 const MenuContainer = styled.div`
@@ -42,8 +52,6 @@ const LinkContainer = styled.div`
   }
 `;
 
-
-
 const HamburgerIconWrapper = styled.div`
   display: none;
   cursor: pointer;
@@ -55,6 +63,32 @@ const HamburgerIconWrapper = styled.div`
   }
 `;
 
+
+
+const HamburgerIcon = styled.div<{ isOpen: boolean }>`
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  margin: 6px 0;
+  transition: transform 0.3s ease;
+
+  ${({ isOpen }) => isOpen && `
+    transform: rotate(-45deg) translate(-5px, 6px);
+  `}
+
+  &:nth-child(2) {
+    opacity: ${({ isOpen }) => (isOpen ? '0' : '1')};
+  }
+
+  ${({ isOpen }) => isOpen && `
+    &:nth-child(3) {
+      transform: rotate(45deg) translate(-7px, -7px);
+    }
+  `}
+`;
+
+
+
 const MobileMenu = styled.div<{ isOpen: boolean, onTop: boolean }>`
   display: none;
   position: fixed;
@@ -65,20 +99,17 @@ const MobileMenu = styled.div<{ isOpen: boolean, onTop: boolean }>`
   width: 250px;
   flex-direction: column;
   padding-top: ${({ onTop }) => (onTop ? '170px' : '110px')};
-
-  ${({ isOpen }) => isOpen && `
-    display: flex;
-  `}
+  transform: translateX(${({ isOpen }) => (isOpen ? '0' : '100%')});
+  transition: transform 0.3s ease;
 
   @media (max-width: 1090px) {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    display: flex;
   }
 
   @media (min-width: 1090px) {
     display: none;
   }
 `;
-
 
 const MobileMenuItem = styled(Link)`
   padding: 10px;
@@ -90,8 +121,6 @@ const MobileMenuItem = styled(Link)`
     background: #1EC6B1;
   }
 `;
-
-
 
 function Header() {
   const [onTop, setOnTop] = useState(true);
@@ -114,11 +143,10 @@ function Header() {
     setMenuOpen(!isMenuOpen);
   };
 
-  
-
   return (
     <MenuContainer>
       <NavContainer onTop={onTop}>
+        
         <Link to="/">
           <HomeLogo src={Logo} onTop={onTop} />
         </Link>
@@ -132,18 +160,21 @@ function Header() {
         </LinkContainer>
 
         <HamburgerIconWrapper onClick={toggleMenu}>
-          <img src={HamburgerIcon} alt="Menu" />
+          <HamburgerIcon isOpen={isMenuOpen} />
+          <HamburgerIcon isOpen={isMenuOpen} />
+          <HamburgerIcon isOpen={isMenuOpen} />
         </HamburgerIconWrapper>
 
-        <MobileMenu onTop={onTop} isOpen={isMenuOpen}>
-          <MobileMenuItem to="/" onClick={toggleMenu}>ACCUEIL</MobileMenuItem>
-          <MobileMenuItem to="/permis" onClick={toggleMenu}>PERMIS DE CONDUIRE</MobileMenuItem>
-          <MobileMenuItem to="/code" onClick={toggleMenu}>CODE DE LA ROUTE</MobileMenuItem>
-          <MobileMenuItem to="/histoire" onClick={toggleMenu}>QUI SOMMES-NOUS ?</MobileMenuItem>
-          <MobileMenuItem to="/contact" onClick={toggleMenu}>CONTACT</MobileMenuItem>
-        </MobileMenu>
-
       </NavContainer>
+
+      <MobileMenu id="meny" onTop={onTop} isOpen={isMenuOpen}>
+        <MobileMenuItem to="/" onClick={toggleMenu}>ACCUEIL</MobileMenuItem>
+        <MobileMenuItem to="/permis" onClick={toggleMenu}>PERMIS DE CONDUIRE</MobileMenuItem>
+        <MobileMenuItem to="/code" onClick={toggleMenu}>CODE DE LA ROUTE</MobileMenuItem>
+        <MobileMenuItem to="/histoire" onClick={toggleMenu}>QUI SOMMES-NOUS ?</MobileMenuItem>
+        <MobileMenuItem to="/contact" onClick={toggleMenu}>CONTACT</MobileMenuItem>
+      </MobileMenu>
+  
       <BarreVerte onTop={onTop}/>
     </MenuContainer>
   );
