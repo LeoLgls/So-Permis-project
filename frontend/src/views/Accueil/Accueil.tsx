@@ -105,6 +105,7 @@ function Accueil() {
       </SectionHistoire>
     </MainContainer>
   )
+
 }
 
 export default Accueil
