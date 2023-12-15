@@ -27,6 +27,7 @@ const PageContainer = styled.div`
   font-family: 'Arial', sans-serif;
 `;
 
+
 const InterfaceAdminPage: React.FunctionComponent = () => {
 
 	const dataPermisB = [
@@ -95,7 +96,6 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 
 	return (
 		<PageContainer>
-
 			<Tabs variant='soft-rounded' colorScheme='green' align='center'>
 				<TabList>
 					<Tab>Permis B</Tab>
@@ -105,7 +105,7 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 				</TabList>
 				<TabPanels>
 					<TabPanel>
-						<TableContainer>
+						<TableContainer>							
 							<Table variant='striped' colorScheme='gray'>
 								<TableCaption>Forfait Permis B</TableCaption>
 								<Thead alignContent={'center'} backgroundColor={"black"}>

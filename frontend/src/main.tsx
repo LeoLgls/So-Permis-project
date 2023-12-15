@@ -7,6 +7,7 @@ import ArticleTest from './views/Article/ArticleTest'
 import ContactPage from './views/Contact/Contact'
 import Connexion from './views/Admin/Connexion'
 import InterfaceAdminPage from './views/Admin/InterfaceAdminPage'
+import NewsLetter from './views/Admin/NewsLetter'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/Contact" element={<ContactPage />}></Route>
         <Route path="/Admin" element={<Connexion/>}></Route>
         <Route path="/Admin/InterfaceAdmin" element={<InterfaceAdminPage/>}></Route>
+        <Route path="/Admin/NewsLetter" element={<NewsLetter/>}></Route>
       </Routes>
     </Router>
     </ChakraProvider>
