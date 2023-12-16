@@ -1,6 +1,10 @@
 import {Forfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
+import {CarouselItem} from "../components/Carousel/carousel.tsx";
+import img1 from "../assets/img/imgTest1.jpg";
+import img2 from "../assets/img/imgTest2.jfif";
+import img3 from "../assets/img/imgTest3.jpg";
 export const forfaitList: Forfait[] = [
   {
     titre: "Permis de conduire",
@@ -49,5 +53,11 @@ export const imgList: Image[] = [
     alt: "img3"
   },
 ]
+
+export const carouselData: CarouselItem[] = [
+  { index: 1, src: img1, alt: 'Image 1', lien: '/image1' },
+  { index: 2, src: img2, alt: 'Image 2', lien: '/image2' },
+  { index: 3, src: img3, alt: 'Image 3', lien: '/image3' },
+];
 
 export const backgroundImage : string = "https://static.vecteezy.com/system/resources/thumbnails/022/575/456/small/chamomile-flower-field-camomile-in-the-nature-field-of-camomiles-at-sunny-day-at-nature-camomile-daisy-flowers-in-summer-day-chamomile-flowers-field-wide-background-in-sun-light-generative-ai-photo.jpg"
