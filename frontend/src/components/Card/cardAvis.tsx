@@ -12,6 +12,10 @@ const CardContainer = styled.div`
     position: relative;
     opacity: 0.9;
     transition: opacity 0.25s ease-out;
+
+    @media (max-width: 1090px) {
+        width: 100%;
+    }
     
     &:hover {
         opacity: 1;

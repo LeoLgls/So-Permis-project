@@ -6,16 +6,21 @@ import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
 import CardAvis from "../../components/Card/cardAvis.tsx";
 import {avisList} from "../../services/service.tsx";
-import Carousel, {CarouselItem} from "../../components/Carousel/carousel.tsx";
-import img1 from '../../assets/img/imgTest1.jpg'
-import img2 from '../../assets/img/imgTest2.jfif'
-import img3 from '../../assets/img/imgTest3.jpg'
+import Carousel from "../../components/Carousel/carousel.tsx";
+import {carouselData} from "../../services/service.tsx";
 
 
 const MainContainer = styled.main`
     padding-left: 15vw;
     padding-right: 15vw;
-    background-color: ${colors.backgroundNoir}
+    background-color: ${colors.backgroundNoir};
+
+    @media (max-width: 1090px) {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    
+    
 `
 
 const SectionInscription = styled.section`
@@ -45,10 +50,21 @@ const Grid3 = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 10px;
+
+    @media (max-width: 1090px) {
+        grid-template-columns: repeat(1, minmax(100px, 1fr));
+
+    }
+
+
 `
 const Grid2 = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    @media (max-width: 1090px) {
+        grid-template-columns: repeat(1, minmax(100px, 1fr));
+    }
 `
 
 const TitreSection = styled.h1`
@@ -62,21 +78,23 @@ const SectionAvis = styled.section`
     justify-content: center;
     gap: 8%;
     padding-bottom: 5rem;
+
+    @media (max-width: 1090px) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
 `
 
 const CarouselContainer = styled.div`
-s
+    
 `
 
 const SectionActus = styled.section`
 
 `
 
-const carouselData: CarouselItem[] = [
-  { index: 1, src: img1, alt: 'Image 1', lien: '/image1' },
-  { index: 2, src: img2, alt: 'Image 2', lien: '/image2' },
-  { index: 3, src: img3, alt: 'Image 3', lien: '/image3' },
-];
+
 
 function Accueil() {
 
