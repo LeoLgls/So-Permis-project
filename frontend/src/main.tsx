@@ -14,7 +14,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Header />
       <Routes>
         <Route path="/" element={<Accueil />}></Route>
-        <Route path="/ArticleTest" element={<ArticleTest />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>,

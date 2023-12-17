@@ -6,7 +6,8 @@ const colors = {
   blanc: '#4F4C6B',
   backgroundBlanc: '#F1F1F1',
   backgroundNoir: '#0F1411',
-  txtBlanc: '#F1F1F1'
+  txtBlanc: '#F1F1F1',
+  txtNoir: '#0F1411'
 }
 
 export default colors

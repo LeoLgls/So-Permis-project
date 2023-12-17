@@ -1,29 +1,30 @@
 import { useEffect, useState } from "react";
 import Card from "../Card/card.tsx";
 import styled from "styled-components";
-import Forfait from "../../utils/models/models.tsx";
+import {Forfait} from "../../utils/models/models.tsx";
 import colors from "../../utils/style/colors.tsx";
 
 const heightTransition = 80;
 
 const HeroSectionContainer = styled.div`
     text-align: center;
-    color: #fff; /* Couleur du texte, changez selon vos besoins */
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     object-fit: cover;
+    padding-top: 100px;
 
 `;
 
 const HeroImg = styled.img`
     width: 100%;
-    height: 100%; /* Utilisez 100vh pour couvrir la hauteur de la fenêtre */
+    height: 100%;
     object-fit: cover;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 100px;
 `;
 
 const CardContainer = styled.div`
@@ -61,7 +62,6 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
     position: absolute;
     pointer-events: none;
   `
-  console.log(couleurTransition)
 
   const HeroImgDiv = styled.div`
     position: absolute;
@@ -89,7 +89,7 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
     <HeroSectionContainer style={{ height: heroImgHeight }}>
       <HeroImgDiv>
         <HeroImg src={img} alt={"heroImg"} style={{ height: heroImgHeight }} />
-        <Transition style={{top: (parseInt(heroImgHeight) - heightTransition), background: couleurTransition}}/>
+        <Transition style={{top: (parseInt(heroImgHeight) - heightTransition + 100), background: couleurTransition}}/>
       </HeroImgDiv>
       <CardContainer className="card-container">
         {forfaits.map((forfait, index) => (
