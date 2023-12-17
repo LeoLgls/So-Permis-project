@@ -62,7 +62,6 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
     position: absolute;
     pointer-events: none;
   `
-  console.log(couleurTransition)
 
   const HeroImgDiv = styled.div`
     position: absolute;
