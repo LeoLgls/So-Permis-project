@@ -31,16 +31,10 @@ const MainContainerRoute = styled.main<Theme>`
   padding-right: 15vw;
   background-color: ${props => props.theme.toString() == 'blanc' ? colors.backgroundBlanc : colors.backgroundNoir};
 
-
-
-
   @media (max-width: 1090px) {
       padding-left: 5vw;
       padding-right: 5vw;
   }
-
-  
-
 `
 
 const SectionInscription = styled.section`
