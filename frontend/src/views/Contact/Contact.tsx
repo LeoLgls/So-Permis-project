@@ -142,8 +142,6 @@ const ContactPage: React.FC = () => {
 			// Envoyer les données au backend
 			const response = await axios.post(`http://localhost:3333/api/contact/sendEmail`, formData);
 	
-			// Gérer la réponse du backend (vous pouvez ajuster cela en fonction de la réponse attendue)
-			console.log();
 			alert(response.data)
 		} catch (error) {
 			// Gérer les erreurs
@@ -160,31 +158,31 @@ const ContactPage: React.FC = () => {
 					<LeftFlexContainer>
 						<FormControl>
 							Prénom:
-							<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+							<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
 						</FormControl>
 						<FormControl>
 							Mail:
-							<input type="text" name="email" value={formData.email} onChange={handleChange} />
+							<input type="text" name="email" value={formData.email} onChange={handleChange} required />
 						</FormControl>
 						<FormControl>
 							Objet:
-							<input type="text" name="object" value={formData.object} onChange={handleChange} />
+							<input type="text" name="object" value={formData.object} onChange={handleChange} required/>
 						</FormControl>
 					</LeftFlexContainer>
 					<RightFlexContainer>
 						<FormControl>
 							Nom:
-							<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
+							<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
 						</FormControl>
 						<FormControl>
 							Téléphone:
-							<input type="text" name="phone" value={formData.phone} onChange={handleChange} />
+							<input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
 						</FormControl>
 					</RightFlexContainer>
 				</FlexContainer>
 				<FormControl>
 					Message:
-					<textarea name="message" value={formData.message} onChange={handleChange} />
+					<textarea name="message" value={formData.message} onChange={handleChange} required/>
 				</FormControl>
 				<SubmitButton type="submit">Envoyer</SubmitButton>
 

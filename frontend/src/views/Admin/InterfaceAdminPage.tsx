@@ -1,34 +1,65 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import {
 	Tabs,
 	TabList,
 	TabPanels,
 	Tab,
 	TabPanel,
-
 	Table,
 	Thead,
 	Tbody,
-
 	Tr,
 	Th,
 	Td,
 	TableCaption,
 	TableContainer,
 	Button,
-} from '@chakra-ui/react'
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalFooter,
+	ModalBody,
+	ModalCloseButton,
+	FormLabel,
+} from '@chakra-ui/react';
 import styled from 'styled-components';
 
 
 const PageContainer = styled.div`
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Arial', sans-serif;
 `;
 
+const FormControl = styled.label`
+  display: block;
+  margin-bottom: 10px;
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+`;
+
 
 const InterfaceAdminPage: React.FunctionComponent = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+
 
 	const dataPermisB = [
 		{
@@ -105,7 +136,8 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 				</TabList>
 				<TabPanels>
 					<TabPanel>
-						<TableContainer>							
+						<Button onClick={openModal}>Ajouter</Button>
+						<TableContainer>
 							<Table variant='striped' colorScheme='gray'>
 								<TableCaption>Forfait Permis B</TableCaption>
 								<Thead alignContent={'center'} backgroundColor={"black"}>
@@ -137,6 +169,7 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 						</TableContainer>
 					</TabPanel>
 					<TabPanel>
+						<Button onClick={openModal}>Ajouter</Button>
 						<TableContainer>
 							<Table variant='striped' colorScheme='gray'>
 								<TableCaption>Forfait Permis B Express</TableCaption>
@@ -169,6 +202,7 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 						</TableContainer>
 					</TabPanel>
 					<TabPanel>
+						<Button onClick={openModal}>Ajouter</Button>
 						<TableContainer>
 							<Table variant='striped' colorScheme='gray'>
 								<TableCaption>Forfait Conduite Accompagnée</TableCaption>
@@ -201,6 +235,7 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 						</TableContainer>
 					</TabPanel>
 					<TabPanel>
+						<Button onClick={openModal}>Ajouter</Button>
 						<TableContainer>
 							<Table variant='striped' colorScheme='gray'>
 								<TableCaption>Code de la route</TableCaption>
@@ -234,8 +269,50 @@ const InterfaceAdminPage: React.FunctionComponent = () => {
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
-		</PageContainer>
 
+			<Modal isOpen={isModalOpen} onClose={closeModal} size="xl">
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Ajouter un forfait</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						{/* Formulaire à remplir */}
+						<form
+							onSubmit={(e) => {
+								e.preventDefault();
+								// Ajoutez ici la logique pour soumettre le formulaire
+								// Assurez-vous de fermer la modal après la soumission
+								closeModal();
+							}}
+						>
+							<FormControl >
+								<FormLabel>Nom :</FormLabel>
+								<input type="text" id="nom" name="nom" required />
+							</FormControl>
+
+							<FormControl >
+								<FormLabel>Prix :</FormLabel>
+								<input type="number" id="prix" name="prix" required />
+							</FormControl>
+
+							<FormControl >
+								<FormLabel>Description :</FormLabel>
+								<textarea id="description" name="description" required />
+							</FormControl>
+
+							<Button type="submit" colorScheme="teal" mr={3}>
+								Ajouter
+							</Button>
+							<Button colorScheme="teal" onClick={closeModal}>
+								Annuler
+							</Button>
+						</form>
+					</ModalBody>
+				</ModalContent>
+			</Modal>
+
+
+		</PageContainer>
 
 	);
 }
