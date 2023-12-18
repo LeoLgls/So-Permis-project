@@ -1,4 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
@@ -133,11 +135,22 @@ const ContactPage: React.FC = () => {
 		});
 	};
 
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = async (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		console.log('Form Data:', formData);
-		// Add your form submission logic here
+	
+		try {
+			// Envoyer les données au backend
+			const response = await axios.post(`http://127.0.0.1:3333/api/contact`, formData);
+	
+			// Gérer la réponse du backend (vous pouvez ajuster cela en fonction de la réponse attendue)
+			console.log(response.data);
+		} catch (error) {
+			// Gérer les erreurs
+			console.error('Erreur lors de la soumission du formulaire', error);
+		}
 	};
+
 
 	return (
 		<PageContainer>
@@ -173,10 +186,10 @@ const ContactPage: React.FC = () => {
 					Message:
 					<textarea name="message" value={formData.message} onChange={handleChange} />
 				</FormControl>
-				
-			</FormContainer>
-			<SubmitButton type="submit">Envoyer</SubmitButton>
+				<SubmitButton type="submit">Envoyer</SubmitButton>
 
+			</FormContainer>
+	
 			<FlexContainer>
 				<LeftFlexContainer>
 					<h3>Adresse</h3>
