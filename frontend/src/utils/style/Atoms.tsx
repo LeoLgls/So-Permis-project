@@ -19,4 +19,9 @@ export const FooterStyledLink = styled(Link)`
   font-size: 18px;
   font-weight : 800;
   align-self: start;
+  padding-bottom: 5%; 
+
+  @media (max-width: 1090px) {
+    font-size : 16px;
+  }
 `

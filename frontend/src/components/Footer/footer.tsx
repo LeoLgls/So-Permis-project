@@ -8,55 +8,82 @@ import styled from 'styled-components';
 import colors from '../../utils/style/colors'
 
 const HomeLogo = styled.img`
-  height: 45px;
+  height: auto;
+  width: 80%;
 `
 
 const PetitLogo = styled.img`
-  height: 45px;
-  margin-right : 50px;
-  margin-left : 50px;
+  height: auto;
+  width: 14%;
 `
 
 const FooterContainer = styled.footer`
-  padding: 2%;
+  padding: 2% 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: ${colors.backgroundNoir};
+
+  @media (max-width: 925px) {
+    flex-direction: column;
+  }
+
 `
 
-const MainContainer = styled.div`
-  bottom: 0;
-  width: 100%
-`
 const LeftPart = styled.div`
   display: flex;
   height: 15vw;
   align-items: center;
+  width: 45%;
+  height: auto;
+
+  @media (max-width: 925px) {
+    width: 70%;
+    padding: 5% 0%;
+  }
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
+
 `
 
 const LogoContainer = styled.div`
   width: 100%;
   height: auto;
+
+  @media (max-width: 550px) {
+    text-align: center;
+    padding-bottom: 5%;
+  }
 `
 
 const ContactContainer = styled.div`
   width: 100%;
   height: auto;
 `
+
+const BoutonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+`
+
 const BoutonContact = styled.div`
   background-color: ${colors.vert};
   border-radius: 45px;
   text-align: center;
-  font-size: 28px;
+  font-size: 20px;
   color : ${colors.noir};
-  
   font-weight: 700;
+  width: 70%;
+  padding: 5%;
 `
 
 const ReseauContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background: #0f1411;
 `
@@ -69,17 +96,51 @@ const RightPart = styled.div`
   display: flex;
   height: 15vw;
   align-items: center;
+  width: 55%;
+  justify-content: space-evenly;
+  height: auto;
+
+  @media (max-width: 925px) {
+    width: 95%;
+    padding: 5% 0%;
+  }
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
 `
 
 const InformationContainer = styled.div`
-  padding: 0 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${colors.backgroundNoir};
   flex-direction: column;
-  text-align: center;  
+  text-align: start;
+
+  @media (max-width: 550px) {
+    padding-bottom: 8%;
+  }
 `
+
+const CoordonneesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: justify;  
+`
+
+const TextCoordonnees = styled.p`
+  color: white;
+  font-size: 18px;
+  text-align: justify;
+  font-weight : 800;
+  padding-bottom: 6%;
+  
+  @media (max-width: 1090px) {
+    font-size : 16px;
+  }
+`
+
 
 const UnderlineText = styled.p`
   font-family: "montserrat",sans-serif;
@@ -90,27 +151,19 @@ const UnderlineText = styled.p`
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 20px;
+
+  @media (max-width: 1090px) {
+    font-size : 20px;
+  }
 `
 
-const CoordonneesContainer = styled.div`
-  padding: 0 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: ${colors.backgroundNoir};
-  flex-direction: column;
-  text-align: justify;  
-`
 
-const TextCoordonnees = styled.p`
-  margin: 10px 25px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  text-align: justify;
-  font-weight : 800;
-`
-
+const linkScroll =() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
 
 
 function Footer() {
@@ -122,7 +175,7 @@ function Footer() {
       <LeftPart>
           <LogoContainer>
             <Link to="/">
-              <HomeLogo src={Logo} />
+              <HomeLogo src={Logo} onClick={linkScroll} />
             </Link>
           </LogoContainer>
 
@@ -132,7 +185,10 @@ function Footer() {
                   <PetitLogo src={Snap} />
                   <PetitLogo src={Insta} />
               </ReseauContainer>
-              <BoutonContact> Contactez-nous </BoutonContact>
+
+              <BoutonContainer>
+                  <BoutonContact> Contactez-nous </BoutonContact>
+              </BoutonContainer>
 
           </ContactContainer>
       </LeftPart>
@@ -141,9 +197,9 @@ function Footer() {
           <InformationContainer>
               <UnderlineText>Informations</UnderlineText>
               <FooterStyledLink to="/">&gt; Acceuil</FooterStyledLink>
-              <FooterStyledLink to="/permis">&gt; Qui sommes nous ?</FooterStyledLink>
-              <FooterStyledLink to="/code">&gt; Permis</FooterStyledLink>
-              <FooterStyledLink to="/histoire">&gt; Code</FooterStyledLink>
+              <FooterStyledLink to="/histoire">&gt; Qui sommes nous ?</FooterStyledLink>
+              <FooterStyledLink to="/permis">&gt; Permis</FooterStyledLink>
+              <FooterStyledLink to="/code">&gt; Code</FooterStyledLink>
           </InformationContainer>
 
           <CoordonneesContainer>
