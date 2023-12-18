@@ -29,6 +29,7 @@ import type { AssetsManagerConfig } from '@ioc:Adonis/Core/AssetsManager'
 */
 export const appKey: string = Env.get('APP_KEY')
 
+
 /*
 |--------------------------------------------------------------------------
 | Http server configuration

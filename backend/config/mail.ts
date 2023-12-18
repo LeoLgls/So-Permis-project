@@ -41,14 +41,21 @@ export default mailConfig({
     |
     | Uses SMTP protocol for sending email
     |
+
+    MAIL_CONNECTION=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=comptepoubellewalla@gmail.com
+MAIL_PASSWORD=uwbdvwcfithjjbxi
+
     */
     smtp: {
       driver: 'smtp',
-      host: Env.get('SMTP_HOST'),
-      port: Env.get('SMTP_PORT'),
+      host: 'smtp.gmail.com',
+      port: 587,
 			auth: {
-				user: Env.get('SMTP_USERNAME'),
-				pass: Env.get('SMTP_PASSWORD'),
+				user: 'william.lefor@gmail.com',
+				pass: "ahoypvifcrpbideg",
 				type: 'login',
 			}
     },

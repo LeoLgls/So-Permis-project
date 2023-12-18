@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
@@ -141,10 +140,11 @@ const ContactPage: React.FC = () => {
 	
 		try {
 			// Envoyer les données au backend
-			const response = await axios.post(`http://127.0.0.1:3333/api/contact`, formData);
+			const response = await axios.post(`http://localhost:3333/api/contact/sendEmail`, formData);
 	
 			// Gérer la réponse du backend (vous pouvez ajuster cela en fonction de la réponse attendue)
-			console.log(response.data);
+			console.log();
+			alert(response.data)
 		} catch (error) {
 			// Gérer les erreurs
 			console.error('Erreur lors de la soumission du formulaire', error);

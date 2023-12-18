@@ -1,0 +1,13 @@
+<!-- resources/views/emails/contact.edge -->
+<p>Nouveau message de contact:</p>
+
+<ul>
+  <li><strong>Prénom:</strong> {{ formData.firstName }}</li>
+  <li><strong>Nom:</strong> {{ formData.lastName }}</li>
+  <li><strong>Email:</strong> {{ formData.email }}</li>
+  <li><strong>Téléphone:</strong> {{ formData.phone }}</li>
+  <li><strong>Objet:</strong> {{ formData.object }}</li>
+</ul>
+
+<p><strong>Message:</strong></p>
+<p>{{ formData.message }}</p>

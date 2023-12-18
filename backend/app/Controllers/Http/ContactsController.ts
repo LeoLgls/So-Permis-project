@@ -1,25 +1,23 @@
-// import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-'use strict';
+import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import Mail from '@ioc:Adonis/Addons/Mail';
 
 export default class ContactsController {
-	async sendEmail({ request }) {
-        try {
-            //const { firstName, lastName, email, message } = request.all();
+  async sendEmail({ request, response }: HttpContextContract) {
+    const formData = request.only(['firstName', 'lastName', 'email', 'phone', 'object', 'message']);
 
-			await Mail.send((message) => {
-				message
-				  .from('info@example.com')
-				  .to('virk@adonisjs.com')
-				  .subject('Welcome Onboard!')
-				  .htmlView('emails/welcome', { name: 'Virk' })
-			  })
+    try {
+      await Mail.send((message) => {
+        message
+          .from(formData.email) // Update with the sender's email address
+          .to("comptepoubellewalla@gmail.com")
+          .subject(`Contacte depuis le site - ${formData.object}`)
+          .htmlView('emails/contact', { formData });
+      });
 
-            return 'Email envoyé avec succès';
-        } catch (error) {
-            // Gérer les erreurs
-            console.error('Erreur lors de l\'envoi de l\'email', error);
-            return 'Erreur lors de l\'envoi de l\'email';
-        }
+      return response.send('Email envoyé avec succès');
+    } catch (error) {
+      console.error(error);
+      return response.send("Erreur lors de l'envoi de l'email");
     }
+  }
 }
