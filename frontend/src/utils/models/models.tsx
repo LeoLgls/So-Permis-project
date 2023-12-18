@@ -26,3 +26,10 @@ export interface AnnulationCode {
   titre: string;
   prix: number;
 }
+
+export interface  Article {
+  titre: string;
+  date: Date;
+  contenu: string;
+  source: string;
+}
