@@ -36,7 +36,7 @@ export const avisList: Avis[] = [
   {
     nom: "Louanne",
     nbEtoile: 2,
-    commentaire: "La C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonneLa C3 est mignonne"
+    commentaire: "Je suis pas contente >:(",
   },
 ]
 

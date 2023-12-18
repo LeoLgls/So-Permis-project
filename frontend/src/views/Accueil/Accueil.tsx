@@ -10,6 +10,11 @@ import {carouselData} from "../../services/service.tsx";
 import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import CeoImg from '../../assets/img/ceo-girl.jpg'
+import imgVoiture from '../../assets/img/c3.png'
+import appStore from '../../assets/img/appstore.svg'
+import playStore from '../../assets/img/playstore.png'
+import sarool from '../../assets/img/sarool.png'
+
 interface Theme extends DefaultTheme {
   theme: string;
 }
@@ -83,10 +88,11 @@ const SectionAvis = styled.section`
     flex-direction: column;
 `
 
-const AvisContainer = styled.div`
+const CardsContainer = styled.div`
     
+    justify-content: center;
     display: flex;
-    gap: 8%;
+    gap: 2rem;
     flex-direction: row;
     @media (max-width: 1090px) {
         flex-direction: column;
@@ -100,12 +106,26 @@ const SectionActus = styled.section``
 const SectionPresentation = styled.section`
     padding-bottom: 5rem;
 `
-const CardHistoireContainer = styled.div`
+const CardBackground = styled.div`
     background-color: ${colors.vert};
     border-radius: 45px 45px 20px 20px;
     box-shadow: 10px 10px 4px ${colors.noirOmbre};
     position: relative;
     min-height: 20rem;
+    min-width: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+const CardTextContainer = styled.div`
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 15rem;
+    padding-left: 10%;
+    padding-right: 10%;
 `
 
 const TxtHistoire = styled.p`
@@ -134,6 +154,99 @@ const ImgCEO = styled.img`
         display: none;
     }
 `
+
+const SectionVoiture = styled.section`
+    
+`
+
+const TitreCard = styled.h2`
+  color: ${colors.txtBlanc};
+  font-size: ${fontSize.titre}px;
+`
+
+const SousTitreCard = styled.h2`
+  color: ${colors.txtBlanc};
+  font-size: ${fontSize.sousTitre}px;
+`
+
+const TxtCard = styled.p`
+    color: ${colors.txtBlanc};
+    font-size: ${fontSize.p}px;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+`
+
+const ImgVoiture = styled.img`
+    max-width: 20rem;
+    height: auto;
+    object-fit: cover;
+`
+
+const CardVoitureContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+`
+
+const SectionSarool = styled.div`
+    min-height: 50vh;
+`
+
+const ImgStore = styled.img`
+    
+    height: 4rem;
+`
+
+const ImgSarool = styled.img`
+    object-fit: cover;
+    max-width: 20rem;
+    height: auto;
+`
+
+const SaroolContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap :2rem;
+
+    @media (max-width: 1090px) {
+        flex-direction: column;
+    }
+    
+`
+const StoreContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 50%;
+
+    @media (max-width: 1090px) {
+        width: 100%;
+    }
+`
+
+const Pstore = styled.p`
+    color: ${colors.txtNoir};
+    font-size: ${fontSize.p}px;
+    text-align: center;
+    
+`
+
+const ImgContainer = styled.div`
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
+
 
 function Accueil() {
 
@@ -172,19 +285,21 @@ function Accueil() {
 
         <SectionAvis>
           <TitreSection theme={'noir'}>Avis</TitreSection>
-          <AvisContainer>
+          <CardsContainer>
             {avisList.map((avis, index) => (
               <CardAvis key={index} {...avis} />))}
-          </AvisContainer>
+          </CardsContainer>
         </SectionAvis>
 
         <SectionPresentation>
           <TitreSection theme={'noir'}>So'Permis - Votre auto-école locale de confiance !</TitreSection>
           <PresentationContainer>
             <ImgCEO src={CeoImg} alt={'CEO'}/>
-            <CardHistoireContainer>
-              <TxtHistoire>{txtHistoire}</TxtHistoire>
-            </CardHistoireContainer>
+            <CardBackground>
+              <CardTextContainer>
+                <TxtHistoire>{txtHistoire}</TxtHistoire>
+              </CardTextContainer>
+            </CardBackground>
           </PresentationContainer>
         </SectionPresentation>
       </MainContainer>
@@ -198,8 +313,34 @@ function Accueil() {
             <Carousel items={carouselData} />
           </CarouselContainer>
         </SectionActus>
-      </MainContainer>
 
+        <SectionVoiture>
+          <TitreSection theme={'blanc'}>Nos voitures chez So'Permis</TitreSection>
+        <CardsContainer>
+          <CardBackground>
+            <CardVoitureContainer>
+              <ImgVoiture src={imgVoiture} alt={"Citroën C3"} />
+              <TitreCard>Citroën C3</TitreCard>
+              <SousTitreCard>Boite Manuelle</SousTitreCard>
+              <TxtCard>Pratique et facile à conduire, cette voiture vous accompagnera pour votre permis</TxtCard>
+            </CardVoitureContainer>
+          </CardBackground>
+        </CardsContainer>
+        </SectionVoiture>
+        <SectionSarool>
+          <TitreSection theme={'blanc'}>Application SAROOL</TitreSection>
+          <SaroolContainer>
+            <ImgSarool src={sarool} alt={"Img SAROOL"}/>
+            <StoreContainer>
+              <Pstore>Visualise tes informations personnelles et gères tes disponibilités avec l'application SAROOL ! </Pstore>
+              <ImgContainer>
+                <ImgStore src={appStore} alt={"Disponible sur l'App Store"}/>
+                <ImgStore src={playStore} alt={"Disponible sur le Play Store"} />
+              </ImgContainer>
+            </StoreContainer>
+          </SaroolContainer>
+        </SectionSarool>
+      </MainContainer>
     </React.StrictMode>
 
   )
