@@ -97,7 +97,7 @@ const CarouselDot = styled.span<CarouselDotProps>`
     height: 0.8rem;
     margin: 0 0.5rem;
     border-radius: 50%;
-    background-color: white;
+    background-color: black;
     cursor: pointer;
     
     z-index: 1;
