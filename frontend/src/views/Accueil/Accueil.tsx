@@ -89,7 +89,6 @@ const SectionAvis = styled.section`
 `
 
 const CardsContainer = styled.div`
-    
     justify-content: center;
     display: flex;
     gap: 2rem;
