@@ -1,7 +1,9 @@
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-import colors from "../../utils/style/colors.tsx";
-import fontSize from "../../utils/style/font-size.tsx";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { ChakraProvider, Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from '@chakra-ui/react';
+import colors from '../../utils/style/colors.tsx';
+import fontSize from '../../utils/style/font-size.tsx';
 
 //CSS
 const CardContainer = styled.div`
@@ -87,18 +89,52 @@ interface CardProps {
 }
 
 //Composant Card
-function Card({titre, sousTitre, titreBtn, lien}:CardProps) {
-    return(
+function Card({ titre, sousTitre, titreBtn, lien }: CardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <div>
       <CardContainer>
         <CardInfosContainer>
           <CardInfosTexts>
             <CardTitre>{titre}</CardTitre>
             <CardSousTitre>{sousTitre}</CardSousTitre>
           </CardInfosTexts>
-          <CardButton to={lien}>{titreBtn}</CardButton>
+          <CardButton to='' onClick={openModal}>{titreBtn}</CardButton>
         </CardInfosContainer>
       </CardContainer>
-    )
+
+      <ChakraProvider>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>{titre}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              {/* Contenu de la modal */}
+              <p>Contenu de la modal...</p>
+            </ModalBody>
+            <ModalFooter>
+              {/* Boutons ou actions de pied de modal */}
+              <Button colorScheme="blue" mr={3} onClick={closeModal}>
+                Fermer
+              </Button>
+              {/* Ajoutez d'autres boutons ou actions au besoin */}
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </ChakraProvider>
+    </div>
+  );
 }
+
 
 export default Card
