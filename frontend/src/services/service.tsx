@@ -1,10 +1,11 @@
-import {Forfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Forfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
+
 
 export const forfaitList: Forfait[] = [
   {
@@ -139,3 +140,58 @@ export const backgroundImage : string = "https://static.vecteezy.com/system/reso
 export const backgroundImagePermis : string = "https://www.justifit.fr/wp-content/uploads/2021/04/le-permis-de-conduire-est-il-une-piece-d-identite.jpeg"
 
 export const txtHistoire: string = "Chez So'Permis, nous redéfinissons l'expérience de l'auto-école au Havre. Notre engagement envers une formation de conduite personnalisée, proposée par des instructeurs dévoués, fait de nous le choix idéal. En tant qu'auto-école locale, nous comprenons les besoins spécifiques de nos élèves. Optez pour So'Permis et bénéficiez d'une formation efficace avec une approche moderne et des tarifs transparents."
+
+export const codeList:Forfait[] = [
+  {
+    titre: "FORFAIT CODE",
+    sousTitre:"",
+    titreBtn: "Nos forfaits code",
+    lien: '/permis'
+  },
+  {
+    titre: "CODE EN SALLE",
+    sousTitre:"",
+    titreBtn: "Nos forfaits pour faire du code en salle",
+    lien: '/permis'
+  },
+  {
+    titre: "CONDITION ANNULATION",
+    sousTitre:"",
+    titreBtn: "Nos conditions d'annulation du code",
+    lien: '/permis'
+  },
+]
+
+export const codeForfaitList: Forfait[] = [
+  {
+    titre: "FORFAIT CODE SEUL",
+    sousTitre:"",
+    titreBtn: "1200€",
+    lien: '/permis'
+  },{
+    titre: "FORFAIT CODE EXPRESS",
+    sousTitre:"EN 4 JOURS",
+    titreBtn: "1110€",
+    lien: '/permis'
+  },
+]
+
+export const  horairesMatin = ['Fermé', '9H-12H', '9H-12H', '9H-12H', '9H-12H', '9H-12H', 'Fermé'];
+export const horairesAprem = ['14H-18H', '14H-18H', '14H-18H', '14H-18H', '14H-18H', 'Fermé', 'Fermé'];
+
+export const listAnnulationCode: AnnulationCode[] = [
+  {
+    titre: "ANNULATION CODE",
+    prix: 150,
+  },{
+    titre: "ANNULATION CODE EXPRESS EN 4 JOURS",
+    prix: 250,
+  },{
+    titre: "ANNULATION CODE + CONDUITE",
+    prix: 410,
+  },{
+    titre: "ANNULATION CODE + CONDUITE EXPRESS EN 15 JOURS",
+    prix: 660,
+  },
+]
+

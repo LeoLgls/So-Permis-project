@@ -16,7 +16,7 @@ import playStore from '../../assets/img/playstore.png'
 import sarool from '../../assets/img/sarool.png'
 import {TitreSection} from "../../utils/style/elements.tsx";
 import {MainContainer} from "../../utils/style/elements.tsx";
-
+import {CardBackground} from "../../utils/style/elements.tsx";
 
 
 
@@ -97,18 +97,6 @@ const CarouselContainer = styled.div``
 const SectionActus = styled.section``
 const SectionPresentation = styled.section`
     padding-bottom: 5rem;
-`
-const CardBackground = styled.div`
-    background-color: ${colors.vert};
-    border-radius: 45px 45px 20px 20px;
-    box-shadow: 10px 10px 4px ${colors.noirOmbre};
-    position: relative;
-    min-height: 20rem;
-    max-width: 80vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 `
 const CardTextContainer = styled.div`
     justify-content: left;
