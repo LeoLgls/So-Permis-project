@@ -1,15 +1,14 @@
-import {forfaitList, backgroundImage, txtHistoire, imgList} from '../../services/service.tsx'
+import {permisList, backgroundImagePermis, typeDeForfaits, imgList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
-import CardAvis from "../../components/Card/cardAvis.tsx";
-import {avisList} from "../../services/service.tsx";
-import Carousel from "../../components/Carousel/carousel.tsx";
-import {carouselData} from "../../services/service.tsx";
 import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
-import CeoImg from '../../assets/img/ceo-girl.jpg'
+import Card from "../../components/Card/card.tsx";
+
+
+
 interface Theme extends DefaultTheme {
   theme: string;
 }
@@ -23,6 +22,7 @@ const MainContainer = styled.main<Theme>`
         padding-left: 5vw;
         padding-right: 5vw;
     }
+
 `
 
 const SectionInscription = styled.section`
@@ -30,6 +30,25 @@ const SectionInscription = styled.section`
     padding-top: 5rem;
     padding-bottom: 5rem;
 `
+
+const SectionPermis = styled.section`
+    background-color: rgba(0, 0, 0, 0);
+    padding-bottom: 10rem;
+`
+
+const SectionPermisExpress = styled.section`
+  background-color: ${colors.backgroundNoir};
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+`
+
+const SectionConduiteAcc = styled.section`
+  background-color: ${colors.backgroundNoir};
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+`
+
+
 
 const GridItem = styled.div`
     display: flex;
@@ -77,72 +96,47 @@ const TitreSection = styled.h1<Theme>`
     padding-bottom: 2rem;
 `
 
-const SectionAvis = styled.section`
-    display: flex;
-    padding-bottom: 5rem;
-    flex-direction: column;
+const CardContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    width: 100%;
+    gap: 40px;
 `
 
-const AvisContainer = styled.div`
-    
-    display: flex;
-    gap: 8%;
-    flex-direction: row;
-    @media (max-width: 1090px) {
-        flex-direction: column;
-        gap: 2rem;
-    }
+const TransitionRoute = styled.div`
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #0F1411 100%);
+  width: 100%;
+  height: 5rem;
+  pointer-events: none;
+  margin-top: -5rem;
 `
 
+const Image = styled.div`
+  background-image: url("./src/assets/img/route.png");
 
-const CarouselContainer = styled.div``
-const SectionActus = styled.section``
-const SectionPresentation = styled.section`
-    padding-bottom: 5rem;
-`
-const CardHistoireContainer = styled.div`
-    background-color: ${colors.vert};
-    border-radius: 45px 45px 20px 20px;
-    box-shadow: 10px 10px 4px ${colors.noirOmbre};
-    position: relative;
-    min-height: 20rem;
-`
+  object-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-const TxtHistoire = styled.p`
-    color: ${colors.txtBlanc};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: justify;
-    min-height: 20rem;
-    padding: 1rem;
-    font-size: ${fontSize.p}px;
-`
+  width: 100%;
+  height: 70rem;
+  margin-top: -70rem;
 
-const PresentationContainer = styled.div`
-    display: flex;
-    gap: 2rem;
+  background-color: ${colors.backgroundBlanc}
 `
 
 
-const ImgCEO = styled.img`
-    max-width: 25vw;
-    border-radius: 25px;
-    object-fit: cover;
 
-    @media (max-width: 1090px) {
-        display: none;
-    }
-`
-
-function Accueil() {
+function Permis() {
 
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
-        <HeroSection img={backgroundImage} forfaits={forfaitList} transitionNoir={true}/>
+
+      <HeroSection img={backgroundImagePermis} forfaits={typeDeForfaits} transitionNoir={true}/>
+
         <SectionInscription>
-          <TitreSection theme={'noir'}>Comment s'inscrire chez So'Permis ?</TitreSection>
+          <TitreSection theme={'noir'}>Documents à fournir</TitreSection>
           <Grid3>
             <GridItem>
               <GridItemImg src={imgList[0].src} alt={imgList[0].alt}/>
@@ -170,35 +164,54 @@ function Accueil() {
           </Grid2>
         </SectionInscription>
 
-        <SectionAvis>
-          <TitreSection theme={'noir'}>Avis</TitreSection>
-          <AvisContainer>
-            {avisList.map((avis, index) => (
-              <CardAvis key={index} {...avis} />))}
-          </AvisContainer>
-        </SectionAvis>
-
-        <SectionPresentation>
-          <TitreSection theme={'noir'}>So'Permis - Votre auto-école locale de confiance !</TitreSection>
-          <PresentationContainer>
-            <ImgCEO src={CeoImg} alt={'CEO'}/>
-            <CardHistoireContainer>
-              <TxtHistoire>{txtHistoire}</TxtHistoire>
-            </CardHistoireContainer>
-          </PresentationContainer>
-        </SectionPresentation>
       </MainContainer>
 
       <Transition theme={'blanc'} orientation={"0deg"}/>
 
-      <MainContainer theme={'blanc'} >
-        <SectionActus>
-          <TitreSection theme={'blanc'}>Retrouvez nos dernières actus !</TitreSection>
-          <CarouselContainer>
-            <Carousel items={carouselData} />
-          </CarouselContainer>
-        </SectionActus>
+
+
+
+
+ 
+      <MainContainer theme={'blanc'}>
+       
+        <SectionPermis id="Permis">
+            <TitreSection theme={'blanc'}>Permis B</TitreSection>
+
+            <CardContainer className="card-container">
+            {permisList.map((permisList, index) => (
+            <Card key={index} {...permisList} />))}
+            </CardContainer>
+        </SectionPermis>
+
+
       </MainContainer>
+  
+      <Image/>
+      <TransitionRoute/>
+
+
+
+
+
+
+      <MainContainer theme={'noir'}>
+
+        <SectionPermisExpress>
+            <TitreSection theme={'noir'}>Permis B Express</TitreSection>
+
+
+        </SectionPermisExpress>
+
+
+        <SectionConduiteAcc id="conduiteAccompagnee">
+            <TitreSection theme={'noir'}>Conduite accompagnée</TitreSection>
+
+
+        </SectionConduiteAcc>
+
+      </MainContainer>
+
 
     </React.StrictMode>
 
@@ -206,4 +219,4 @@ function Accueil() {
 
 }
 
-export default Accueil
+export default Permis
