@@ -25,3 +25,9 @@ Route.get('/', async ({ view }) => {
 })
 
 Route.get('/formations', 'FormationController.index')
+
+Route.get('/administrateurs', 'AdministrateurController.index')
+
+Route.get('/newsletters', 'NewsletterController.index')
+
+Route.get('/actualites', 'ActualiteController.index')

@@ -16,3 +16,25 @@ model Formation {
   type  String
   infos String
 }
+
+model Administrateur {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
+  password String
+}
+
+model Newsletter {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  email  String   @unique
+  nom    String   @default("")
+  prenom String   @default("")
+}
+
+model Actualite {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  titre   String
+  texte   String
+  image   String
+  date    String
+  sources String
+}

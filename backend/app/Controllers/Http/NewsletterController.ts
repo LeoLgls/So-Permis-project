@@ -1,29 +1,29 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {prisma} from '@ioc:Adonis/Addons/Prisma'
 
-export default class FormationController {
+export default class NewslettersController {
 
     public async store ({request}: HttpContextContract) {
-        const formation = await prisma.formation.create({
-            data: request.only(['prix', 'type', 'infos']),
+        const newsletter = await prisma.newsletter.create({
+            data: request.only(['email']),
         })
 
-        return formation
+        return newsletter
     }
 
     public async show ({params}: HttpContextContract) {
-        const formation = await prisma.formation.findUnique({
+        const newsletter = await prisma.newsletter.findUnique({
             where: {
                 id: params.id
             }
         })
 
-        return formation
+        return newsletter
     }
 
     public async index () {
-        const formations = await prisma.formation.findMany()
+        const newsletters = await prisma.newsletter.findMany()
 
-        return formations
+        return newsletters
     }
 }
