@@ -1,4 +1,4 @@
-import {permisList, backgroundImagePermis, typeDeForfaits, imgList} from '../../services/service.tsx'
+import {permisList, backgroundImagePermis, typeDeForfaits, imgList, permisExpressList, txtPermisExpress, txtPermisExpress2, conduiteAccompagneeList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
@@ -6,6 +6,7 @@ import fontSize from "../../utils/style/font-size.tsx";
 import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
+import CardEpress from "../../components/Card/cardExpress.tsx";
 
 
 
@@ -37,7 +38,7 @@ const SectionPermis = styled.section`
 `
 
 const SectionPermisExpress = styled.section`
-  background-color: ${colors.backgroundNoir};
+    background-color: ${colors.backgroundNoir};
     padding-top: 5rem;
     padding-bottom: 5rem;
 `
@@ -125,6 +126,54 @@ const Image = styled.div`
   background-color: ${colors.backgroundBlanc}
 `
 
+const ContainerPermisExpress = styled.div`
+  display: grid;
+  grid-template-columns : 1fr 1fr;
+  margin-left: -15vw;
+  margin-right: -15vw;
+
+  @media (max-width: 1090px) {
+    margin-left: -5vw;
+    margin-right: -5vw;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+`
+
+const CardContainerExpress = styled.div`
+  justify-content: center;
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+
+  @media (max-width: 1090px) {
+      flex-direction: column;
+      gap: 2rem;
+  }
+`
+
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+`
+
+const TxtPresentation = styled.p`
+  color: ${colors.txtBlanc};
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  padding: 1rem;
+  font-size: 28px;
+  font-weight: 700;
+
+  @media (max-width: 1090px) {
+    font-size: 20px;
+  }
+`
 
 
 function Permis() {
@@ -168,13 +217,7 @@ function Permis() {
 
       <Transition theme={'blanc'} orientation={"0deg"}/>
 
-
-
-
-
- 
       <MainContainer theme={'blanc'}>
-       
         <SectionPermis id="Permis">
             <TitreSection theme={'blanc'}>Permis B</TitreSection>
 
@@ -183,31 +226,36 @@ function Permis() {
             <Card key={index} {...permisList} />))}
             </CardContainer>
         </SectionPermis>
-
-
       </MainContainer>
-  
       <Image/>
       <TransitionRoute/>
 
 
-
-
-
-
       <MainContainer theme={'noir'}>
-
         <SectionPermisExpress>
             <TitreSection theme={'noir'}>Permis B Express</TitreSection>
-
-
+            <ContainerPermisExpress>
+                <CardContainerExpress>  
+                  {permisExpressList.map((permisExpressList) => (
+                  <CardEpress {...permisExpressList} />))}
+                </CardContainerExpress>
+                <TextContainer>
+                  <TxtPresentation>{txtPermisExpress}</TxtPresentation>
+                  <TxtPresentation>{txtPermisExpress2}</TxtPresentation>
+                </TextContainer>
+            </ContainerPermisExpress>
         </SectionPermisExpress>
+
 
 
         <SectionConduiteAcc id="conduiteAccompagnee">
             <TitreSection theme={'noir'}>Conduite accompagnée</TitreSection>
+            <CardContainer>  
+              {conduiteAccompagneeList.map((conduiteAccompagneeList) => (
+              <Card {...conduiteAccompagneeList} />))}
+            </CardContainer>
 
-
+            
         </SectionConduiteAcc>
 
       </MainContainer>
