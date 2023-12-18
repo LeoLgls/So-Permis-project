@@ -5,7 +5,6 @@ const StyledGlobalStyle = createGlobalStyle`
         font-family: "montserrat",sans-serif;
         margin: 0;
         padding: 0;
-        
     }
 `
 
