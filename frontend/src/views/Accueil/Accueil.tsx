@@ -1,6 +1,6 @@
 import {forfaitList, backgroundImage, txtHistoire, imgList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
-import styled, {DefaultTheme} from "styled-components";
+import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
 import CardAvis from "../../components/Card/cardAvis.tsx";
@@ -14,21 +14,12 @@ import imgVoiture from '../../assets/img/c3.png'
 import appStore from '../../assets/img/appstore.svg'
 import playStore from '../../assets/img/playstore.png'
 import sarool from '../../assets/img/sarool.png'
+import {TitreSection} from "../../utils/style/elements.tsx";
+import {MainContainer} from "../../utils/style/elements.tsx";
+import {CardBackground} from "../../utils/style/elements.tsx";
 
-interface Theme extends DefaultTheme {
-  theme: string;
-}
 
-const MainContainer = styled.main<Theme>`
-    padding-left: 15vw;
-    padding-right: 15vw;
-    background-color: ${props => props.theme.toString() == 'blanc' ? colors.backgroundBlanc : colors.backgroundNoir};
 
-    @media (max-width: 1090px) {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-`
 
 const SectionInscription = styled.section`
   background-color: ${colors.backgroundNoir};
@@ -56,6 +47,11 @@ const GridItemImg = styled.img`
     width:70%;
     max-height: 8vw;
     padding: 5%;
+
+    @media (max-width: 1090px) {
+        max-width: 35vw;
+        max-height: 50vh;
+    }
 `
 
 const Grid3 = styled.div`
@@ -76,11 +72,6 @@ const Grid2 = styled.div`
     }
 `
 
-const TitreSection = styled.h1<Theme>`
-    color: ${ props => props.theme == 'blanc' ? colors.vert : colors.txtBlanc};
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-`
 
 const SectionAvis = styled.section`
     display: flex;
@@ -93,6 +84,7 @@ const CardsContainer = styled.div`
     display: flex;
     gap: 2rem;
     flex-direction: row;
+    
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 2rem;
@@ -104,18 +96,6 @@ const CarouselContainer = styled.div``
 const SectionActus = styled.section``
 const SectionPresentation = styled.section`
     padding-bottom: 5rem;
-`
-const CardBackground = styled.div`
-    background-color: ${colors.vert};
-    border-radius: 45px 45px 20px 20px;
-    box-shadow: 10px 10px 4px ${colors.noirOmbre};
-    position: relative;
-    min-height: 20rem;
-    min-width: 30rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 `
 const CardTextContainer = styled.div`
     justify-content: left;
@@ -141,6 +121,7 @@ const TxtHistoire = styled.p`
 const PresentationContainer = styled.div`
     display: flex;
     gap: 2rem;
+    justify-content: center;
 `
 
 
@@ -155,7 +136,9 @@ const ImgCEO = styled.img`
 `
 
 const SectionVoiture = styled.section`
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const TitreCard = styled.h2`
