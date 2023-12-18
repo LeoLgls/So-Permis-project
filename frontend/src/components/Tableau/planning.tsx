@@ -5,11 +5,14 @@ import {horairesMatin} from "../../services/service.tsx";
 
 // Styles
 const Table = styled.table`
-    width: 100%;
+    max-width: 100%;
     border-radius: 25px;
     border: solid 3px white;
     border-spacing: 0;
     overflow: hidden;
+    display: block; // Utiliser display: block pour permettre le scroll horizontal sur petits écrans
+    white-space: nowrap; // Empêcher le texte de se couper à la ligne
+    overflow-x: auto; // Ajouter une barre de défilement horizontale si nécessaire
 `;
 
 const Th = styled.th`
@@ -24,6 +27,7 @@ const Td = styled.td`
     border: 1px solid #ddd;
     padding: 0.5rem;
     text-align: center;
+    height: 4rem;
     color: white;
     
 `;

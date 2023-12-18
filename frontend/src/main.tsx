@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Accueil from './views/Accueil/Accueil'
-import Footer from './components/Footer/footer'
 import Permis from './views/Permis/Permis'
 import Header from './components/Header/header'
 import ScrollToTop from './utils/hooks/ScrollToTop'
@@ -20,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/permis" element={<Permis/>}></Route>
         <Route path="/code"   element={<CodeRoute/>}></Route>
       </Routes>
-      <Footer />
+
     </Router>
   </React.StrictMode>,
 )

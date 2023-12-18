@@ -20,6 +20,10 @@ const ForfaitContainer = styled.div`
     justify-content: center;
     gap: 2rem;
     flex: 1;
+
+    @media (max-width: 1090px) {
+        flex-direction: column;
+    }
 `
 
 const HoraireSection = styled.section`
@@ -37,13 +41,19 @@ const LigneTab = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
+    gap: 2rem;
 `
 const LigneP = styled.p`
     color: ${colors.txtBlanc};
     font-size: ${fontSize.p}px;
     font-weight: bolder;
 `
-
+const CardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
 
 function CodeRoute() {
   return (
@@ -66,18 +76,21 @@ function CodeRoute() {
       <Transition orientation={'0deg'} theme={'blanc'}/>
       <MainContainer theme={'blanc'}>
         <TitreSection theme={'blanc'}>Condition d'annulation de code</TitreSection>
-        <CardBackground>
-          <LayoutAnnulation>
-            {listAnnulationCode.map((annulation, index) => (
-              <React.StrictMode>
-                <LigneTab>
-                  <LigneP key={index}>{annulation.titre}</LigneP>
-                  <LigneP>{annulation.prix +'€'}</LigneP>
-                </LigneTab>
-              </React.StrictMode>
-            ))}
-          </LayoutAnnulation>
-        </CardBackground>
+        <CardContainer>
+          <CardBackground>
+            <LayoutAnnulation>
+              {listAnnulationCode.map((annulation, index) => (
+                <React.StrictMode>
+                  <LigneTab>
+                    <LigneP key={index}>{annulation.titre}</LigneP>
+                    <LigneP>{annulation.prix +'€'}</LigneP>
+                  </LigneTab>
+                </React.StrictMode>
+              ))}
+            </LayoutAnnulation>
+          </CardBackground>
+        </CardContainer>
+
       </MainContainer>
     </React.StrictMode>
   )
