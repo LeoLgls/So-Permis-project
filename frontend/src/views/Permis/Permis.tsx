@@ -1,8 +1,7 @@
-import {permisList, backgroundImage2, typeDeForfaits} from '../../services/service.tsx'
+import {permisList, backgroundImagePermis, typeDeForfaits, imgList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
-import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
 import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
@@ -26,17 +25,6 @@ const MainContainer = styled.main<Theme>`
 
 `
 
-const MainContainerRoute = styled.main<Theme>`
-  padding-left: 15vw;
-  padding-right: 15vw;
-  background-color: ${props => props.theme.toString() == 'blanc' ? colors.backgroundBlanc : colors.backgroundNoir};
-
-  @media (max-width: 1090px) {
-      padding-left: 5vw;
-      padding-right: 5vw;
-  }
-`
-
 const SectionInscription = styled.section`
   background-color: ${colors.backgroundNoir};
     padding-top: 5rem;
@@ -54,21 +42,34 @@ const SectionPermisExpress = styled.section`
     padding-bottom: 5rem;
 `
 
+const SectionConduiteAcc = styled.section`
+  background-color: ${colors.backgroundNoir};
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+`
+
+
+
 const GridItem = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5%;
 `
 
 const GridItemP = styled.p`
     color: ${colors.txtBlanc};
-    font-size: ${fontSize.p};
+    font-size: ${fontSize.p}px;
     text-align: center;
+    font-weight: 600;
 `
 
 const GridItemImg = styled.img`
-    max-width: 20vw;
+    max-width: 16vw;
+    width:70%;
+    max-height: 8vw;
+    padding: 5%;
 `
 
 const Grid3 = styled.div`
@@ -126,40 +127,38 @@ const Image = styled.div`
 
 
 
-
 function Permis() {
-
 
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
 
-      <HeroSection img={backgroundImage2} forfaits={typeDeForfaits} transitionNoir={true}/>
+      <HeroSection img={backgroundImagePermis} forfaits={typeDeForfaits} transitionNoir={true}/>
 
         <SectionInscription>
           <TitreSection theme={'noir'}>Documents à fournir</TitreSection>
           <Grid3>
             <GridItem>
-              <GridItemImg src={photoImg} alt={'photo'}/>
+              <GridItemImg src={imgList[0].src} alt={imgList[0].alt}/>
               <GridItemP>4 photos d'idendité numérique</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={photoImg} alt={'photo'}/>
+              <GridItemImg src={imgList[1].src} alt={imgList[1].alt}/>
               <GridItemP>Carte d'idendité</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={photoImg} alt={'photo'}/>
+              <GridItemImg src={imgList[2].src} alt={imgList[2].alt}/>
               <GridItemP>Justificatif de domicile de moins de 6 mois</GridItemP>
             </GridItem>
           </Grid3>
 
           <Grid2>
             <GridItem>
-              <GridItemImg src={photoImg} alt={'photo'}/>
+              <GridItemImg src={imgList[3].src} alt={imgList[3].alt}/>
               <GridItemP>Né(e) à partir de 1988</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={photoImg} alt={'photo'}/>
+              <GridItemImg src={imgList[4].src} alt={imgList[4].alt}/>
               <GridItemP>Pour les moins de 25 ans</GridItemP>
             </GridItem>
           </Grid2>
@@ -174,9 +173,9 @@ function Permis() {
 
 
  
-      <MainContainerRoute theme={'blanc'}>
+      <MainContainer theme={'blanc'}>
        
-        <SectionPermis>
+        <SectionPermis id="Permis">
             <TitreSection theme={'blanc'}>Permis B</TitreSection>
 
             <CardContainer className="card-container">
@@ -186,7 +185,7 @@ function Permis() {
         </SectionPermis>
 
 
-      </MainContainerRoute>
+      </MainContainer>
   
       <Image/>
       <TransitionRoute/>
@@ -203,6 +202,13 @@ function Permis() {
 
 
         </SectionPermisExpress>
+
+
+        <SectionConduiteAcc id="conduiteAccompagnee">
+            <TitreSection theme={'noir'}>Conduite accompagnée</TitreSection>
+
+
+        </SectionConduiteAcc>
 
       </MainContainer>
 
