@@ -13,7 +13,6 @@ const CardContainer = styled.div`
     position: relative;
     opacity: 0.9; /* Opacité par défaut pour la carte */
     transition: opacity 0.25s ease-out;
-    z-index: 2;
 
     &:hover {
         opacity: 1; /* Opacité au survol pour la carte */

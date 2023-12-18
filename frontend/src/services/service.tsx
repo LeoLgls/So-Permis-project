@@ -5,25 +5,24 @@ import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
-
 export const forfaitList: Forfait[] = [
   {
-    titre: "PERMIS DE CONDUIRE",
+    titre: "Permis de conduire",
     sousTitre:"",
     titreBtn: "Nos forfaits permis de conduire",
-    lien: '/permis'
+    lien: '/forfait1'
   },
   {
-    titre: "CONDUITE ACCOMPAGNÉE",
+    titre: "Conduite Accompagnée",
     sousTitre:"",
     titreBtn: "Nos forfaits conduite accompagnée",
-    lien: '/permis#conduiteAccompagnee'
+    lien: '/forfait1'
   },
   {
-    titre: "CODE",
+    titre: "Code",
     sousTitre:"",
     titreBtn: "Nos forfaits code",
-    lien: '/code'
+    lien: '/forfait1'
   }
 ]
 
@@ -42,100 +41,25 @@ export const avisList: Avis[] = [
 
 export const imgList: Image[] = [
   {
-    src: "./src/assets/img/camera.svg",
+    src: "",
     alt: "img1"
   },
   {
-    src: "./src/assets/img/identity-card.svg",
+    src: "",
     alt: "img2"
   },
   {
-    src: "./src/assets/img/home.svg",
+    src: "",
     alt: "img3"
   },
-  {
-    src: "./src/assets/img/ASSR.svg",
-    alt: "img4"
-  },
-  {
-    src: "./src/assets/img/JAPD.svg",
-    alt: "img5"
-  }
 ]
 
 export const carouselData: CarouselItem[] = [
   { index: 1, src: img1, alt: 'Image 1', lien: '/image1' },
   { index: 2, src: img2, alt: 'Image 2', lien: '/image2' },
   { index: 3, src: img3, alt: 'Image 3', lien: '/image3' },
-]
-
-export const typeDeForfaits: Forfait[] = [
-  {
-    titre: "PERMIS B",
-    sousTitre:"",
-    titreBtn: "Nos forfaits permis B",
-    lien: '#Permis'
-  },
-  {
-    titre: "PERMIS B EXPRESS",
-    sousTitre:"",
-    titreBtn: "Nos forfaits permis B express",
-    lien: '/permis#PermisExpress'
-  },
-  {
-    titre: "CONDUITE ACCOMPAGNÉE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits conduite accompagnée",
-    lien: '/permis#conduiteAccompagnee'
-  }
-]
-
-export const permisList: Forfait[] = [
-  {
-    titre: "FORFAIT B COMPLET",
-    sousTitre:"Code + 20 leçons de conduite",
-    titreBtn: "990€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "FORFAIT B",
-    sousTitre:"20 leçons de conduite (sans code)",
-    titreBtn: "890€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "FORFAIT B COMPLET",
-    sousTitre:"Code + 25 leçons de conduite",
-    titreBtn: "1210€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "FORFAIT B",
-    sousTitre:"25 leçons de conduite (sans conduite)",
-    titreBtn: "1110€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "FORFAIT B COMPLET",
-    sousTitre:"Code + 30 leçons de conduite",
-    titreBtn: "1430€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "FORFAIT B",
-    sousTitre:"30 leçons de conduite (sans conduite)",
-    titreBtn: "1330€",
-    lien: '/forfait1'
-  },
-  {
-    titre: "CONDUITE SUPERVISÉE",
-    sousTitre:"",
-    titreBtn: "1110€",
-    lien: '/forfait1'
-  }
-]
+];
 
 export const backgroundImage : string = "https://static.vecteezy.com/system/resources/thumbnails/022/575/456/small/chamomile-flower-field-camomile-in-the-nature-field-of-camomiles-at-sunny-day-at-nature-camomile-daisy-flowers-in-summer-day-chamomile-flowers-field-wide-background-in-sun-light-generative-ai-photo.jpg"
-export const backgroundImagePermis : string = "https://www.justifit.fr/wp-content/uploads/2021/04/le-permis-de-conduire-est-il-une-piece-d-identite.jpeg"
 
 export const txtHistoire: string = "Chez So'Permis, nous redéfinissons l'expérience de l'auto-école au Havre. Notre engagement envers une formation de conduite personnalisée, proposée par des instructeurs dévoués, fait de nous le choix idéal. En tant qu'auto-école locale, nous comprenons les besoins spécifiques de nos élèves. Optez pour So'Permis et bénéficiez d'une formation efficace avec une approche moderne et des tarifs transparents."

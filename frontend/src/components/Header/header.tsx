@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import { StyledLink } from '../../utils/style/Atoms';
@@ -58,7 +58,6 @@ const HamburgerIconWrapper = styled.div`
   padding: 10px;
 
   @media (max-width: 1090px) {
-    
     display: block;
     z-index: 10;
   }
@@ -110,10 +109,6 @@ const MobileMenu = styled.div<{ isOpen: boolean, onTop: boolean }>`
   @media (min-width: 1090px) {
     display: none;
   }
-
-  &:focus {
-    display: flex;
-  }
 `;
 
 const MobileMenuItem = styled(Link)`
@@ -130,8 +125,6 @@ const MobileMenuItem = styled(Link)`
 function Header() {
   const [onTop, setOnTop] = useState(true);
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,66 +139,24 @@ function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(e.target as Node) &&
-        headerRef.current &&
-        !headerRef.current.contains(e.target as Node)
-      ) {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
-
-  // Permet de sroll en haut de la page quand je clique sur un lien
-  // Et permet en plus, pour le format mobile de fermer le menu
-  const toggleMenuScroll = () => {
-    setMenuOpen(!isMenuOpen);
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  // Permet de sroll en haut de la page quand je clique sur l'image du logo uniquement
-  const linkScroll =() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }
-
-  // Permet seulement de fermer le menu en format mobile
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-
-
-
   return (
     <MenuContainer>
-      <NavContainer onTop={onTop} ref={headerRef}>
-
+      <NavContainer onTop={onTop}>
+        
         <Link to="/">
-          <HomeLogo src={Logo} onTop={onTop} onClick={linkScroll} />
+          <HomeLogo src={Logo} onTop={onTop} />
         </Link>
 
         <LinkContainer>
-          <StyledLink onClick={linkScroll} to="/">ACCUEIL</StyledLink>
-          <StyledLink onClick={linkScroll} to="/permis">PERMIS DE CONDUIRE</StyledLink>
-          <StyledLink onClick={linkScroll} to="/code">CODE DE LA ROUTE</StyledLink>
-          <StyledLink onClick={linkScroll} to="/histoire">QUI SOMMES-NOUS ?</StyledLink>
-          <StyledLink onClick={linkScroll} to="/contact">CONTACT</StyledLink>
+          <StyledLink to="/">ACCUEIL</StyledLink>
+          <StyledLink to="/permis">PERMIS DE CONDUIRE</StyledLink>
+          <StyledLink to="/code">CODE DE LA ROUTE</StyledLink>
+          <StyledLink to="/histoire">QUI SOMMES-NOUS ?</StyledLink>
+          <StyledLink to="/contact">CONTACT</StyledLink>
         </LinkContainer>
 
         <HamburgerIconWrapper onClick={toggleMenu}>
@@ -216,12 +167,12 @@ function Header() {
 
       </NavContainer>
 
-      <MobileMenu id="meny" onTop={onTop} isOpen={isMenuOpen} ref={menuRef}>
-        <MobileMenuItem to="/"         onClick={toggleMenuScroll}>ACCUEIL</MobileMenuItem>
-        <MobileMenuItem to="/permis"   onClick={toggleMenuScroll}>PERMIS DE CONDUIRE</MobileMenuItem>
-        <MobileMenuItem to="/code"     onClick={toggleMenuScroll}>CODE DE LA ROUTE</MobileMenuItem>
-        <MobileMenuItem to="/histoire" onClick={toggleMenuScroll}>QUI SOMMES-NOUS ?</MobileMenuItem>
-        <MobileMenuItem to="/contact"  onClick={toggleMenuScroll}>CONTACT</MobileMenuItem>
+      <MobileMenu id="meny" onTop={onTop} isOpen={isMenuOpen}>
+        <MobileMenuItem to="/" onClick={toggleMenu}>ACCUEIL</MobileMenuItem>
+        <MobileMenuItem to="/permis" onClick={toggleMenu}>PERMIS DE CONDUIRE</MobileMenuItem>
+        <MobileMenuItem to="/code" onClick={toggleMenu}>CODE DE LA ROUTE</MobileMenuItem>
+        <MobileMenuItem to="/histoire" onClick={toggleMenu}>QUI SOMMES-NOUS ?</MobileMenuItem>
+        <MobileMenuItem to="/contact" onClick={toggleMenu}>CONTACT</MobileMenuItem>
       </MobileMenu>
   
       <BarreVerte onTop={onTop}/>

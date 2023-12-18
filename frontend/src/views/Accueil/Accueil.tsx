@@ -1,7 +1,8 @@
-import {forfaitList, backgroundImage, txtHistoire, imgList} from '../../services/service.tsx'
+import {forfaitList, backgroundImage, txtHistoire} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
+import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
 import CardAvis from "../../components/Card/cardAvis.tsx";
 import {avisList} from "../../services/service.tsx";
@@ -36,21 +37,16 @@ const GridItem = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5%;
 `
 
 const GridItemP = styled.p`
     color: ${colors.txtBlanc};
-    font-size: ${fontSize.p}px;
+    font-size: ${fontSize.p};
     text-align: center;
-    font-weight: 600;
 `
 
 const GridItemImg = styled.img`
-    max-width: 16vw;
-    width:70%;
-    max-height: 8vw;
-    padding: 5%;
+    max-width: 20vw;
 `
 
 const Grid3 = styled.div`
@@ -145,26 +141,26 @@ function Accueil() {
           <TitreSection theme={'noir'}>Comment s'inscrire chez So'Permis ?</TitreSection>
           <Grid3>
             <GridItem>
-              <GridItemImg src={imgList[0].src} alt={imgList[0].alt}/>
+              <GridItemImg src={photoImg} alt={'photo'}/>
               <GridItemP>4 photos d'idendité numérique</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={imgList[1].src} alt={imgList[1].alt}/>
+              <GridItemImg src={photoImg} alt={'photo'}/>
               <GridItemP>Carte d'idendité</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={imgList[2].src} alt={imgList[2].alt}/>
+              <GridItemImg src={photoImg} alt={'photo'}/>
               <GridItemP>Justificatif de domicile de moins de 6 mois</GridItemP>
             </GridItem>
           </Grid3>
 
           <Grid2>
             <GridItem>
-              <GridItemImg src={imgList[3].src} alt={imgList[3].alt}/>
+              <GridItemImg src={photoImg} alt={'photo'}/>
               <GridItemP>Né(e) à partir de 1988</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={imgList[4].src} alt={imgList[4].alt}/>
+              <GridItemImg src={photoImg} alt={'photo'}/>
               <GridItemP>Pour les moins de 25 ans</GridItemP>
             </GridItem>
           </Grid2>
