@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Accueil from './views/Accueil/Accueil'
+import Header from './components/Header/header'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { ChakraProvider } from '@chakra-ui/react'
 import ArticleTest from './views/Article/ArticleTest'
@@ -9,11 +10,15 @@ import Connexion from './views/Admin/Connexion'
 import InterfaceAdminPage from './views/Admin/InterfaceAdminPage'
 import NewsLetter from './views/Admin/NewsLetter'
 
+import GlobalStyle from "./utils/style/GlobalStyle.tsx";
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ChakraProvider>
     <Router>
+      <GlobalStyle/>
+      <Header />
       <Routes>
         <Route path="/" element={<Accueil />}></Route>
         <Route path="/ArticleTest" element={<ArticleTest />}></Route>
