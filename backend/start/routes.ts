@@ -21,6 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
+Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
