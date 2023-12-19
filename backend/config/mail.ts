@@ -42,12 +42,6 @@ export default mailConfig({
     | Uses SMTP protocol for sending email
     |
 
-    MAIL_CONNECTION=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=comptepoubellewalla@gmail.com
-MAIL_PASSWORD=uwbdvwcfithjjbxi
-
     */
     smtp: {
       driver: 'smtp',
