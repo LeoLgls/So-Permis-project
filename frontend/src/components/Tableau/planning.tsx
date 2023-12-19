@@ -10,9 +10,9 @@ const Table = styled.table`
     border: solid 3px white;
     border-spacing: 0;
     overflow: hidden;
-    display: block; // Utiliser display: block pour permettre le scroll horizontal sur petits écrans
-    white-space: nowrap; // Empêcher le texte de se couper à la ligne
-    overflow-x: auto; // Ajouter une barre de défilement horizontale si nécessaire
+    display: inline-block;
+    white-space: nowrap; 
+    overflow-x: auto; 
 `;
 
 const Th = styled.th`
