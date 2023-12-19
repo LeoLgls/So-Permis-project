@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import Snap from '../../assets/img/Snapchat.png';
@@ -196,7 +195,7 @@ function Footer() {
       <RightPart>
           <InformationContainer>
               <UnderlineText>Informations</UnderlineText>
-              <FooterStyledLink to="/">&gt; Acceuil</FooterStyledLink>
+              <FooterStyledLink to="/">&gt; Accueil</FooterStyledLink>
               <FooterStyledLink to="/histoire">&gt; Qui sommes nous ?</FooterStyledLink>
               <FooterStyledLink to="/permis">&gt; Permis</FooterStyledLink>
               <FooterStyledLink to="/code">&gt; Code</FooterStyledLink>
