@@ -1,10 +1,29 @@
-import {AnnulationCode, Forfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, Forfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
+
+export const articleList: Article[] = [
+  {
+    titre: "Premier article",
+    date: new Date(),
+    contenu: "Ceci est le contenu de mon premier article",
+    source: "Les cheveux de zizou"
+  },{
+    titre: "Deuxième article",
+    date: new Date(),
+    contenu: "Ceci est le contenu de mon 2e article",
+    source: "Les CDM à Haaland"
+  },{
+    titre: "3e article",
+    date: new Date(),
+    contenu: "ça fait bcp là",
+    source: "Fortnite"
+  },
+]
 
 
 export const forfaitList: Forfait[] = [
@@ -65,9 +84,9 @@ export const imgList: Image[] = [
 ]
 
 export const carouselData: CarouselItem[] = [
-  { index: 1, src: img1, alt: 'Image 1', lien: '/image1' },
-  { index: 2, src: img2, alt: 'Image 2', lien: '/image2' },
-  { index: 3, src: img3, alt: 'Image 3', lien: '/image3' },
+  { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
+  { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
+  { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
 ]
 
 export const typeDeForfaits: Forfait[] = [
