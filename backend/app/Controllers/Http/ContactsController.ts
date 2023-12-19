@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import Mail from '@ioc:Adonis/Addons/Mail';
+
 export default class ContactsController {
   async sendEmail({ request, response }: HttpContextContract) {
     const formData = request.only(['firstName', 'lastName', 'email', 'phone', 'object', 'message']);
