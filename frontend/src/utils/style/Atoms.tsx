@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 
 
 
@@ -11,3 +11,17 @@ export const StyledLink = styled(Link)`
   text-align: center;
   font-weight : 800;
 `
+
+export const FooterStyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight : 800;
+  align-self: start;
+  padding-bottom: 5%; 
+
+  @media (max-width: 1090px) {
+    font-size : 16px;
+  }
+`
+

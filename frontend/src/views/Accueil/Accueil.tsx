@@ -1,6 +1,6 @@
 import {forfaitList, backgroundImage, txtHistoire} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
-import styled, {DefaultTheme} from "styled-components";
+import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import photoImg from '../../assets/img/photo.png'
 import fontSize from "../../utils/style/font-size.tsx";
@@ -11,20 +11,16 @@ import {carouselData} from "../../services/service.tsx";
 import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import CeoImg from '../../assets/img/ceo-girl.jpg'
-interface Theme extends DefaultTheme {
-  theme: string;
-}
+import imgVoiture from '../../assets/img/c3.png'
+import appStore from '../../assets/img/appstore.svg'
+import playStore from '../../assets/img/playstore.png'
+import sarool from '../../assets/img/sarool.png'
+import {TitreSection} from "../../utils/style/elements.tsx";
+import {MainContainer} from "../../utils/style/elements.tsx";
+import {CardBackground} from "../../utils/style/elements.tsx";
 
-const MainContainer = styled.main<Theme>`
-    padding-left: 15vw;
-    padding-right: 15vw;
-    background-color: ${props => props.theme.toString() == 'blanc' ? colors.backgroundBlanc : colors.backgroundNoir};
 
-    @media (max-width: 1090px) {
-        padding-left: 5vw;
-        padding-right: 5vw;
-    }
-`
+
 
 const SectionInscription = styled.section`
   background-color: ${colors.backgroundNoir};
@@ -46,7 +42,15 @@ const GridItemP = styled.p`
 `
 
 const GridItemImg = styled.img`
-    max-width: 20vw;
+    max-width: 16vw;
+    width:70%;
+    max-height: 8vw;
+    padding: 5%;
+
+    @media (max-width: 1090px) {
+        max-width: 35vw;
+        max-height: 50vh;
+    }
 `
 
 const Grid3 = styled.div`
@@ -67,11 +71,6 @@ const Grid2 = styled.div`
     }
 `
 
-const TitreSection = styled.h1<Theme>`
-    color: ${ props => props.theme == 'blanc' ? colors.vert : colors.txtBlanc};
-    padding-top: 5rem;
-    padding-bottom: 2rem;
-`
 
 const SectionAvis = styled.section`
     display: flex;
@@ -79,11 +78,12 @@ const SectionAvis = styled.section`
     flex-direction: column;
 `
 
-const AvisContainer = styled.div`
-    
+const CardsContainer = styled.div`
+    justify-content: center;
     display: flex;
-    gap: 8%;
+    gap: 2rem;
     flex-direction: row;
+    
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 2rem;
@@ -96,12 +96,14 @@ const SectionActus = styled.section``
 const SectionPresentation = styled.section`
     padding-bottom: 5rem;
 `
-const CardHistoireContainer = styled.div`
-    background-color: ${colors.vert};
-    border-radius: 45px 45px 20px 20px;
-    box-shadow: 10px 10px 4px ${colors.noirOmbre};
-    position: relative;
-    min-height: 20rem;
+const CardTextContainer = styled.div`
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 15rem;
+    padding-left: 10%;
+    padding-right: 10%;
 `
 
 const TxtHistoire = styled.p`
@@ -118,6 +120,7 @@ const TxtHistoire = styled.p`
 const PresentationContainer = styled.div`
     display: flex;
     gap: 2rem;
+    justify-content: center;
 `
 
 
@@ -130,6 +133,102 @@ const ImgCEO = styled.img`
         display: none;
     }
 `
+
+const SectionVoiture = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const TitreCard = styled.h2`
+  color: ${colors.txtBlanc};
+  font-size: ${fontSize.titre}px;
+`
+
+const SousTitreCard = styled.h2`
+  color: ${colors.txtBlanc};
+  font-size: ${fontSize.sousTitre}px;
+`
+
+const TxtCard = styled.p`
+    color: ${colors.txtBlanc};
+    font-size: ${fontSize.p}px;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+`
+
+const ImgVoiture = styled.img`
+    max-width: 20rem;
+    height: auto;
+    object-fit: cover;
+`
+
+const CardVoitureContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+`
+
+const SectionSarool = styled.div`
+    min-height: 50vh;
+    padding-bottom: 10vh;
+`
+
+const ImgStore = styled.img`
+    
+    height: 4rem;
+`
+
+const ImgSarool = styled.img`
+    object-fit: cover;
+    max-width: 20rem;
+    height: auto;
+`
+
+const SaroolContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap :2rem;
+
+    @media (max-width: 1090px) {
+        flex-direction: column;
+    }
+    
+`
+const StoreContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 50%;
+
+    @media (max-width: 1090px) {
+        width: 100%;
+    }
+`
+
+const Pstore = styled.p`
+    color: ${colors.txtNoir};
+    font-size: ${fontSize.p}px;
+    text-align: center;
+    
+`
+
+const ImgContainer = styled.div`
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
+
 
 function Accueil() {
 
@@ -168,19 +267,21 @@ function Accueil() {
 
         <SectionAvis>
           <TitreSection theme={'noir'}>Avis</TitreSection>
-          <AvisContainer>
+          <CardsContainer>
             {avisList.map((avis, index) => (
               <CardAvis key={index} {...avis} />))}
-          </AvisContainer>
+          </CardsContainer>
         </SectionAvis>
 
         <SectionPresentation>
           <TitreSection theme={'noir'}>So'Permis - Votre auto-école locale de confiance !</TitreSection>
           <PresentationContainer>
             <ImgCEO src={CeoImg} alt={'CEO'}/>
-            <CardHistoireContainer>
-              <TxtHistoire>{txtHistoire}</TxtHistoire>
-            </CardHistoireContainer>
+            <CardBackground>
+              <CardTextContainer>
+                <TxtHistoire>{txtHistoire}</TxtHistoire>
+              </CardTextContainer>
+            </CardBackground>
           </PresentationContainer>
         </SectionPresentation>
       </MainContainer>
@@ -194,8 +295,34 @@ function Accueil() {
             <Carousel items={carouselData} />
           </CarouselContainer>
         </SectionActus>
-      </MainContainer>
 
+        <SectionVoiture>
+          <TitreSection theme={'blanc'}>Nos voitures chez So'Permis</TitreSection>
+        <CardsContainer>
+          <CardBackground>
+            <CardVoitureContainer>
+              <ImgVoiture src={imgVoiture} alt={"Citroën C3"} />
+              <TitreCard>Citroën C3</TitreCard>
+              <SousTitreCard>Boite Manuelle</SousTitreCard>
+              <TxtCard>Pratique et facile à conduire, cette voiture vous accompagnera pour votre permis</TxtCard>
+            </CardVoitureContainer>
+          </CardBackground>
+        </CardsContainer>
+        </SectionVoiture>
+        <SectionSarool>
+          <TitreSection theme={'blanc'}>Application SAROOL</TitreSection>
+          <SaroolContainer>
+            <ImgSarool src={sarool} alt={"Img SAROOL"}/>
+            <StoreContainer>
+              <Pstore>Visualise tes informations personnelles et gères tes disponibilités avec l'application SAROOL ! </Pstore>
+              <ImgContainer>
+                <ImgStore src={appStore} alt={"Disponible sur l'App Store"}/>
+                <ImgStore src={playStore} alt={"Disponible sur le Play Store"} />
+              </ImgContainer>
+            </StoreContainer>
+          </SaroolContainer>
+        </SectionSarool>
+      </MainContainer>
     </React.StrictMode>
 
   )

@@ -37,7 +37,7 @@ const BarreVerte = styled.hr<{ onTop: boolean }>`
   position: sticky;
 `;
 
-const MenuContainer = styled.div`
+const MenuContainer = styled.header`
   position: fixed;
   width: 100%;
   z-index: 100;
