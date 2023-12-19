@@ -2,6 +2,8 @@ import styled from "styled-components";
 import {useParams} from "react-router-dom";
 import {Article} from "../../utils/models/models.tsx";
 import {articleList} from "../../services/service.tsx";
+import imgTest from '../../assets/img/imgTest3.jpg'
+import colors from "../../utils/style/colors.tsx";
 
 const ArticleContainer = styled.div`
   height: 100vh;
@@ -10,6 +12,26 @@ const ArticleContainer = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
+const HeroArticle = styled.div`
+    height: 5rem;
+    pointer-events: none;
+    position: relative;
+    width: 100%;
+    
+`
+
+const TransitionArticle = styled.div`
+    background: linear-gradient("0deg", ${colors.backgroundBlanc} 0%, ${colors.backgroundBlanc} 100%);;
+    height: 5rem;
+
+`
+
+const ImgArticle = styled.img`
+    top: 0;
+    left: 0;
+    position: absolute;
+`
 
 const ArticleContent = styled.div`
   
@@ -55,7 +77,11 @@ function ArticlePage() {
         <Loader/>
       ) : (*/
         <ArticleContent>
-          <ArticleTitle>{data.titre}</ArticleTitle>
+          <HeroArticle>
+            <ImgArticle src={imgTest} alt={"HeroImg"}/>
+            <TransitionArticle />
+            <ArticleTitle>{data.titre}</ArticleTitle>
+          </HeroArticle>
           <ArticleMeta>
             <span>publier le : {`${data.date.toLocaleDateString()}`}</span>
           </ArticleMeta>
