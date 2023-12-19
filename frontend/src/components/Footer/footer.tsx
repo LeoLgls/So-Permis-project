@@ -205,7 +205,7 @@ function Footer() {
                     <PetitLogo src={Snap} />
                   </Link>
 
-                  <Link to="https://instagram.com">
+                  <Link to="https://www.instagram.com/sopermis76/">
                     <PetitLogo src={Insta} />
                   </Link>
 
