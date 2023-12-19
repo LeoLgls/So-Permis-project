@@ -1,50 +1,50 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {prisma} from '@ioc:Adonis/Addons/Prisma'
 
-export default class CategorieController {
+export default class AnnulationCodeController {
 
     public async store ({request}: HttpContextContract) {
-        const categorie = await prisma.categorie.create({
-            data: request.only(['titre','sousTitre', 'lien']),
+        const annulationCode = await prisma.annulationCode.create({
+            data: request.only(['intitule','prix']),
         })
 
-        return categorie
+        return annulationCode
     }
 
     public async show ({params}: HttpContextContract) {
-        const categorie = await prisma.categorie.findUnique({
+        const annulationCode = await prisma.annulationCode.findUnique({
             where: {
                 id: params.id
             }
         })
 
-        return categorie
+        return annulationCode
     }
 
     public async index () {
-        const categories = await prisma.categorie.findMany()
+        const annulationCodes = await prisma.annulationCode.findMany()
 
-        return categories
+        return annulationCodes
     }
 
     public async destroy ({params}: HttpContextContract) {
-        const categorie = await prisma.categorie.delete({
+        const annulationCode = await prisma.annulationCode.delete({
             where: {
                 id: params.id
             }
         })
 
-        return categorie
+        return annulationCode
     }
 
     public async update ({request, params}: HttpContextContract) {
-        const categorie = await prisma.categorie.update({
+        const annulationCode = await prisma.annulationCode.update({
             where: {
                 id: params.id
             },
-            data: request.only(['titre','sousTitre', 'lien'])
+            data: request.only(['intitule','prix'])
         })
 
-        return categorie
+        return annulationCode
     }
 }
