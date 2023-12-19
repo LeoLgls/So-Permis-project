@@ -24,10 +24,20 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/formations', 'FormationController.index')
-
 Route.get('/administrateurs', 'AdministrateurController.index')
 
-Route.get('/newsletters', 'NewsletterController.index')
+Route.get('/articles', 'ArticleController.index')
 
-Route.get('/actualites', 'ActualiteController.index')
+Route.get('/avis', 'AvisController.index')
+
+Route.get('/categories', 'CategorieController.index')
+
+Route.get('/forfaits', 'ForfaitController.index')
+
+Route.get('/histoires', 'HistoireController.index')
+
+Route.get('/images', 'ImageController.index')
+
+Route.get('/newsletter', 'NewsletterController.index')
+
+Route.get('/  n nvoitures', 'VoitureController.index')
