@@ -1,320 +1,197 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import {
-	Tabs,
-	TabList,
-	TabPanels,
-	Tab,
-	TabPanel,
-	Table,
-	Thead,
-	Tbody,
-	Tr,
-	Th,
-	Td,
-	TableCaption,
-	TableContainer,
-	Button,
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
-	FormLabel,
-} from '@chakra-ui/react';
+// InterfaceAdminPage.tsx
+import React from 'react';
 import styled from 'styled-components';
-
+import Tabs from '../../components/Tabs/tab'; // Assure-toi que le chemin est correct
 
 const PageContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 150px;
   font-family: 'Arial', sans-serif;
 `;
 
-const FormControl = styled.label`
-  display: block;
-  margin-bottom: 10px;
+const Button = styled.button`
+  background-color: #319795;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+`;
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+const TableContainer = styled.div`
+  margin-top: 20px;
+`;
+
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`;
+
+const TableCaption = styled.caption`
+  font-size: 1.2em;
+  margin-bottom: 10px;
+`;
+
+const Thead = styled.thead`
+  background-color: black;
+  color: white;
+`;
+
+const Tr = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
   }
 `;
 
+const Th = styled.th`
+  padding: 10px;
+`;
 
-const InterfaceAdminPage: React.FunctionComponent = () => {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+const Td = styled.td`
+  padding: 10px;
+`;
 
-	const openModal = () => {
-		setIsModalOpen(true);
-	};
+const InterfaceAdminPage = () => {
+  const dataPermisB = [
+    {
+      id: 0,
+      nom: 'Forfait B',
+      prix: 890,
+      description: '20 leçon de conduite (sans code)',
+    },
+    {
+      id: 1,
+      nom: 'Forfait B Complet',
+      prix: 990,
+      description: 'Code + 20 leçons de conduite',
+    },
+  ];
 
-	const closeModal = () => {
-		setIsModalOpen(false);
-	};
+  const dataPermisBExpress = [
+	{
+		id: 0,
+		nom: "Forfait B",
+		prix: 890,
+		description: "20 leçon de conduite (sans code)"
+	},
+	{
+		id: 1,
+		nom: "Forfait B Complet",
+		prix: 990,
+		description: "Code + 20 leçons de conduite"
 
+	}
+]
 
-	const dataPermisB = [
-		{
-			id: 0,
-			nom: "Forfait B",
-			prix: 890,
-			description: "20 leçon de conduite (sans code)"
-		},
-		{
-			id: 1,
-			nom: "Forfait B Complet",
-			prix: 990,
-			description: "Code + 20 leçons de conduite"
+const dataConduiteAccompagnee = [
+	{
+		id: 0,
+		nom: "Forfait B",
+		prix: 890,
+		description: "20 leçon de conduite (sans code)"
+	},
+	{
+		id: 1,
+		nom: "Forfait B Complet",
+		prix: 990,
+		description: "Code + 20 leçons de conduite"
 
-		}
-	]
+	}
+]
 
-	const dataPermisBExpress = [
-		{
-			id: 0,
-			nom: "Forfait B",
-			prix: 890,
-			description: "20 leçon de conduite (sans code)"
-		},
-		{
-			id: 1,
-			nom: "Forfait B Complet",
-			prix: 990,
-			description: "Code + 20 leçons de conduite"
+const dataCodeDeLaRoute = [
+	{
+		id: 0,
+		nom: "Forfait B",
+		prix: 890,
+		description: "20 leçon de conduite (sans code)"
+	},
+	{
+		id: 1,
+		nom: "Forfait B Complet",
+		prix: 990,
+		description: "Code + 20 leçons de conduite"
 
-		}
-	]
+	}
+]
 
-	const dataConduiteAccompagnee = [
-		{
-			id: 0,
-			nom: "Forfait B",
-			prix: 890,
-			description: "20 leçon de conduite (sans code)"
-		},
-		{
-			id: 1,
-			nom: "Forfait B Complet",
-			prix: 990,
-			description: "Code + 20 leçons de conduite"
+  const tabs = [
+    {
+      label: 'Forfait Permis B',
+      content: (
+        <TableContainer>
+          <Button>Ajouter</Button>
+		  <Table>
+            <TableCaption>Forfait Permis B</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>Nom</Th>
+                <Th>Prix</Th>
+                <Th>Description</Th>
+                <Th>Actions</Th>
+              </Tr>
+            </Thead>
+            <tbody>
+              {dataPermisB.map((permisB, index) => (
+                <Tr key={index}>
+                  <Td>{permisB.nom}</Td>
+                  <Td>{permisB.prix}</Td>
+                  <Td>{permisB.description}</Td>
+                  <Td>
+                    <Button onClick={() => console.log('Modif')}>Modif</Button>
+                    <Button onClick={() => console.log('Suppr')}>Suppr</Button>
+                  </Td>
+                </Tr>
+              ))}
+            </tbody>
+          </Table>
+        </TableContainer>
+      ),
+    },
+	{
+		label: 'Forfait Permis B express',
+		content :(
+			<TableContainer>
+				<Button>Ajouter</Button>
+			<Table>
+			  <TableCaption>Forfait Permis B espress</TableCaption>
+			  <Thead>
+				<Tr>
+				  <Th>Nom</Th>
+				  <Th>Prix</Th>
+				  <Th>Description</Th>
+				  <Th>Actions</Th>
+				</Tr>
+			  </Thead>
+			  <tbody>
+				{dataPermisBExpress.map((permisBExpress, index) => (
+				  <Tr key={index}>
+					<Td>{permisBExpress.nom}</Td>
+					<Td>{permisBExpress.prix}</Td>
+					<Td>{permisBExpress.description}</Td>
+					<Td>
+					  <Button onClick={() => console.log('Modif')}>Modif</Button>
+					  <Button onClick={() => console.log('Suppr')}>Suppr</Button>
+					</Td>
+				  </Tr>
+				))}
+			  </tbody>
+			</Table>
+		  </TableContainer>
 
-		}
-	]
+		),
 
-	const dataCodeDeLaRoute = [
-		{
-			id: 0,
-			nom: "Forfait B",
-			prix: 890,
-			description: "20 leçon de conduite (sans code)"
-		},
-		{
-			id: 1,
-			nom: "Forfait B Complet",
-			prix: 990,
-			description: "Code + 20 leçons de conduite"
+	}
+  ];
 
-		}
-	]
-
-	return (
-		<PageContainer>
-			<Tabs variant='soft-rounded' colorScheme='green' align='center'>
-				<TabList>
-					<Tab>Permis B</Tab>
-					<Tab>Permis B Express</Tab>
-					<Tab>Conduite accompagnée</Tab>
-					<Tab>Code de la route</Tab>
-				</TabList>
-				<TabPanels>
-					<TabPanel>
-						<Button onClick={openModal}>Ajouter</Button>
-						<TableContainer>
-							<Table variant='striped' colorScheme='gray'>
-								<TableCaption>Forfait Permis B</TableCaption>
-								<Thead alignContent={'center'} backgroundColor={"black"}>
-									<Tr>
-										<Th>Nom</Th>
-										<Th>Prix</Th>
-										<Th>Description</Th>
-										<Th>Actions</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{dataPermisB.map((permisB, index) => (
-										<Tr>
-											<Td>{permisB.nom}</Td>
-											<Td isNumeric>{permisB.prix}</Td>
-											<Td>{permisB.description}</Td>
-											<Td>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Modif
-												</Button>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Suppr
-												</Button>
-											</Td>
-										</Tr>
-									))}
-								</Tbody>
-							</Table>
-						</TableContainer>
-					</TabPanel>
-					<TabPanel>
-						<Button onClick={openModal}>Ajouter</Button>
-						<TableContainer>
-							<Table variant='striped' colorScheme='gray'>
-								<TableCaption>Forfait Permis B Express</TableCaption>
-								<Thead alignContent={'center'} backgroundColor={"black"}>
-									<Tr>
-										<Th>Nom</Th>
-										<Th>Prix</Th>
-										<Th>Description</Th>
-										<Th>Actions</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{dataPermisBExpress.map((permisBExpress, index) => (
-										<Tr>
-											<Td>{permisBExpress.nom}</Td>
-											<Td isNumeric>{permisBExpress.prix}</Td>
-											<Td>{permisBExpress.description}</Td>
-											<Td>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Modif
-												</Button>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Suppr
-												</Button>
-											</Td>
-										</Tr>
-									))}
-								</Tbody>
-							</Table>
-						</TableContainer>
-					</TabPanel>
-					<TabPanel>
-						<Button onClick={openModal}>Ajouter</Button>
-						<TableContainer>
-							<Table variant='striped' colorScheme='gray'>
-								<TableCaption>Forfait Conduite Accompagnée</TableCaption>
-								<Thead alignContent={'center'} backgroundColor={"black"}>
-									<Tr>
-										<Th>Nom</Th>
-										<Th>Prix</Th>
-										<Th>Description</Th>
-										<Th>Actions</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{dataConduiteAccompagnee.map((conduiteAccompagee, index) => (
-										<Tr>
-											<Td>{conduiteAccompagee.nom}</Td>
-											<Td isNumeric>{conduiteAccompagee.prix}</Td>
-											<Td>{conduiteAccompagee.description}</Td>
-											<Td>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Modif
-												</Button>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Suppr
-												</Button>
-											</Td>
-										</Tr>
-									))}
-								</Tbody>
-							</Table>
-						</TableContainer>
-					</TabPanel>
-					<TabPanel>
-						<Button onClick={openModal}>Ajouter</Button>
-						<TableContainer>
-							<Table variant='striped' colorScheme='gray'>
-								<TableCaption>Code de la route</TableCaption>
-								<Thead alignContent={'center'} backgroundColor={"black"}>
-									<Tr>
-										<Th>Nom</Th>
-										<Th>Prix</Th>
-										<Th>Description</Th>
-										<Th>Actions</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									{dataCodeDeLaRoute.map((codeDeLaRoute, index) => (
-										<Tr>
-											<Td>{codeDeLaRoute.nom}</Td>
-											<Td isNumeric>{codeDeLaRoute.prix}</Td>
-											<Td>{codeDeLaRoute.description}</Td>
-											<Td>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Modif
-												</Button>
-												<Button colorScheme='teal' variant='ghost' textTransform={"uppercase"} size={'sm'}>
-													Suppr
-												</Button>
-											</Td>
-										</Tr>
-									))}
-								</Tbody>
-							</Table>
-						</TableContainer>
-					</TabPanel>
-				</TabPanels>
-			</Tabs>
-
-			<Modal isOpen={isModalOpen} onClose={closeModal} size="xl">
-				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader>Ajouter un forfait</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						{/* Formulaire à remplir */}
-						<form
-							onSubmit={(e) => {
-								e.preventDefault();
-								// Ajoutez ici la logique pour soumettre le formulaire
-								// Assurez-vous de fermer la modal après la soumission
-								closeModal();
-							}}
-						>
-							<FormControl >
-								<FormLabel>Nom :</FormLabel>
-								<input type="text" id="nom" name="nom" required />
-							</FormControl>
-
-							<FormControl >
-								<FormLabel>Prix :</FormLabel>
-								<input type="number" id="prix" name="prix" required />
-							</FormControl>
-
-							<FormControl >
-								<FormLabel>Description :</FormLabel>
-								<textarea id="description" name="description" required />
-							</FormControl>
-
-							<Button type="submit" colorScheme="teal" mr={3}>
-								Ajouter
-							</Button>
-							<Button colorScheme="teal" onClick={closeModal}>
-								Annuler
-							</Button>
-						</form>
-					</ModalBody>
-				</ModalContent>
-			</Modal>
-
-
-		</PageContainer>
-
-	);
-}
+  return (
+    <PageContainer>
+      <Tabs tabs={tabs} />
+    </PageContainer>
+  );
+};
 
 export default InterfaceAdminPage;
