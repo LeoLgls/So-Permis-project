@@ -1,23 +1,4 @@
 import React, { useState } from 'react';
-import {
-  Table,
-  TableCaption,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  FormLabel,
-  Switch,
-} from '@chakra-ui/react';
 import styled from 'styled-components';
 
 const PageContainer = styled.div`
@@ -27,39 +8,51 @@ const PageContainer = styled.div`
   font-family: 'Arial', sans-serif;
 `;
 
-const FormControl = styled.label`
-  display: block;
-  margin-bottom: 10px;
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+`;
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+const TableCaption = styled.caption`
+  font-size: 1.2em;
+  margin-bottom: 10px;
+`;
+
+const Thead = styled.thead`
+  background-color: #f2f2f2;
+`;
+
+const Th = styled.th`
+  padding: 10px;
+  text-align: left;
+`;
+
+const Tbody = styled.tbody``;
+
+const Tr = styled.tr`
+  &:nth-child(even) {
+    background-color: #f9f9f9;
   }
 `;
 
+const Td = styled.td`
+  padding: 10px;
+`;
+
+const Button = styled.button`
+  background-color: #008080;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+`;
 
 
-const InterfaceAdminArticle: React.FunctionComponent = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWriteManual, setIsWriteManual] = useState(false);
+const InterfaceAdminArticle = () => {
   
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-  
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  
-  const handleSwitchChange = () => {
-    setIsWriteManual(!isWriteManual);
-  };
-
   const dataArticle = [
     {
       id: 0,
@@ -77,7 +70,7 @@ const InterfaceAdminArticle: React.FunctionComponent = () => {
 
   return (
     <PageContainer>
-      <Table variant="striped" colorScheme="gray">
+      <Table>
         <TableCaption>Article So'permis</TableCaption>
         <Thead>
           <Tr>
@@ -94,63 +87,14 @@ const InterfaceAdminArticle: React.FunctionComponent = () => {
               <Td>{article.source}</Td>
               <Td>{article.date}</Td>
               <Td>
-                <Button colorScheme="teal" variant="ghost" textTransform="uppercase" size="sm">
-                  Modif
-                </Button>
-                <Button colorScheme="teal" variant="ghost" textTransform="uppercase" size="sm">
-                  Suppr
-                </Button>
+                <Button>Modif</Button>
+                <Button>Suppr</Button>
               </Td>
             </Tr>
           ))}
         </Tbody>
       </Table>
 
-      <Button colorScheme="teal" mt={4} onClick={openModal}>
-        Ajouter un nouvelle article
-      </Button>
-
-      <Modal isOpen={isModalOpen} onClose={closeModal} size="xl">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Ajouter un forfait</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {/* Formulaire à remplir */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                // Ajoutez ici la logique pour soumettre le formulaire
-                // Assurez-vous de fermer la modal après la soumission
-                closeModal();
-              }}
-            >
-              <FormControl>
-                <FormLabel>titre :</FormLabel>
-                <input type="text" id="titre" name="titre" required />
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Source :</FormLabel>
-				        ecrit par So'Permis <Switch onChange={handleSwitchChange}/>
-                {!isWriteManual && <input type="text" id="source" name="source" required />}
-              </FormControl>
-
-              <FormControl>
-                <FormLabel>Description :</FormLabel>
-                <textarea id="description" name="description" required />
-              </FormControl>
-
-              <Button type="submit" colorScheme="teal" mr={3}>
-                Ajouter
-              </Button>
-              <Button colorScheme="teal" onClick={closeModal}>
-                Annuler
-              </Button>
-            </form>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
     </PageContainer>
   );
 };
