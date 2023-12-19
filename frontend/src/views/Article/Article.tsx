@@ -1,105 +1,124 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
+import {useParams} from "react-router-dom";
+import {Article} from "../../utils/models/models.tsx";
+import {articleList} from "../../services/service.tsx";
+import imgTest from '../../assets/img/imgTest3.jpg'
+import colors from "../../utils/style/colors.tsx";
+import {MainContainer, TitreSection} from "../../utils/style/elements.tsx";
 
-const PageContainer = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-top: 150px;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
+const ArticleContainer = styled.div`
+    background-color: ${colors.backgroundBlanc};
 `;
 
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+const HeroArticle = styled.div`
+    height: 25rem;
+    pointer-events: none;
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+
+`
+
+const TransitionArticle = styled.div`
+    background: linear-gradient(0, rgba(241,241,241,1) 0%, rgba(241,241,241,0.66) 50%, rgba(241,241,241,0) 100%);
+    height: 25rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+`
+
+const ImgArticle = styled.img`
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 25rem;
+`
+
+const ArticleContent = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
-const TableCaption = styled.caption`
-  font-size: 1.2em;
-  margin-bottom: 10px;
+const ArticleTitle = styled.h1`
+    position: absolute;
+    bottom: 0;
+    padding-left: 15vw;
+    padding-right: 15vw;
+
+    @media (max-width: 1090px) {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
 `;
 
-const Thead = styled.thead`
-  background-color: #f2f2f2;
+const ArticleMeta = styled.div`
+    height: 1rem;
 `;
 
-const Th = styled.th`
-  padding: 10px;
-  text-align: left;
+const ArticleBody = styled.div`
+    min-height: 50vh;
 `;
 
-const Tbody = styled.tbody``;
+const PublicationSpan = styled.span`
+    color: ${colors.vert};
+`
 
-const Tr = styled.tr`
-  &:nth-child(even) {
-    background-color: #f9f9f9;
+const PContenu = styled.p`
+    
+`
+
+function ArticlePage() {
+
+  const { articleNumberParam } = useParams();
+  const articleNumberAsNumber: number     = Number(articleNumberParam);
+
+  console.log(useParams())
+  console.log(articleNumberAsNumber)
+
+  function getDataArticle(index: number): Article {
+    return articleList[index]
   }
-`;
 
-const Td = styled.td`
-  padding: 10px;
-`;
+  //const { data, isLoading, error } = useFetch(`http://localhost:8000/article/${articleNumber}`)
+  // const articleData = data?.articleData
 
-const Button = styled.button`
-  background-color: #008080;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  margin-right: 5px;
-  cursor: pointer;
-`;
+  /*if (error) {
+    return <span>Il y a un problème</span>
+  }*/
 
-
-const InterfaceAdminArticle = () => {
-
-
-  const dataArticle = [
-    {
-      id: 0,
-      titre: "Nouveau permis de conduire : Tout savoir !",
-      source: "x.com",
-      date: "10/10/2023",
-    },
-    {
-      id: 1,
-      titre: "Permis de conduire dès 17 ans : beaucoup d’auto école pas convaincues",
-      source: "facebook.com",
-      date: "12/10/2023",
-    },
-  ];
+  const data: Article = getDataArticle(articleNumberAsNumber-1)
 
   return (
-    <PageContainer>
-      <Table>
-        <TableCaption>Article So'permis</TableCaption>
-        <Thead>
-          <Tr>
-            <Th>Titre</Th>
-            <Th>Source</Th>
-            <Th>Date</Th>
-            <Th>Actions</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {dataArticle.map((article, index) => (
-            <Tr key={index}>
-              <Td>{article.titre}</Td>
-              <Td>{article.source}</Td>
-              <Td>{article.date}</Td>
-              <Td>
-                <Button>Modif</Button>
-                <Button>Suppr</Button>
-              </Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
+    <ArticleContainer>
+      {/*isLoading ? (
+        <Loader/>
+      ) : (*/
+        <ArticleContent>
+          <HeroArticle>
+            <ImgArticle src={imgTest} alt={"HeroImg"}/>
+            <TransitionArticle />
+            <ArticleTitle>{data.titre}</ArticleTitle>
+          </HeroArticle>
 
-      
-    </PageContainer>
+          <MainContainer theme={'blanc'}>
+            <ArticleMeta>
+              <PublicationSpan>Publication le : {`${data.date.toLocaleDateString()}`}</PublicationSpan>
+            </ArticleMeta>
+            <ArticleBody>
+              <TitreSection theme={'blanc'}>Contenu</TitreSection>
+              <PContenu>{data.contenu}</PContenu>
+              <TitreSection theme={'blanc'}>Source</TitreSection>
+              <PContenu>{data.source}</PContenu>
+            </ArticleBody>
+          </MainContainer>
+
+        </ArticleContent>
+        //)
+      }
+    </ArticleContainer>
   );
-};
+}
 
-export default InterfaceAdminArticle;
+export default ArticlePage;

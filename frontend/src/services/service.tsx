@@ -319,3 +319,20 @@ export function getPageForfait(index: number) : PageForfait {
   return listForfaitPage[index]
 }
 
+export const histoire1: string = `
+So'Permis est une auto-école havraise fondée en 2022 par Sonia Lepiller. Située au cœur du quartier Caucriauville au Havre, notre auto-école familiale met l'accent sur un enseignement de qualité et un suivi personnalisé de nos élèves.
+`
+export const histoire2: string =`
+Passionnée par son métier, Sonia a créé So'Permis après plusieurs années d'expérience en tant que monitrice d'auto-école. Son objectif : proposer des formations au permis B accessibles à tous, dans une ambiance conviviale et avec des méthodes pédagogiques efficaces.
+`
+export const histoire3: string =`
+
+Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme. 
+`
+export const histoire4: string =`
+
+Notre équipe jeune et dynamique saura vous mettre en confiance tout au long de votre formation. Nos moniteurs diplômés et passionnés auront à cœur de vous transmettre leur savoir-faire et leur expérience de la route.
+`
+export const histoire5: string =`
+En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où prime avant tout l'écoute et le dialogue. Notre objectif commun ? Vous garantir l'obtention de votre permis de conduire dans les meilleures conditions !
+`
