@@ -17,54 +17,87 @@ const MainContainerContact = styled.main`
 		padding-right: 5vw;
 	}
 `
-const SectionHeading = styled.h2`
+const TitleContact = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
-`;
+`
 
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
+
 
 const FlexContainer = styled.div`
   display: flex;
   margin-bottom: 20px;
-`;
+`
 
 const LeftFlexContainer = styled.div`
   flex: 1;
   padding: 0 10px;
-`;
+`
 
 const RightFlexContainer = styled.div`
   flex: 1;
   padding: 0 10px;
-`;
+`
 
-const FormControl = styled.label`
-  display: block;
-  margin-bottom: 10px;
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+
+const FormContainer = styled.form`
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+`
+
+const FormControl = styled.div`
+  padding: 2% 0%;
+  width: 45%;
+
+  &:last-of-type{
+	width: 100%;
+	height: 200px;
   }
-`;
 
-const SubmitButton = styled.button`
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+  input{
+	margin-top: 3%;
+
+	font-size: 16px;
+    width: 100%;
+    color: ${colors.noir};
+
+    background: 0 0;
+    border: none;
+    outline: none;
+
+    border-bottom: solid 1px ${colors.noir};
+  }
+
+  textarea {
+    font-size: 16px;
+    width: 99.5%;
+	height: 100%;
+	margin-top: 3%;
+  }
+`
+
+const SubmitButton = styled.span`
+	width: 20%;
+	padding-right: 2%;
+	padding-left: 72%;
+	padding-bottom: 10%;
+	padding-top: 5%;
+
+  input{
+	border: solid 2px white;
+	outline: none;
+	cursor: pointer;
+	padding: 10%;
+	font-size: 25px;
+	background: ${colors.vert};
+	font-weight: 800;
+	border-radius: 45px;
+	transition: all ease 0.5s;
+  
 `;
 
 const MapContainer = styled.div`
@@ -74,7 +107,7 @@ const MapContainer = styled.div`
     border: 0;
     border-radius: 4px;
   }
-`;
+`
 
 const PetitLogo = styled.img`
   height: auto;
@@ -163,39 +196,42 @@ const ContactPage: React.FC = () => {
 
 	return (
 		<MainContainerContact>
-			<SectionHeading>Contact</SectionHeading>
-			<FormContainer onSubmit={handleSubmit}>
-				<FlexContainer>
-					<LeftFlexContainer>
-						<FormControl>
-							Prénom:
-							<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
-						</FormControl>
-						<FormControl>
-							Mail:
-							<input type="text" name="email" value={formData.email} onChange={handleChange} required />
-						</FormControl>
-						<FormControl>
-							Objet:
-							<input type="text" name="object" value={formData.object} onChange={handleChange} required/>
-						</FormControl>
-					</LeftFlexContainer>
-					<RightFlexContainer>
-						<FormControl>
-							Nom:
-							<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-						</FormControl>
-						<FormControl>
-							Téléphone:
-							<input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
-						</FormControl>
-					</RightFlexContainer>
-				</FlexContainer>
+			<TitleContact>Contact</TitleContact>
+			<FormContainer onSubmit={handleSubmit}>					
 				<FormControl>
-					Message:
+					<label htmlFor="prenom">Prénom :</label>
+					<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="nom">Nom :</label>
+					<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="mail">Mail :</label>
+					<input type="text" name="email" value={formData.email} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="telephone">Téléphone :</label>
+					<input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="objet">Objet :</label>
+					<input type="text" name="object" value={formData.object} onChange={handleChange} required/>
+				</FormControl>
+
+
+				<FormControl>
+					<label htmlFor="message">Message:</label>
 					<textarea name="message" value={formData.message} onChange={handleChange} required/>
 				</FormControl>
-				<SubmitButton type="submit">Envoyer</SubmitButton>
+				
+				<SubmitButton>
+					<input type="submit" name="submit" value="Valider"/>
+				</SubmitButton>
 
 			</FormContainer>
 	
