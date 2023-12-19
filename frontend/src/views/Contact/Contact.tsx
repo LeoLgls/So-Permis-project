@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import SnapBlack from '../../assets/img/Snap-black.png';
 import InstaBlack from '../../assets/img/Insta-black.png';
 import colors from '../../utils/style/colors'
+import fonts from '../../utils/style/font-size'
 
 
 const MainContainerContact = styled.main`
 	padding-left: 15vw;
 	padding-right: 15vw;
-	padding-top: 150px;
+	padding-top: 180px;
 	background-color: ${colors.backgroundBlanc};
 
 	@media (max-width: 1090px) {
@@ -18,11 +19,9 @@ const MainContainerContact = styled.main`
 	}
 `
 const TitleContact = styled.h2`
-  font-size: 24px;
+  font-size: ${fonts.titre}px;
   margin-bottom: 20px;
 `
-
-
 
 const FlexContainer = styled.div`
   display: flex;
@@ -42,11 +41,15 @@ const RightFlexContainer = styled.div`
 
 
 const FormContainer = styled.form`
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: space-between;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const FormControl = styled.div`
@@ -56,6 +59,10 @@ const FormControl = styled.div`
   &:last-of-type{
 	width: 100%;
 	height: 200px;
+  }
+
+  label{
+	font-size: ${fonts.p}px;
   }
 
   input{
@@ -78,14 +85,19 @@ const FormControl = styled.div`
 	height: 100%;
 	margin-top: 3%;
   }
+
+  @media screen and (max-width: 800px) {
+	padding: 4%;
+	width: 90% !important;
+  }
 `
 
 const SubmitButton = styled.span`
-	width: 20%;
-	padding-right: 2%;
-	padding-left: 72%;
-	padding-bottom: 10%;
-	padding-top: 5%;
+  width: 100%;
+  padding-right: 2%;
+  padding-left: 80%;
+  padding-bottom: 10%;
+  padding-top: 10%;
 
   input{
 	border: solid 2px white;
@@ -97,8 +109,34 @@ const SubmitButton = styled.span`
 	font-weight: 800;
 	border-radius: 45px;
 	transition: all ease 0.5s;
+	width: 100%;
+  }
+
+
+  @media screen and (max-width: 800px) {
+	padding-right: 2%;
+	padding-left: 4%;
   
+	input{
+	  padding: 2%;
+	  font-size: 4vw;
+	  width: 25%;
+	}
+  }
+
+
+
 `;
+
+
+const InformationsContainer = styled.div`
+
+`
+
+const PetitLogo = styled.img`
+  height: auto;
+  width: 14%;
+`
 
 const MapContainer = styled.div`
   iframe {
@@ -109,12 +147,9 @@ const MapContainer = styled.div`
   }
 `
 
-const PetitLogo = styled.img`
-  height: auto;
-  width: 14%;
-`
 
-const ListHoraire = [
+
+export const ListHoraire = [
 	{
 		day: "Lundi",
 		openHour: "8h00",
@@ -237,23 +272,30 @@ const ContactPage: React.FC = () => {
 	
 			<FlexContainer>
 				<LeftFlexContainer>
-					<h3>Adresse</h3>
-					<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+					<InformationsContainer>
+						<h3>Adresse</h3>
+						<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+					</InformationsContainer>
 
-					<h3>Horaire d'ouverture</h3>
-					<ul>
-						{ListHoraire.map((horaire, index) => (
-							<li key={index}>
-								{horaire.day}: {horaire.isOpen ? `${horaire.openHour} - ${horaire.closeHour}` : 'Fermé'}
-							</li>
-						))}
-					</ul>
+					<InformationsContainer>
+						<h3>Horaire d'ouverture</h3>
+						<ul>
+							{ListHoraire.map((horaire, index) => (
+								<li key={index}>
+									{horaire.day}: {horaire.isOpen ? `${horaire.openHour} - ${horaire.closeHour}` : 'Fermé'}
+								</li>
+							))}
+						</ul>
+					</InformationsContainer>
 
-					<h3>Nos reseau</h3>
-					<p>Téléphone : 02 78 34 10 63</p>
-					<span>Reseau sociaux</span>
-					<PetitLogo src={SnapBlack} />
-                 	 <PetitLogo src={InstaBlack} />
+					<InformationsContainer>
+						<h3>Nos reseau</h3>
+						<p>Téléphone : 02 78 34 10 63</p>
+						<span>Reseau sociaux</span>
+						<PetitLogo src={SnapBlack} />
+						<PetitLogo src={InstaBlack} />
+					</InformationsContainer>
+
 				</LeftFlexContainer>
 				<RightFlexContainer>
 					<MapContainer>
