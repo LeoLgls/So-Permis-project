@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <ChakraProvider>
     <Router>
       <GlobalStyle/>
-      
+      <Header/>
       <Routes>
         <Route path="/" element={<Accueil />}></Route>
         <Route path="/ArticleTest" element={<ArticleTest />}></Route>
