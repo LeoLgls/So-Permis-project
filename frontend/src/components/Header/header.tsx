@@ -9,9 +9,14 @@ const HomeLogo = styled.img<{ onTop: boolean }>`
   height: ${({ onTop }) => (onTop ? '45px' : '35px')};  
   z-index: 1000;
   position: relative;
+  transition: all 0.3s ease;
 
   @media (max-width: 1090px) {
-    height: 35px; 
+    height: 5vw; 
+  }
+
+  @media (max-width: 550px) {
+    height: 8vw; 
   }
 `;
 
