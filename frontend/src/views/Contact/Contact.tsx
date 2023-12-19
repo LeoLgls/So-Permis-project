@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import SnapBlack from '../../assets/img/Snap-black.png';
@@ -195,7 +195,37 @@ export const ListHoraire = [
 
 ]
 
+interface OpeningHour {
+	day: string;
+	openHour: string;
+	closeHour: string;
+}
+
+
+
 const ContactPage: React.FC = () => {
+
+	const [openingHours, setOpeningHours] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  try {
+			const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
+			const data = response.data;
+			
+			// Suppose that your API response has a structure like { openingHours: [...] }
+			setOpeningHours(data.openingHours);
+			setLoading(false);
+		  } catch (error) {
+			setLoading(false);
+		  }
+		};
+	
+		fetchData();
+	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
+	
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -216,11 +246,11 @@ const ContactPage: React.FC = () => {
 	const handleSubmit = async (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		console.log('Form Data:', formData);
-	
+
 		try {
 			// Envoyer les données au backend
 			const response = await axios.post(`http://localhost:3333/api/contact/sendEmail`, formData);
-	
+
 			alert(response.data)
 		} catch (error) {
 			// Gérer les erreurs
@@ -232,10 +262,10 @@ const ContactPage: React.FC = () => {
 	return (
 		<MainContainerContact>
 			<TitleContact>Contact</TitleContact>
-			<FormContainer onSubmit={handleSubmit}>					
+			<FormContainer onSubmit={handleSubmit}>
 				<FormControl>
 					<label htmlFor="prenom">Prénom :</label>
-					<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
+					<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
 				</FormControl>
 
 				<FormControl>
@@ -255,21 +285,21 @@ const ContactPage: React.FC = () => {
 
 				<FormControl>
 					<label htmlFor="objet">Objet :</label>
-					<input type="text" name="object" value={formData.object} onChange={handleChange} required/>
+					<input type="text" name="object" value={formData.object} onChange={handleChange} required />
 				</FormControl>
 
 
 				<FormControl>
 					<label htmlFor="message">Message:</label>
-					<textarea name="message" value={formData.message} onChange={handleChange} required/>
+					<textarea name="message" value={formData.message} onChange={handleChange} required />
 				</FormControl>
-				
+
 				<SubmitButton>
-					<input type="submit" name="submit" value="Valider"/>
+					<input type="submit" name="submit" value="Valider" />
 				</SubmitButton>
 
 			</FormContainer>
-	
+
 			<FlexContainer>
 				<LeftFlexContainer>
 					<InformationsContainer>
@@ -279,13 +309,20 @@ const ContactPage: React.FC = () => {
 
 					<InformationsContainer>
 						<h3>Horaire d'ouverture</h3>
-						<ul>
-							{ListHoraire.map((horaire, index) => (
-								<li key={index}>
-									{horaire.day}: {horaire.isOpen ? `${horaire.openHour} - ${horaire.closeHour}` : 'Fermé'}
-								</li>
-							))}
-						</ul>
+						{loading && <p>Chargement en cours...</p>}
+      {error && <p>Erreur : {error}</p>}
+      {openingHours.length > 0 && (
+        <div>
+          <h2>Horaires d'ouverture :</h2>
+          <ul>
+            {openingHours.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+				
+
 					</InformationsContainer>
 
 					<InformationsContainer>
