@@ -1,50 +1,50 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {prisma} from '@ioc:Adonis/Addons/Prisma'
 
-export default class NewsletterController {
+export default class ArticleController {
 
     public async store ({request}: HttpContextContract) {
-        const newsletter = await prisma.newsletter.create({
-            data: request.only(['email']),
+        const article = await prisma.article.create({
+            data: request.only(['titre', 'texte', 'idImage','date','sources']),
         })
 
-        return newsletter
+        return article
     }
 
     public async show ({params}: HttpContextContract) {
-        const newsletter = await prisma.newsletter.findUnique({
+        const article = await prisma.article.findUnique({
             where: {
                 id: params.id
             }
         })
 
-        return newsletter
+        return article
     }
 
     public async index () {
-        const newsletters = await prisma.newsletter.findMany()
+        const articles = await prisma.article.findMany()
 
-        return newsletters
+        return articles
     }
 
     public async destroy ({params}: HttpContextContract) {
-        const newsletter = await prisma.newsletter.delete({
+        const article = await prisma.article.delete({
             where: {
                 id: params.id
             }
         })
 
-        return newsletter
+        return article
     }
 
     public async update ({request, params}: HttpContextContract) {
-        const newsletter = await prisma.newsletter.update({
+        const article = await prisma.article.update({
             where: {
                 id: params.id
             },
-            data: request.only(['email'])
+            data: request.only(['titre', 'texte', 'image','date','sources'])
         })
 
-        return newsletter
+        return article
     }
 }
