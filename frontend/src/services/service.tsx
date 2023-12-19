@@ -148,6 +148,12 @@ export const permisList: Forfait[] = [
     lien: '/forfait/6'
   },
   {
+    titre: "FORFAIT B EXPRESS",
+    sousTitre:"Formation au permis B Classique accéléré en 1 mois",
+    titreBtn: "1200€",
+    lien: '/forfait1'
+  },
+  {
     titre: "CONDUITE SUPERVISÉE",
     sousTitre:"",
     titreBtn: "1110€",
