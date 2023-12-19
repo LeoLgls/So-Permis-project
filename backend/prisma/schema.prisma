@@ -16,6 +16,12 @@ model Administrateur {
   password String
 }
 
+model AnnulationCode {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  intitule String
+  prix     String
+}
+
 model Article {
   id      String   @id @default(auto()) @map("_id") @db.ObjectId
   titre   String
@@ -33,10 +39,10 @@ model Avis {
 }
 
 model Categorie {
-  id    String   @id @default(auto()) @map("_id") @db.ObjectId
-  prix  Int
-  type  String
-  infos String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  titre     String
+  sousTitre String
+  lien      String
 }
 
 model Forfait {
@@ -50,7 +56,6 @@ model Forfait {
   pratique     String
   horaireLecon String
   tarif        String
-  annulation   String? 
 }
 
 model Histoire {
@@ -58,6 +63,13 @@ model Histoire {
   txtCourt      String
   txtComplet    String
   idImage       String?
+}
+
+model Horaire {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  type       String
+  matin      Json
+  apresMidi  Json
 }
 
 model Image {
