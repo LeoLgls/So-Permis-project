@@ -1,5 +1,5 @@
 const fontSize = {
-  titre: 40,
+  titre: 35,
   sousTitre: 25,
   p: 18,
   button: 20,
