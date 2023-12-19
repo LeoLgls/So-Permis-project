@@ -7,6 +7,7 @@ import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
 import CardEpress from "../../components/Card/cardExpress.tsx";
+import VoitureImg from '../../assets/img/voiture-golf.png'
 
 
 
@@ -112,7 +113,7 @@ const TransitionRoute = styled.div`
   margin-top: -5rem;
 `
 
-const Image = styled.div`
+const ImageRoute = styled.div`
   background-image: url("./src/assets/img/route.png");
 
   object-position: center;
@@ -125,6 +126,25 @@ const Image = styled.div`
 
   background-color: ${colors.backgroundBlanc}
 `
+
+
+const ContainerImageVoiture = styled.div`
+  width: 100%;
+  background-color: ${colors.backgroundNoir};
+  display: flex;
+  justify-content: end;
+  margin-top: -35vh;
+
+  @media (max-width: 750px) {
+    margin-top: -15vh;
+  }
+`
+
+const ImageVoiture = styled.img`
+  width: 60%;
+`
+
+
 
 const ContainerPermisExpress = styled.div`
   display: grid;
@@ -227,13 +247,13 @@ function Permis() {
             </CardContainer>
         </SectionPermis>
       </MainContainer>
-      <Image/>
+      <ImageRoute/>
       <TransitionRoute/>
 
 
       <MainContainer theme={'noir'}>
         <SectionPermisExpress>
-            <TitreSection theme={'noir'}>Permis B Express</TitreSection>
+            <TitreSection theme={'noir'}>Permis B Express, c'est quoi ?</TitreSection>
             <ContainerPermisExpress>
                 <CardContainerExpress>  
                   {permisExpressList.map((permisExpressList) => (
@@ -259,7 +279,9 @@ function Permis() {
         </SectionConduiteAcc>
 
       </MainContainer>
-
+      <ContainerImageVoiture>
+        <ImageVoiture src={VoitureImg}/>
+      </ContainerImageVoiture>
 
     </React.StrictMode>
 

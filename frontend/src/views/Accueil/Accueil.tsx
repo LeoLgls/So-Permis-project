@@ -176,6 +176,7 @@ const CardVoitureContainer = styled.div`
 
 const SectionSarool = styled.div`
     min-height: 50vh;
+    padding-bottom: 10vh;
 `
 
 const ImgStore = styled.img`
