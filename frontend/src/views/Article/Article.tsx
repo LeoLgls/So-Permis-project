@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const PageContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  padding-top: 150px;
   padding: 20px;
   font-family: 'Arial', sans-serif;
 `;

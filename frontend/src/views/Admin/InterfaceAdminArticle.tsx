@@ -5,6 +5,7 @@ const PageContainer = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 150px;
   font-family: 'Arial', sans-serif;
 `;
 
