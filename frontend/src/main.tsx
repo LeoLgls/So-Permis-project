@@ -16,6 +16,7 @@ import Connexion from './views/Admin/Connexion'
 import InterfaceAdminPage from './views/Admin/InterfaceAdminPage'
 import NewsLetter from './views/Admin/NewsLetter'
 import InterfaceAdminArticle from './views/Admin/InterfaceAdminArticle.tsx'
+import Histoire from './views/HistoireSoPermis/Histoire.tsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -30,10 +31,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/code"   element={<CodeRoute/>}></Route>
 
         <Route path={"/forfait/:forfaitParam"}       element={<ForfaitView />}></Route>
-
         <Route path="/contact" element={<Contact />}></Route>
-
         <Route path={"/article/:articleNumberParam"} element={<ArticlePage />}></Route>
+
+        <Route path={"/histoire"} element={<Histoire />}></Route>
 
         <Route path="/admin" element={<Connexion/>}></Route>
         <Route path="/admin/interfaceAdmin" element={<InterfaceAdminPage/>}></Route>

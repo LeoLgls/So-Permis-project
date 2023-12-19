@@ -7,12 +7,10 @@ import {getPageForfait, getPermis} from "../../services/service.tsx";
 import {useParams} from "react-router-dom";
 import {Forfait, PageForfait} from "../../utils/models/models.tsx";
 import Img from '../../assets/img/femme-surprise.png'
+import {CardBackgroundCarre} from "../../utils/style/elements.tsx";
+import {SectionHero} from "../../utils/style/elements.tsx";
+import {Intitule} from "../../utils/style/elements.tsx";
 
-const SectionHero = styled.section`
-    padding-top: 12rem;
-    display: flex;
-    justify-content: center;
-`
 const SectionDuree = styled.section`
 
 `
@@ -22,17 +20,6 @@ const TitreSection2 = styled.h1`
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     font-weight: bolder;
-`
-
-const CardBackgroundForfait = styled.div`
-    background-color: ${colors.vert};
-    position: relative;
-    min-height: 20rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 75%;
 `
 
 const Deroulement = styled.section`
@@ -62,10 +49,7 @@ const ImgForfait = styled.img`
     
 `
 
-const Intitule = styled.div`
-    font-size: ${fontSize.p}px;
-    color: ${colors.txtBlanc};
-`
+
 
 function ForfaitView() {
 
@@ -81,12 +65,12 @@ function ForfaitView() {
     <React.StrictMode>
       <MainContainer theme={'blanc'}>
         <SectionHero>
-          <CardBackgroundForfait>
+          <CardBackgroundCarre>
             <TitreSection theme={'noir'}>{forfait.titre}</TitreSection>
             <Intitule>{forfait.sousTitre}</Intitule>
             <TitreSection theme={'noir'}>{forfait.titreBtn}</TitreSection>
             <ImgForfait src={Img} alt={"Etonné"}/>
-          </CardBackgroundForfait>
+          </CardBackgroundCarre>
         </SectionHero>
         <SectionDuree>
           <TitreSection theme={'blanc'}>Durée de la formation </TitreSection>
