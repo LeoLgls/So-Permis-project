@@ -16,11 +16,11 @@ const HeroArticle = styled.div`
     position: relative;
     width: 100%;
     margin-bottom: 2rem;
-    
+
 `
 
 const TransitionArticle = styled.div`
-    background: linear-gradient(0, rgba(241,241,241,1) 0%, rgba(241,241,241,0.66) 50%, rgba(241,241,241,0) 100%);    
+    background: linear-gradient(0, rgba(241,241,241,1) 0%, rgba(241,241,241,0.66) 50%, rgba(241,241,241,0) 100%);
     height: 25rem;
     position: absolute;
     bottom: 0;
@@ -37,8 +37,8 @@ const ImgArticle = styled.img`
 `
 
 const ArticleContent = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
 const ArticleTitle = styled.h1`
@@ -115,7 +115,7 @@ function ArticlePage() {
           </MainContainer>
 
         </ArticleContent>
-      //)
+        //)
       }
     </ArticleContainer>
   );

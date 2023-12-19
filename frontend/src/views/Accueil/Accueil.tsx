@@ -138,7 +138,6 @@ const ImgCEO = styled.img`
 const SectionVoiture = styled.section`
     display: flex;
     flex-direction: column;
-    align-items: center;
 `
 
 const TitreCard = styled.h2`
@@ -229,6 +228,12 @@ const ImgContainer = styled.div`
     align-items: center;
 `
 
+const VoitureContainer = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+`
 
 
 function Accueil() {
@@ -299,16 +304,18 @@ function Accueil() {
 
         <SectionVoiture>
           <TitreSection theme={'blanc'}>Nos voitures chez So'Permis</TitreSection>
-        <CardsContainer>
-          <CardBackground>
-            <CardVoitureContainer>
-              <ImgVoiture src={imgVoiture} alt={"Citroën C3"} />
-              <TitreCard>Citroën C3</TitreCard>
-              <SousTitreCard>Boite Manuelle</SousTitreCard>
-              <TxtCard>Pratique et facile à conduire, cette voiture vous accompagnera pour votre permis</TxtCard>
-            </CardVoitureContainer>
-          </CardBackground>
-        </CardsContainer>
+          <VoitureContainer>
+            <CardsContainer>
+              <CardBackground>
+                <CardVoitureContainer>
+                  <ImgVoiture src={imgVoiture} alt={"Citroën C3"} />
+                  <TitreCard>Citroën C3</TitreCard>
+                  <SousTitreCard>Boite Manuelle</SousTitreCard>
+                  <TxtCard>Pratique et facile à conduire, cette voiture vous accompagnera pour votre permis</TxtCard>
+                </CardVoitureContainer>
+              </CardBackground>
+            </CardsContainer>
+          </VoitureContainer>
         </SectionVoiture>
         <SectionSarool>
           <TitreSection theme={'blanc'}>Application SAROOL</TitreSection>

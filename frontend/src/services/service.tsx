@@ -1,4 +1,4 @@
-import {AnnulationCode, Article, Forfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, Forfait, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
@@ -115,37 +115,37 @@ export const permisList: Forfait[] = [
     titre: "FORFAIT B COMPLET",
     sousTitre:"Code + 20 leçons de conduite",
     titreBtn: "990€",
-    lien: '/forfait1'
+    lien: '/forfait/1'
   },
   {
     titre: "FORFAIT B",
     sousTitre:"20 leçons de conduite (sans code)",
     titreBtn: "890€",
-    lien: '/forfait1'
+    lien: '/forfait/2'
   },
   {
     titre: "FORFAIT B COMPLET",
     sousTitre:"Code + 25 leçons de conduite",
     titreBtn: "1210€",
-    lien: '/forfait1'
+    lien: '/forfait/3'
   },
   {
     titre: "FORFAIT B",
     sousTitre:"25 leçons de conduite (sans conduite)",
     titreBtn: "1110€",
-    lien: '/forfait1'
+    lien: '/forfait/4'
   },
   {
     titre: "FORFAIT B COMPLET",
     sousTitre:"Code + 30 leçons de conduite",
     titreBtn: "1430€",
-    lien: '/forfait1'
+    lien: '/forfait/5'
   },
   {
     titre: "FORFAIT B",
     sousTitre:"30 leçons de conduite (sans conduite)",
     titreBtn: "1330€",
-    lien: '/forfait1'
+    lien: '/forfait/6'
   },
   {
     titre: "FORFAIT B EXPRESS",
@@ -157,16 +157,17 @@ export const permisList: Forfait[] = [
     titre: "CONDUITE SUPERVISÉE",
     sousTitre:"",
     titreBtn: "1110€",
-    lien: '/forfait1'
+    lien: '/forfait/7'
   }
 ]
 
+export function getPermis(index: number) {return permisList[index]}
 export const permisExpressList: Forfait[] = [
   {
     titre: "FORFAIT B EXPRESS",
     sousTitre:"Formation au permis B Classique accéléré en 1 mois",
     titreBtn: "1200€",
-    lien: '/forfait1'
+    lien: '/forfait/1'
   }
 ]
 
@@ -175,13 +176,13 @@ export const conduiteAccompagneeList: Forfait[] = [
     titre: "FORFAIT CONDUITE ACCOMPAGNÉE CODE + 20 LEÇONS + CODE",
     sousTitre:"",
     titreBtn: "1200€",
-    lien: '/forfait1'
+    lien: '/forfait/1'
   },
   {
     titre: "FORFAIT CONDUITE ACCOMPAGNÉE + 20 LEÇONS",
     sousTitre:"",
     titreBtn: "1110€",
-    lien: '/forfait1'
+    lien: '/forfait/1'
   }
 ]
 
@@ -248,4 +249,90 @@ export const listAnnulationCode: AnnulationCode[] = [
   },
 ]
 
+export const listForfaitPage: PageForfait[] = [
+  {
+    duree: "La formation dure 1 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+  },{
+    duree: "La formation dure 2 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 1,
 
+  },{
+    duree: "La formation dure 3 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 2,
+
+  },{
+    duree: "La formation dure 4 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+
+  },{
+    duree: "La formation dure 5 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+
+  },{
+    duree: "La formation dure 6 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+
+  },{
+    duree: "La formation dure 7 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+
+  },{
+    duree: "La formation dure 8 mois",
+    theorique: "Le code de la route tu vois",
+    pratique: "Tokyo Drift TMTC",
+    horaire: "Toute la journéé t'es un fois",
+    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
+    indexForfait: 4,
+  },
+]
+
+export function getPageForfait(index: number) : PageForfait {
+  return listForfaitPage[index]
+}
+
+export const histoire1: string = `
+So'Permis est une auto-école havraise fondée en 2022 par Sonia Lepiller. Située au cœur du quartier Caucriauville au Havre, notre auto-école familiale met l'accent sur un enseignement de qualité et un suivi personnalisé de nos élèves.
+`
+export const histoire2: string =`
+Passionnée par son métier, Sonia a créé So'Permis après plusieurs années d'expérience en tant que monitrice d'auto-école. Son objectif : proposer des formations au permis B accessibles à tous, dans une ambiance conviviale et avec des méthodes pédagogiques efficaces.
+`
+export const histoire3: string =`
+
+Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme. 
+`
+export const histoire4: string =`
+
+Notre équipe jeune et dynamique saura vous mettre en confiance tout au long de votre formation. Nos moniteurs diplômés et passionnés auront à cœur de vous transmettre leur savoir-faire et leur expérience de la route.
+`
+export const histoire5: string =`
+En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où prime avant tout l'écoute et le dialogue. Notre objectif commun ? Vous garantir l'obtention de votre permis de conduire dans les meilleures conditions !
+`

@@ -1,61 +1,97 @@
+import {useState} from 'react';
+import styled from 'styled-components';
 
-import React, { useState, FormEvent } from 'react';
-import { ChakraProvider, CSSReset, Box, FormControl, FormLabel, Input, Button, Heading } from '@chakra-ui/react';
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
+const FormContainer = styled.div`
+  width: 400px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
 
-interface FormState {
-  identifier: string;
-  password: string;
-}
+const Heading = styled.h2`
+  text-align: center;
+  margin-bottom: 4px;
+`;
 
-const Connection: React.FunctionComponent = () => {
-  const [formState, setFormState] = useState<FormState>({
+const Form = styled.form`
+  margin-top: 8px;
+`;
+
+const FormControl = styled.div`
+  margin-bottom: 16px;
+`;
+
+const FormLabel = styled.label`
+  display: block;
+  margin-bottom: 4px;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 12px;
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const Connection = () => {
+  const [formState, setFormState] = useState({
     identifier: '',
     password: '',
   });
 
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     console.log('Identifiant:', formState.identifier, 'Password:', formState.password);
   };
 
   return (
-   
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        height="100vh"
-      >
-        <Box width="400px" p={8} borderWidth={1} borderRadius={8} boxShadow="lg">
-          <Heading textAlign={'center'} mb={4}>Connexion</Heading>
-          <form onSubmit={handleSubmit}>
-            <FormControl mb={4}>
-              <FormLabel>Identifiant</FormLabel>
-              <Input
-                type="text"
-                placeholder="Entrez votre identifiant"
-                value={formState.identifier}
-                onChange={(e) => setFormState({ ...formState, identifier: e.target.value })}
-              />
-            </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Mot de passe</FormLabel>
-              <Input
-                type="password"
-                placeholder="Entrez votre mot de passe"
-                value={formState.password}
-                onChange={(e) => setFormState({ ...formState, password: e.target.value })}
-              />
-            </FormControl>
-            <Button type="submit" colorScheme="teal" width="full">
-              Se connecter
-            </Button>
-          </form>
-        </Box>
-      </Box>
- 
+    <Container>
+      <FormContainer>
+        <Heading>Connexion</Heading>
+        <Form onSubmit={handleSubmit}>
+          <FormControl>
+            <FormLabel>Identifiant</FormLabel>
+            <Input
+            required
+              type="text"
+              placeholder="Entrez votre identifiant"
+              value={formState.identifier}
+              onChange={(e) => setFormState({ ...formState, identifier: e.target.value })}
+            />
+          </FormControl>
+          <FormControl>
+            <FormLabel>Mot de passe</FormLabel>
+            <Input
+            required
+              type="password"
+              placeholder="Entrez votre mot de passe"
+              value={formState.password}
+              onChange={(e) => setFormState({ ...formState, password: e.target.value })}
+            />
+          </FormControl>
+          <Button type="submit">Se connecter</Button>
+        </Form>
+      </FormContainer>
+    </Container>
   );
 };
 
