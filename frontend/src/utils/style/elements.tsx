@@ -54,3 +54,28 @@ export const Intitule = styled.div`
     font-size: ${fontSize.p}px;
     color: ${colors.txtBlanc};
 `
+export const SectionsFooterLiens = styled.section`
+    padding-bottom: 2rem;
+`
+
+export const TitreFooterLiens = styled.h2`
+    padding-bottom: 1rem;
+`
+
+export const PFooterLiens = styled.p`
+    text-align: justify;
+`
+
+export const ContainerFooterLiens = styled.div`
+    padding-top: 150px;
+    padding-bottom: 5rem;
+`
+
+export const UlList = styled.ul`
+  padding-left: 2rem;
+    padding-top: 1rem;
+`
+
+export const LiRow = styled.li`
+  padding-bottom: 1rem;
+`

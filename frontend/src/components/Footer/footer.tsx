@@ -160,11 +160,10 @@ const BottomPart = styled.div`
   background-color: ${colors.backgroundNoir};
   display: flex;
   justify-content: center;
-  padding-bottom: 1%;
 
   p{
     color: ${colors.blanc};
-    padding: 0% 1%;
+    padding: 0 1%;
   }
 
 `
@@ -228,9 +227,9 @@ function Footer() {
     <BottomPart>
 
       <MentionsLegalesLink to="/mentionsLegales"> Mentions Légales </MentionsLegalesLink>
-      <p>-</p>
+      <p>·</p>
       <MentionsLegalesLink to="cookies"> Cookies </MentionsLegalesLink>
-      <p>-</p>
+      <p>·</p>
       <MentionsLegalesLink to="rgpd"> RGPD </MentionsLegalesLink>
 
     </BottomPart>
