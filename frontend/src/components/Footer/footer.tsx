@@ -13,7 +13,7 @@ const HomeLogo = styled.img`
 
 const PetitLogo = styled.img`
   height: auto;
-  width: 14%;
+  width: 70%;
 `
 
 const FooterContainer = styled.footer`
@@ -82,9 +82,16 @@ const BoutonContact = styled.div`
 
 const ReseauContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
   background: #0f1411;
+
+  a{
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 0% 15%;
+  }
 `
 
 
@@ -193,8 +200,15 @@ function Footer() {
           <ContactContainer>
 
               <ReseauContainer>
-                  <PetitLogo src={Snap} />
-                  <PetitLogo src={Insta} />
+                  
+                  <Link to="pornhub.com">
+                    <PetitLogo src={Snap} />
+                  </Link>
+
+                  <Link to="https://instagram.com">
+                    <PetitLogo src={Insta} />
+                  </Link>
+
               </ReseauContainer>
 
               <BoutonContainer>
@@ -227,9 +241,9 @@ function Footer() {
     <BottomPart>
 
       <MentionsLegalesLink to="/mentionsLegales"> Mentions Légales </MentionsLegalesLink>
-      <p>·</p>
+      <p>-</p>
       <MentionsLegalesLink to="cookies"> Cookies </MentionsLegalesLink>
-      <p>·</p>
+      <p>-</p>
       <MentionsLegalesLink to="rgpd"> RGPD </MentionsLegalesLink>
 
     </BottomPart>
