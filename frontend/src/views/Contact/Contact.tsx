@@ -317,6 +317,7 @@ const ContactPage: React.FC = () => {
 				</RightFlexContainer>
 
 			</FlexContainer>
+			
 
 		</MainContainerContact>
 	);
