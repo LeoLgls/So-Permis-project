@@ -3,14 +3,12 @@ import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
-import React from "react";
+import React, { useEffect } from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
 import CardEpress from "../../components/Card/cardExpress.tsx";
 import VoitureImg from '../../assets/img/c3.png'
 import imgBackgroundPermis from "../../assets/img/permis.png";
-
-
 
 
 interface Theme extends DefaultTheme {
@@ -219,9 +217,27 @@ const TxtPresentation = styled.p`
 
 
 
+
 function Permis() {
   
 
+  
+  useEffect(() => {
+    // Récupérez l'ancrage depuis l'URL et faites défiler vers la section correspondante
+    const hash = window.location.hash.substr(1);
+    if (hash) {
+      scrollToSection(hash);
+    }
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView();
+    }
+  };
+
+  
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
@@ -262,7 +278,7 @@ function Permis() {
       <Transition theme={'blanc'} orientation={"0deg"}/>
 
       <MainContainer theme={'blanc'}>
-        <SectionPermis id="Permis">
+        <SectionPermis id="permis">
             <TitreSection theme={'blanc'}>Permis B</TitreSection>
 
             <CardContainer className="card-container">
@@ -276,7 +292,7 @@ function Permis() {
 
 
       <MainContainer theme={'noir'}>
-        <SectionPermisExpress>
+        <SectionPermisExpress id="permisExpress">
             <TitreSection theme={'noir'}>Permis B Express, c'est quoi ?</TitreSection>
             <ContainerPermisExpress>
                 <CardContainerExpress>  

@@ -50,7 +50,7 @@ interface HeroSectionProps {
   transitionNoir: boolean
 }
 
-function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
+function HeroSectionAccueil({ img, forfaits, transitionNoir }: HeroSectionProps) {
   const [heroImgHeight, setHeroImgHeight] = useState<string>("100%");
 
   //Couleur de la transition
@@ -102,11 +102,11 @@ function HeroSection({ img, forfaits, transitionNoir }: HeroSectionProps) {
       </HeroImgDiv>
       <CardContainer className="card-container">
         {forfaits.map((forfait, index) => (
-          <CardHeroSection key={index} {...forfait} />))}
+          <Card key={index} {...forfait} />))}
       </CardContainer>
 
     </HeroSectionContainer>
   );
 }
 
-export default HeroSection;
+export default HeroSectionAccueil;
