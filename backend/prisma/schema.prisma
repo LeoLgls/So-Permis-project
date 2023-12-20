@@ -40,8 +40,10 @@ model Avis {
 
 model Categorie {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
   titre     String
   sousTitre String
+  titreBtn  String
   lien      String
 }
 

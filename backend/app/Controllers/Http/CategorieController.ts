@@ -5,7 +5,7 @@ export default class CategorieController {
 
     public async store ({request}: HttpContextContract) {
         const categorie = await prisma.categorie.create({
-            data: request.only(['titre','sousTitre', 'lien']),
+            data: request.only(['titre','type','sousTitre','titreBtn','lien']),
         })
 
         return categorie
@@ -15,6 +15,17 @@ export default class CategorieController {
         const categorie = await prisma.categorie.findUnique({
             where: {
                 id: params.id
+            }
+        })
+
+        return categorie
+    }
+
+    // cette fonction permet de récupérer les categories en fonction de leur type ("ACCUEIL", "PERMIS" ou "CODE")
+    public async showByType ({params}: HttpContextContract) {
+        const categorie = await prisma.categorie.findMany({
+            where: {
+                type: params.type
             }
         })
 
@@ -42,7 +53,7 @@ export default class CategorieController {
             where: {
                 id: params.id
             },
-            data: request.only(['titre','sousTitre', 'lien'])
+            data: request.only(['titre','type','sousTitre','titreBtn','lien'])
         })
 
         return categorie
