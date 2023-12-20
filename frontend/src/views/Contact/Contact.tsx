@@ -151,6 +151,7 @@ const InformationsContainer = styled.div`
 const PetitLogo = styled.img`
 	height: auto;
 	width: 100%;
+
 `
 
 const MapContainer = styled.div`
@@ -227,21 +228,22 @@ interface OpeningHour {
 
 	useEffect(() => {
 		const fetchData = async () => {
-		  try {
-			const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
-			const data = response.data;
-			
-			// Suppose that your API response has a structure like { openingHours: [...] }
-			setOpeningHours(data.openingHours);
-			setLoading(false);
-		  } catch (error) {
-			setLoading(false);
-		  }
+			try {
+				const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
+				const data = response.data;
+
+				// Suppose that your API response has a structure like { openingHours: [...] }
+				setOpeningHours(data.openingHours);
+				setLoading(false);
+			} catch (error) {
+				setLoading(false);
+			}
 		};
-	
+
 		fetchData();
+
 	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
-	
+
 
 	const [formData, setFormData] = useState({
 		firstName: '',
@@ -274,6 +276,8 @@ interface OpeningHour {
 			console.error('Erreur lors de la soumission du formulaire', error);
 		}
 	};
+
+
 
 
 	return (
@@ -339,13 +343,14 @@ interface OpeningHour {
 							</ul>
 							</div>
 						)}
-				
+
 
 					</InformationsContainer>
 
 					<InformationsContainer>
+
 						<h3>Nos réseaux</h3>
-						<p>Téléphone : 02 78 34 10 63</p>
+            <p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
 						<br />
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
@@ -360,7 +365,16 @@ interface OpeningHour {
 
 						</ReseauContainer>
 
+
 					</InformationsContainer>
+
+					<FormContainer  onSubmit={handleSubmit}> 
+						<h3>Inscrivez-vous à notre Newsletter</h3>
+						<FormControl>
+							<input type='text' placeholder='Entrez votre adresse mail' />
+							<input type="submit" hidden />
+						</FormControl>
+					</FormContainer>
 
 				</LeftFlexContainer>
 				<RightFlexContainer>
@@ -376,7 +390,10 @@ interface OpeningHour {
 						></iframe>
 					</MapContainer>
 				</RightFlexContainer>
+
 			</FlexContainer>
+			
+
 		</MainContainerContact>
 	);
 };
