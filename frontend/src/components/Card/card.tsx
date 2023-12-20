@@ -18,6 +18,11 @@ const CardContainer = styled.div`
     &:hover {
         opacity: 1; /* Opacité au survol pour la carte */
     }
+
+    
+    @media (max-width: 550px) {
+      min-height: 25rem;
+    }
 `
 
 const CardInfosContainer = styled.div`
@@ -38,6 +43,10 @@ const CardInfosTexts = styled.div`
     justify-content: center;
     align-items: center;
     width: 80%;
+
+    @media (max-width: 550px) {
+      width: 100%;
+    }
 `
 
 const CardTitre = styled.h1`
@@ -65,6 +74,10 @@ const CardButton = styled(Link)`
     text-decoration: none;
     transition: background-color 0.25s ease-out; /* Ajout de la transition pour la couleur de fond */   
 
+    @media (max-width: 550px) {
+      font-size: 24px;
+      padding: 5%;
+    }
     
     &:hover {
         background-color: ${colors.noirHover};

@@ -7,14 +7,18 @@ const CardContainer = styled.div`
     background-color: ${colors.vert};
     width: 50%;
     min-height: 20rem;
-    border-radius: 45px 45px 20px 20px;
     box-shadow: 10px 10px 4px ${colors.noirOmbre};
     position: relative;
     opacity: 0.9;
     transition: opacity 0.25s ease-out;
+    clip-path: polygon(5% 0%, 95% 0%, 100% 5%, 100% 80%, 95% 85%, 85% 85%, 85% 100%, 70% 85%, 5% 85%, 0% 80%, 0% 5%);
 
     @media (max-width: 1090px) {
-        width: 100%;
+        width: 70%;
+    }
+
+    @media (max-width: 550px) {
+      width: 90%;
     }
     
     &:hover {
@@ -28,9 +32,7 @@ const CardInfosContainer = styled.div`
     flex-direction: column;
     height: auto;
     min-height: 15rem;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 10%;
+    padding: 10%;
 `
 
 

@@ -18,9 +18,10 @@ const Tab = styled.div<TabProps>`
 
 const TabContent = styled.div`
     padding: 20px;
+    display: flex;
 `;
 
-interface Tab {
+export interface Tab {
   label: string;
   content: React.ReactNode;
 }

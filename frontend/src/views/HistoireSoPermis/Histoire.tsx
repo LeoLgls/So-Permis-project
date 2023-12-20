@@ -6,6 +6,7 @@ import {histoire1, histoire2, histoire3, histoire4, histoire5} from "../../servi
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
 
+
 const CardContainer = styled.div`
     display: flex;
     justify-content: center;

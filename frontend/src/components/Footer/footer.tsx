@@ -13,7 +13,7 @@ const HomeLogo = styled.img`
 
 const PetitLogo = styled.img`
   height: auto;
-  width: 14%;
+  width: 70%;
 `
 
 const FooterContainer = styled.footer`
@@ -69,11 +69,12 @@ const BoutonContainer = styled.div`
   padding-top: 10%;
 `
 
-const BoutonContact = styled.div`
+const BoutonContact = styled(Link)`
   background-color: ${colors.vert};
   border-radius: 45px;
   text-align: center;
   font-size: 20px;
+  text-decoration: none;
   color : ${colors.noir};
   font-weight: 700;
   width: 70%;
@@ -82,9 +83,16 @@ const BoutonContact = styled.div`
 
 const ReseauContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   align-items: center;
   background: #0f1411;
+
+  a{
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 0% 15%;
+  }
 `
 
 
@@ -193,12 +201,19 @@ function Footer() {
           <ContactContainer>
 
               <ReseauContainer>
-                  <PetitLogo src={Snap} />
-                  <PetitLogo src={Insta} />
+                  
+                  <Link to="https://t.snapchat.com/JWqJbzVO">
+                    <PetitLogo src={Snap} />
+                  </Link>
+
+                  <Link to="https://www.instagram.com/sopermis76/">
+                    <PetitLogo src={Insta} />
+                  </Link>
+
               </ReseauContainer>
 
               <BoutonContainer>
-                  <BoutonContact> Contactez-nous </BoutonContact>
+                  <BoutonContact to="/contact"> Contactez-nous </BoutonContact>
               </BoutonContainer>
 
           </ContactContainer>
@@ -227,9 +242,9 @@ function Footer() {
     <BottomPart>
 
       <MentionsLegalesLink to="/mentionsLegales"> Mentions Légales </MentionsLegalesLink>
-      <p>·</p>
+      <p>-</p>
       <MentionsLegalesLink to="cookies"> Cookies </MentionsLegalesLink>
-      <p>·</p>
+      <p>-</p>
       <MentionsLegalesLink to="rgpd"> RGPD </MentionsLegalesLink>
 
     </BottomPart>

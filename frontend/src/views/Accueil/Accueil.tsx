@@ -1,4 +1,5 @@
-import {forfaitList, backgroundImage, txtHistoire, imgList} from '../../services/service.tsx'
+import { Link } from 'react-router-dom';
+import {forfaitList, txtHistoire, imgList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
@@ -17,7 +18,7 @@ import sarool from '../../assets/img/sarool.png'
 import {TitreSection} from "../../utils/style/elements.tsx";
 import {MainContainer} from "../../utils/style/elements.tsx";
 import {CardBackground} from "../../utils/style/elements.tsx";
-
+import imgBackgroundAccueil from "../../assets/img/auto-ecole.jpg";
 
 
 
@@ -49,8 +50,17 @@ const GridItemImg = styled.img`
     padding: 5%;
 
     @media (max-width: 1090px) {
-        max-width: 35vw;
-        max-height: 50vh;
+      max-width: 20vw;
+      max-height: 20vh;
+      min-height: 10vh;
+      min-width: 45vw;
+    }
+
+    @media (max-width: 550px) {
+      max-width: 30vw;
+      max-height: 10vh;
+      min-height: 10vh;
+      min-width: 35vw;
     }
 `
 
@@ -77,6 +87,7 @@ const SectionAvis = styled.section`
     display: flex;
     padding-bottom: 5rem;
     flex-direction: column;
+    
 `
 
 const CardsContainer = styled.div`
@@ -88,6 +99,7 @@ const CardsContainer = styled.div`
     @media (max-width: 1090px) {
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
     }
 `
 
@@ -116,6 +128,10 @@ const TxtHistoire = styled.p`
     min-height: 20rem;
     padding: 1rem;
     font-size: ${fontSize.p}px;
+
+    @media (max-width: 550px) {
+      font-size: 16px;
+    }
 `
 
 const PresentationContainer = styled.div`
@@ -162,6 +178,10 @@ const ImgVoiture = styled.img`
     max-width: 20rem;
     height: auto;
     object-fit: cover;
+
+    @media (max-width: 550px) {
+      max-width: 15rem;
+    }
 `
 
 const CardVoitureContainer = styled.div`
@@ -179,14 +199,22 @@ const SectionSarool = styled.div`
 `
 
 const ImgStore = styled.img`
-    
     height: 4rem;
+
+    &:hover{
+      box-shadow: 5px 5px 10px ${colors.noirOmbre};
+      border-radius: 10px;
+    }
 `
 
 const ImgSarool = styled.img`
     object-fit: cover;
     max-width: 20rem;
     height: auto;
+
+    @media (max-width: 550px) {
+      max-width: 15rem;
+  }
 `
 
 const SaroolContainer = styled.div`
@@ -222,10 +250,14 @@ const Pstore = styled.p`
 
 const ImgContainer = styled.div`
     display: flex;
-    gap: 5px;
+    gap: 15px;
     width: 100%;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 1090px) {
+      flex-direction: column;
+    }
 `
 
 const VoitureContainer = styled.div`
@@ -241,7 +273,7 @@ function Accueil() {
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
-        <HeroSection img={backgroundImage} forfaits={forfaitList} transitionNoir={true}/>
+        <HeroSection img={imgBackgroundAccueil} forfaits={forfaitList} transitionNoir={true}/>
         <SectionInscription>
           <TitreSection theme={'noir'}>Comment s'inscrire chez So'Permis ?</TitreSection>
           <Grid3>
@@ -324,8 +356,16 @@ function Accueil() {
             <StoreContainer>
               <Pstore>Visualise tes informations personnelles et gères tes disponibilités avec l'application SAROOL ! </Pstore>
               <ImgContainer>
-                <ImgStore src={appStore} alt={"Disponible sur l'App Store"}/>
-                <ImgStore src={playStore} alt={"Disponible sur le Play Store"} />
+
+                <Link to="https://apps.apple.com/fr/app/sarool/id1438123977">
+                    <ImgStore src={appStore} />
+                </Link>
+
+                <Link to="https://play.google.com/store/apps/details?id=fr.agx.sarool&hl=fr&gl=US&pli=1">
+                    <ImgStore src={playStore} />
+                </Link>
+
+
               </ImgContainer>
             </StoreContainer>
           </SaroolContainer>
