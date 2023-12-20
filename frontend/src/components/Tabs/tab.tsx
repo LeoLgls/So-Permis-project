@@ -1,15 +1,5 @@
-// Tabs.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
-interface Tab {
-  label: string;
-  content: React.ReactNode;
-}
-
-interface TabsProps {
-  tabs: Tab[];
-}
 
 interface TabProps {
   isActive: boolean;
@@ -21,17 +11,26 @@ const TabsContainer = styled.div`
 `;
 
 const Tab = styled.div<TabProps>`
-  padding: 10px 15px;
-  cursor: pointer;
-  border-bottom: ${(props) => (props.isActive ? '2px solid #000' : 'none')};
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: ${(props) => (props.isActive ? '2px solid #000' : 'none')};
 `;
 
 const TabContent = styled.div`
-  padding: 20px;
+    padding: 20px;
 `;
 
-const Tabs: React.FC<TabsProps> = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
+interface Tab {
+  label: string;
+  content: React.ReactNode;
+}
+
+interface TabsProps {
+  tabs: Tab[];
+}
+
+function Tabs ({ tabs }: TabsProps) {
+  const [activeTab, setActiveTab] = useState<number>(0);
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
@@ -53,6 +52,6 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
       <TabContent>{tabs[activeTab].content}</TabContent>
     </div>
   );
-};
+}
 
 export default Tabs;

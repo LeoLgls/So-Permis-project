@@ -1,53 +1,14 @@
-import styled from 'styled-components';
-
-const PageContainer = styled.div`
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 150px 20px 20px;
-    font-family: 'Arial', sans-serif;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-`;
-
-const TableCaption = styled.caption`
-  font-size: 1.2em;
-  margin-bottom: 10px;
-`;
-
-const Thead = styled.thead`
-  background-color: #f2f2f2;
-`;
-
-const Th = styled.th`
-  padding: 10px;
-  text-align: left;
-`;
-
-const Tbody = styled.tbody``;
-
-const Tr = styled.tr`
-  &:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-`;
-
-const Td = styled.td`
-  padding: 10px;
-`;
-
-const Button = styled.button`
-  background-color: #008080;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  margin-right: 5px;
-  cursor: pointer;
-`;
+import {
+  Button,
+  PageContainer,
+  Table,
+  TableCaption,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr
+} from "../../utils/style/elementsAdmin.tsx";
 
 
 function InterfaceAdminArticle() {
@@ -96,6 +57,6 @@ function InterfaceAdminArticle() {
 
     </PageContainer>
   );
-};
+}
 
 export default InterfaceAdminArticle;
