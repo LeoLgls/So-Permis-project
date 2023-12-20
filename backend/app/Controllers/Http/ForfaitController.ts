@@ -21,6 +21,17 @@ export default class ForfaitController {
         return forfait
     }
 
+    // cette fonction permet de récupérer les forfaits en fonction de leur type ("PERMIS B", "PERMIS B EXPRESS", "CONDUITE" ou "CODE")
+    public async showByType ({params}: HttpContextContract) {
+        const forfait = await prisma.forfait.findMany({
+            where: {
+                type: params.type
+            }
+        })
+
+        return forfait
+    }
+
     public async index () {
         const forfaits = await prisma.forfait.findMany()
 
