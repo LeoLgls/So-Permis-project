@@ -42,3 +42,19 @@ export interface PageForfait {
   tarif: string;
   indexForfait: number;
 }
+
+export type DataArticle = {
+  permisB: ForfaitItem[];
+  permisBExpress: ForfaitItem[];
+  conduiteAccompagnee: ForfaitItem[];
+  codeDeLaRoute: ForfaitItem[];
+}
+
+
+
+export interface ForfaitItem {
+  id: number;
+  nom: string;
+  prix: number;
+  description: string;
+}
