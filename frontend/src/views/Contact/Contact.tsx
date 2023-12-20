@@ -328,17 +328,17 @@ interface OpeningHour {
 
 						<h3>Horaire d'ouverture</h3>
 						{loading && <p>Chargement en cours...</p>}
-      {error && <p>Erreur : {error}</p>}
-      {openingHours.length > 0 && (
-        <div>
-          <h2>Horaires d'ouverture :</h2>
-          <ul>
-            {openingHours.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+						{error && <p>Erreur : {error}</p>}
+						{openingHours.length > 0 && (
+							<div>
+							<h2>Horaires d'ouverture :</h2>
+							<ul>
+								{openingHours.map((item, index) => (
+								<li key={index}>{item}</li>
+								))}
+							</ul>
+							</div>
+						)}
 				
 
 					</InformationsContainer>
@@ -350,7 +350,7 @@ interface OpeningHour {
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
 							
-							<Link to="https://oui.com">
+							<Link to="https://www.snapchat.com/add/leo_lgls?share_id=bVi3vXZ17uA&locale=fr-FR">
 								<PetitLogo src={SnapBlack} />
 							</Link>
 
