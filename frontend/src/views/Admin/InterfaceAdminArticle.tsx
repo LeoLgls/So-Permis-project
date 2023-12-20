@@ -47,8 +47,8 @@ function InterfaceAdminArticle() {
               <Td>{article.source}</Td>
               <Td>{article.date}</Td>
               <Td>
-                <Button>Modif</Button>
-                <Button>Suppr</Button>
+                <Button to={'/admin'}>Modif</Button>
+                <Button to={'/admin'}>Suppr</Button>
               </Td>
             </Tr>
           ))}

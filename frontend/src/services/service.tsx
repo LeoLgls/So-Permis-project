@@ -32,7 +32,7 @@ export const articleList: Article[] = [
 export const forfaitList: Forfait[] = [
   {
     titre: "PERMIS DE CONDUIRE",
-    sousTitre:"",
+    sousTitre:"BABAJI",
     titreBtn: "Nos forfaits permis de conduire",
     lien: '/permis'
   },
@@ -49,6 +49,10 @@ export const forfaitList: Forfait[] = [
     lien: '/code'
   }
 ]
+
+export function getForfait(index: number): Forfait {
+  return forfaitList[index]
+}
 
 export const avisList: Avis[] = [
   {
