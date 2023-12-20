@@ -20,6 +20,7 @@ import Histoire from './views/HistoireSoPermis/Histoire.tsx'
 import Cookies from "./views/Cookies/Cookies.tsx";
 import RGPD from "./views/RGPD/RGPD.tsx";
 import MentionLegales from "./views/MentionLegales/MentionLegales.tsx";
+import AdminHeader from "./components/Header/adminHeader.tsx";
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -27,7 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Router>
       <ScrollToTop/>
       <GlobalStyle/>
-      <Header />
+      {window.location.pathname.startsWith('/admin') ? (
+        <AdminHeader />
+      ) : (
+        <Header />
+      )}
       <Routes>
         <Route path="/"           element={<Accueil/>}></Route>
         <Route path="/permis"     element={<Permis/>}></Route>
@@ -52,7 +57,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
         <Route path="*" element={<Error/>}></Route>
       </Routes>
-      <Footer />
+
+      {window.location.pathname.startsWith('/admin') ? (
+        ""
+      ) : (
+        <Footer />
+      )}
+
 
     </Router>
   </React.StrictMode>,

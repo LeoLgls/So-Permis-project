@@ -52,7 +52,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Connection = () => {
+function Connection() {
   const [formState, setFormState] = useState({
     identifier: '',
     password: '',
