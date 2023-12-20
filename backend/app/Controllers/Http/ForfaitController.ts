@@ -5,7 +5,7 @@ export default class ForfaitController {
 
     public async store ({request}: HttpContextContract) {
         const forfait = await prisma.forfait.create({
-            data: request.only(['titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation']),
+            data: request.only(['type','titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation']),
         })
 
         return forfait
@@ -42,7 +42,7 @@ export default class ForfaitController {
             where: {
                 id: params.id
             },
-            data: request.only(['titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation'])
+            data: request.only(['type','titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation'])
         })
 
         return forfait
