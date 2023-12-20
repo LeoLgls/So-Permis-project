@@ -1,6 +1,5 @@
 import React from "react"
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
-import ImgTest from "../../assets/img/route.png"
 import {codeForfaitList, codeList, listAnnulationCode} from "../../services/service.tsx";
 import {CardBackground, MainContainer, TitreSection} from "../../utils/style/elements.tsx";
 import styled from "styled-components";
@@ -9,6 +8,8 @@ import Card from "../../components/Card/card.tsx";
 import {Transition} from "../../utils/style/transition.tsx";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
+import imgBackgroundCodeRoute from "../../assets/img/code-de-la-route.jpeg";
+
 
 const CodeSections = styled.section`
 
@@ -67,7 +68,7 @@ const PlanningContainer = styled.div`
 function CodeRoute() {
   return (
     <React.StrictMode>
-      <HeroSection img={ImgTest} forfaits={codeList} transitionNoir={true}/>
+      <HeroSection img={imgBackgroundCodeRoute} forfaits={codeList} transitionNoir={true}/>
       <MainContainer theme={'noir'}>
         <CodeSections>
           <TitreSection theme={'noir'}>Forfait Code</TitreSection>

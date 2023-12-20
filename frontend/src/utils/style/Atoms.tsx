@@ -31,7 +31,7 @@ export const MentionsLegalesLink = styled(Link)`
   text-decoration: none;
   font-size: 14px;
   align-self: start;
-  padding-bottom: 5%; 
+  padding-bottom: 10px;
   opacity: 0.4;
 
   @media (max-width: 1090px) {

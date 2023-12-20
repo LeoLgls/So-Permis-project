@@ -16,6 +16,9 @@ const HeroSectionContainer = styled.div`
     object-fit: cover;
     padding-top: 100px;
 
+    @media (max-width: 1299px) {
+      padding-top: 0px;
+    }
 `;
 
 const HeroImg = styled.img`
@@ -32,6 +35,11 @@ const CardContainer = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     width: 80vw;
     gap: 40px;
+
+    
+    @media (max-width: 550px) {
+      width: unset;
+    }
 
 `;
 

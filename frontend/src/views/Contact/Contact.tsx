@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect, ChangeEvent } from 'react';
+
 import axios from 'axios';
 import styled from 'styled-components';
 import SnapBlack from '../../assets/img/Snap-black.png';
@@ -25,19 +27,32 @@ const TitleContact = styled.h2`
 
 const FlexContainer = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  padding-bottom: 5vw;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const LeftFlexContainer = styled.div`
   flex: 1;
-  padding: 0 10px;
 `
 
 const RightFlexContainer = styled.div`
   flex: 1;
-  padding: 0 10px;
+  display: flex;
 `
 
+const ReseauContainer = styled.div`
+  display: flex;
+  align-items: center;
+  background: ${colors.backgroundBlanc};
+
+  a{
+    width: 10%;
+	margin-right: 5%;
+  }
+`
 
 
 const FormContainer = styled.form`
@@ -114,8 +129,11 @@ const SubmitButton = styled.span`
 
 
   @media screen and (max-width: 800px) {
-	padding-right: 2%;
-	padding-left: 4%;
+	padding-right: 0;
+    padding-top: 15%;
+    justify-content: end;
+    display: flex;
+    padding-left: 0;
   
 	input{
 	  padding: 2%;
@@ -123,27 +141,26 @@ const SubmitButton = styled.span`
 	  width: 25%;
 	}
   }
-
-
-
-`;
+`
 
 
 const InformationsContainer = styled.div`
-
+  padding-bottom: 5vw;
 `
 
 const PetitLogo = styled.img`
-  height: auto;
-  width: 14%;
+	height: auto;
+	width: 100%;
 `
 
 const MapContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+
   iframe {
     width: 100%;
-    height: 300px;
-    border: 0;
-    border-radius: 4px;
+	border-radius: 4px;
   }
 `
 
@@ -195,15 +212,14 @@ export const ListHoraire = [
 
 ]
 
+
+function ContactPage()  {
+
 interface OpeningHour {
 	day: string;
 	openHour: string;
 	closeHour: string;
 }
-
-
-
-const ContactPage: React.FC = () => {
 
 	const [openingHours, setOpeningHours] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -226,6 +242,7 @@ const ContactPage: React.FC = () => {
 		fetchData();
 	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
 	
+
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -304,33 +321,45 @@ const ContactPage: React.FC = () => {
 				<LeftFlexContainer>
 					<InformationsContainer>
 						<h3>Adresse</h3>
-						<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+						<p>20 Rue Jean Lurçat, 76610 Le Havre</p>
 					</InformationsContainer>
 
 					<InformationsContainer>
+
 						<h3>Horaire d'ouverture</h3>
 						{loading && <p>Chargement en cours...</p>}
-      {error && <p>Erreur : {error}</p>}
-      {openingHours.length > 0 && (
-        <div>
-          <h2>Horaires d'ouverture :</h2>
-          <ul>
-            {openingHours.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+						{error && <p>Erreur : {error}</p>}
+						{openingHours.length > 0 && (
+							<div>
+							<h2>Horaires d'ouverture :</h2>
+							<ul>
+								{openingHours.map((item, index) => (
+								<li key={index}>{item}</li>
+								))}
+							</ul>
+							</div>
+						)}
 				
 
 					</InformationsContainer>
 
 					<InformationsContainer>
-						<h3>Nos reseau</h3>
+						<h3>Nos réseaux</h3>
 						<p>Téléphone : 02 78 34 10 63</p>
-						<span>Reseau sociaux</span>
-						<PetitLogo src={SnapBlack} />
-						<PetitLogo src={InstaBlack} />
+						<br />
+						<p>Reseaux sociaux</p>
+						<ReseauContainer>
+							
+							<Link to="https://www.snapchat.com/add/leo_lgls?share_id=bVi3vXZ17uA&locale=fr-FR">
+								<PetitLogo src={SnapBlack} />
+							</Link>
+
+							<Link to="https://www.instagram.com/sopermis76/">
+								<PetitLogo src={InstaBlack} />
+							</Link>
+
+						</ReseauContainer>
+
 					</InformationsContainer>
 
 				</LeftFlexContainer>
