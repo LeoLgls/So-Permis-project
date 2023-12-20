@@ -41,3 +41,8 @@ Route.get('/images', 'ImageController.index')
 Route.get('/newsletter', 'NewsletterController.index')
 
 Route.get('/  n nvoitures', 'VoitureController.index')
+
+// les routes de willy sinon bb cadum
+
+Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
+Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');
