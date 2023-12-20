@@ -12,6 +12,7 @@ export const StyledLink = styled(Link)`
   font-weight : 800;
 `
 
+
 export const FooterStyledLink = styled(Link)`
   color: white;
   text-decoration: none;
@@ -25,3 +26,15 @@ export const FooterStyledLink = styled(Link)`
   }
 `
 
+export const MentionsLegalesLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  align-self: start;
+  padding-bottom: 5%; 
+  opacity: 0.4;
+
+  @media (max-width: 1090px) {
+    font-size : 12px;
+  }
+`

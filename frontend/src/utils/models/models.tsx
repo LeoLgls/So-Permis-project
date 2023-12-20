@@ -33,3 +33,12 @@ export interface  Article {
   contenu: string;
   source: string;
 }
+
+export interface PageForfait {
+  duree: string;
+  theorique: string;
+  pratique: string;
+  horaire: string;
+  tarif: string;
+  indexForfait: number;
+}

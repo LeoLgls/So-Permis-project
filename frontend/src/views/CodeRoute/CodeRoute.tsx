@@ -53,6 +53,15 @@ const CardContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5rem;
+
+`
+
+const PlanningContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 function CodeRoute() {
@@ -70,7 +79,9 @@ function CodeRoute() {
         </CodeSections>
         <HoraireSection>
           <TitreSection theme={'noir'}>Horaire code en salle</TitreSection>
-          <Planning/>
+          <PlanningContainer>
+            <Planning/>
+          </PlanningContainer>
         </HoraireSection>
       </MainContainer>
       <Transition orientation={'0deg'} theme={'blanc'}/>

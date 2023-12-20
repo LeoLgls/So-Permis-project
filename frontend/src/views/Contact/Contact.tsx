@@ -1,65 +1,142 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { faInstagram, faSnapchat } from '@fortawesome/free-brands-svg-icons';
+import SnapBlack from '../../assets/img/Snap-black.png';
+import InstaBlack from '../../assets/img/Insta-black.png';
+import colors from '../../utils/style/colors'
+import fonts from '../../utils/style/font-size'
 
-const PageContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-`;
 
-const SectionHeading = styled.h2`
-  font-size: 24px;
+const MainContainerContact = styled.main`
+	padding-left: 15vw;
+	padding-right: 15vw;
+	padding-top: 180px;
+	background-color: ${colors.backgroundBlanc};
+
+	@media (max-width: 1090px) {
+		padding-left: 5vw;
+		padding-right: 5vw;
+	}
+`
+const TitleContact = styled.h2`
+  font-size: ${fonts.titre}px;
   margin-bottom: 20px;
-`;
-
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
+`
 
 const FlexContainer = styled.div`
   display: flex;
   margin-bottom: 20px;
-`;
+`
 
 const LeftFlexContainer = styled.div`
   flex: 1;
   padding: 0 10px;
-`;
+`
 
 const RightFlexContainer = styled.div`
   flex: 1;
   padding: 0 10px;
-`;
+`
 
-const FormControl = styled.label`
-  display: block;
-  margin-bottom: 10px;
 
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+
+const FormContainer = styled.form`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
   }
+`
+
+const FormControl = styled.div`
+  padding: 2% 0%;
+  width: 45%;
+
+  &:last-of-type{
+	width: 100%;
+	height: 200px;
+  }
+
+  label{
+	font-size: ${fonts.p}px;
+  }
+
+  input{
+	margin-top: 3%;
+
+	font-size: 16px;
+    width: 100%;
+    color: ${colors.noir};
+
+    background: 0 0;
+    border: none;
+    outline: none;
+
+    border-bottom: solid 1px ${colors.noir};
+  }
+
+  textarea {
+    font-size: 16px;
+    width: 99.5%;
+	height: 100%;
+	margin-top: 3%;
+  }
+
+  @media screen and (max-width: 800px) {
+	padding: 4%;
+	width: 90% !important;
+  }
+`
+
+const SubmitButton = styled.span`
+  width: 100%;
+  padding-right: 2%;
+  padding-left: 80%;
+  padding-bottom: 10%;
+  padding-top: 10%;
+
+  input{
+	border: solid 2px white;
+	outline: none;
+	cursor: pointer;
+	padding: 10%;
+	font-size: 25px;
+	background: ${colors.vert};
+	font-weight: 800;
+	border-radius: 45px;
+	transition: all ease 0.5s;
+	width: 100%;
+  }
+
+
+  @media screen and (max-width: 800px) {
+	padding-right: 2%;
+	padding-left: 4%;
+  
+	input{
+	  padding: 2%;
+	  font-size: 4vw;
+	  width: 25%;
+	}
+  }
+
+
+
 `;
 
-const SubmitButton = styled.button`
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-`;
+
+const InformationsContainer = styled.div`
+
+`
+
+const PetitLogo = styled.img`
+  height: auto;
+  width: 14%;
+`
 
 const MapContainer = styled.div`
   iframe {
@@ -68,9 +145,11 @@ const MapContainer = styled.div`
     border: 0;
     border-radius: 4px;
   }
-`;
+`
 
-const ListHoraire = [
+
+
+export const ListHoraire = [
 	{
 		day: "Lundi",
 		openHour: "8h00",
@@ -116,7 +195,37 @@ const ListHoraire = [
 
 ]
 
+interface OpeningHour {
+	day: string;
+	openHour: string;
+	closeHour: string;
+}
+
+
+
 const ContactPage: React.FC = () => {
+
+	const [openingHours, setOpeningHours] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		const fetchData = async () => {
+		  try {
+			const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
+			const data = response.data;
+			
+			// Suppose that your API response has a structure like { openingHours: [...] }
+			setOpeningHours(data.openingHours);
+			setLoading(false);
+		  } catch (error) {
+			setLoading(false);
+		  }
+		};
+	
+		fetchData();
+	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
+	
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -137,11 +246,11 @@ const ContactPage: React.FC = () => {
 	const handleSubmit = async (e: { preventDefault: () => void; }) => {
 		e.preventDefault();
 		console.log('Form Data:', formData);
-	
+
 		try {
 			// Envoyer les données au backend
 			const response = await axios.post(`http://localhost:3333/api/contact/sendEmail`, formData);
-	
+
 			alert(response.data)
 		} catch (error) {
 			// Gérer les erreurs
@@ -151,62 +260,79 @@ const ContactPage: React.FC = () => {
 
 
 	return (
-		<PageContainer>
-			<SectionHeading>Contact</SectionHeading>
+		<MainContainerContact>
+			<TitleContact>Contact</TitleContact>
 			<FormContainer onSubmit={handleSubmit}>
-				<FlexContainer>
-					<LeftFlexContainer>
-						<FormControl>
-							Prénom:
-							<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required/>
-						</FormControl>
-						<FormControl>
-							Mail:
-							<input type="text" name="email" value={formData.email} onChange={handleChange} required />
-						</FormControl>
-						<FormControl>
-							Objet:
-							<input type="text" name="object" value={formData.object} onChange={handleChange} required/>
-						</FormControl>
-					</LeftFlexContainer>
-					<RightFlexContainer>
-						<FormControl>
-							Nom:
-							<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
-						</FormControl>
-						<FormControl>
-							Téléphone:
-							<input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
-						</FormControl>
-					</RightFlexContainer>
-				</FlexContainer>
 				<FormControl>
-					Message:
-					<textarea name="message" value={formData.message} onChange={handleChange} required/>
+					<label htmlFor="prenom">Prénom :</label>
+					<input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required />
 				</FormControl>
-				<SubmitButton type="submit">Envoyer</SubmitButton>
+
+				<FormControl>
+					<label htmlFor="nom">Nom :</label>
+					<input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="mail">Mail :</label>
+					<input type="text" name="email" value={formData.email} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="telephone">Téléphone :</label>
+					<input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+				</FormControl>
+
+				<FormControl>
+					<label htmlFor="objet">Objet :</label>
+					<input type="text" name="object" value={formData.object} onChange={handleChange} required />
+				</FormControl>
+
+
+				<FormControl>
+					<label htmlFor="message">Message:</label>
+					<textarea name="message" value={formData.message} onChange={handleChange} required />
+				</FormControl>
+
+				<SubmitButton>
+					<input type="submit" name="submit" value="Valider" />
+				</SubmitButton>
 
 			</FormContainer>
-	
+
 			<FlexContainer>
 				<LeftFlexContainer>
-					<h3>Adresse</h3>
-					<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+					<InformationsContainer>
+						<h3>Adresse</h3>
+						<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+					</InformationsContainer>
 
-					<h3>Horaire d'ouverture</h3>
-					<ul>
-						{ListHoraire.map((horaire, index) => (
-							<li key={index}>
-								{horaire.day}: {horaire.isOpen ? `${horaire.openHour} - ${horaire.closeHour}` : 'Fermé'}
-							</li>
-						))}
-					</ul>
+					<InformationsContainer>
+						<h3>Horaire d'ouverture</h3>
+						{loading && <p>Chargement en cours...</p>}
+      {error && <p>Erreur : {error}</p>}
+      {openingHours.length > 0 && (
+        <div>
+          <h2>Horaires d'ouverture :</h2>
+          <ul>
+            {openingHours.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+				
 
-					<h3>Nos reseau</h3>
-					<p>Téléphone : 02 78 34 10 63</p>
-					<span>Reseau sociaux</span>
-					<FontAwesomeIcon icon={faInstagram} size='3x' />
-					<FontAwesomeIcon icon={faSnapchat} size='3x'/>
+					</InformationsContainer>
+
+					<InformationsContainer>
+						<h3>Nos reseau</h3>
+						<p>Téléphone : 02 78 34 10 63</p>
+						<span>Reseau sociaux</span>
+						<PetitLogo src={SnapBlack} />
+						<PetitLogo src={InstaBlack} />
+					</InformationsContainer>
+
 				</LeftFlexContainer>
 				<RightFlexContainer>
 					<MapContainer>
@@ -222,7 +348,7 @@ const ContactPage: React.FC = () => {
 					</MapContainer>
 				</RightFlexContainer>
 			</FlexContainer>
-		</PageContainer>
+		</MainContainerContact>
 	);
 };
 

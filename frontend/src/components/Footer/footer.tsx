@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import Snap from '../../assets/img/Snapchat.png';
 import Insta from '../../assets/img/Instagram.png';
-import { FooterStyledLink } from '../../utils/style/Atoms';
+import { FooterStyledLink, MentionsLegalesLink } from '../../utils/style/Atoms';
 import styled from 'styled-components';
 import colors from '../../utils/style/colors'
 
@@ -157,6 +156,18 @@ const UnderlineText = styled.p`
   }
 `
 
+const BottomPart = styled.div`
+  background-color: ${colors.backgroundNoir};
+  display: flex;
+  justify-content: center;
+
+  p{
+    color: ${colors.blanc};
+    padding: 0 1%;
+  }
+
+`
+
 
 const linkScroll =() => {
   window.scrollTo({
@@ -168,10 +179,10 @@ const linkScroll =() => {
 
 function Footer() {
   
-  return (
-
+  return ( <>
     <FooterContainer>
 
+      
       <LeftPart>
           <LogoContainer>
             <Link to="/">
@@ -196,7 +207,7 @@ function Footer() {
       <RightPart>
           <InformationContainer>
               <UnderlineText>Informations</UnderlineText>
-              <FooterStyledLink to="/">&gt; Acceuil</FooterStyledLink>
+              <FooterStyledLink to="/">&gt; Accueil</FooterStyledLink>
               <FooterStyledLink to="/histoire">&gt; Qui sommes nous ?</FooterStyledLink>
               <FooterStyledLink to="/permis">&gt; Permis</FooterStyledLink>
               <FooterStyledLink to="/code">&gt; Code</FooterStyledLink>
@@ -211,6 +222,20 @@ function Footer() {
       </RightPart>
 
     </FooterContainer>
+
+
+    <BottomPart>
+
+      <MentionsLegalesLink to="/mentionsLegales"> Mentions Légales </MentionsLegalesLink>
+      <p>·</p>
+      <MentionsLegalesLink to="cookies"> Cookies </MentionsLegalesLink>
+      <p>·</p>
+      <MentionsLegalesLink to="rgpd"> RGPD </MentionsLegalesLink>
+
+    </BottomPart>
+
+
+    </>
 
   );
 }

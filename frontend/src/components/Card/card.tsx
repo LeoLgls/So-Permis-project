@@ -28,8 +28,7 @@ const CardInfosContainer = styled.div`
     align-items: center;
     height: auto;
     min-height: 15rem;
-    padding-bottom: 10rem;
-    padding-top: 10%;
+    padding: 10% 1rem 10rem;
 `
 
 const CardInfosTexts = styled.div`
