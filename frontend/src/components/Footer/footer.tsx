@@ -69,11 +69,12 @@ const BoutonContainer = styled.div`
   padding-top: 10%;
 `
 
-const BoutonContact = styled.div`
+const BoutonContact = styled(Link)`
   background-color: ${colors.vert};
   border-radius: 45px;
   text-align: center;
   font-size: 20px;
+  text-decoration: none;
   color : ${colors.noir};
   font-weight: 700;
   width: 70%;
@@ -90,7 +91,7 @@ const ReseauContainer = styled.div`
     height: auto;
     display: flex;
     justify-content: center;
-    padding: 0% 15%;
+    margin: 0% 15%;
   }
 `
 
@@ -201,7 +202,7 @@ function Footer() {
 
               <ReseauContainer>
                   
-                  <Link to="pornhub.com">
+                  <Link to="https://oui.com">
                     <PetitLogo src={Snap} />
                   </Link>
 
@@ -212,7 +213,7 @@ function Footer() {
               </ReseauContainer>
 
               <BoutonContainer>
-                  <BoutonContact> Contactez-nous </BoutonContact>
+                  <BoutonContact to="/contact"> Contactez-nous </BoutonContact>
               </BoutonContainer>
 
           </ContactContainer>

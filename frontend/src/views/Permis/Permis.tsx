@@ -7,7 +7,7 @@ import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
 import CardEpress from "../../components/Card/cardExpress.tsx";
-import VoitureImg from '../../assets/img/voiture-golf.png'
+import VoitureImg from '../../assets/img/c3.png'
 
 
 

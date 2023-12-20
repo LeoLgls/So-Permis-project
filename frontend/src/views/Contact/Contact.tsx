@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import SnapBlack from '../../assets/img/Snap-black.png';
@@ -25,19 +26,32 @@ const TitleContact = styled.h2`
 
 const FlexContainer = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  padding-bottom: 5vw;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
 const LeftFlexContainer = styled.div`
   flex: 1;
-  padding: 0 10px;
 `
 
 const RightFlexContainer = styled.div`
   flex: 1;
-  padding: 0 10px;
+  display: flex;
 `
 
+const ReseauContainer = styled.div`
+  display: flex;
+  align-items: center;
+  background: ${colors.backgroundBlanc};
+
+  a{
+    width: 10%;
+	margin-right: 5%;
+  }
+`
 
 
 const FormContainer = styled.form`
@@ -114,8 +128,11 @@ const SubmitButton = styled.span`
 
 
   @media screen and (max-width: 800px) {
-	padding-right: 2%;
-	padding-left: 4%;
+	padding-right: 0;
+    padding-top: 15%;
+    justify-content: end;
+    display: flex;
+    padding-left: 0;
   
 	input{
 	  padding: 2%;
@@ -123,27 +140,26 @@ const SubmitButton = styled.span`
 	  width: 25%;
 	}
   }
-
-
-
-`;
+`
 
 
 const InformationsContainer = styled.div`
-
+  padding-bottom: 5vw;
 `
 
 const PetitLogo = styled.img`
-  height: auto;
-  width: 14%;
+	height: auto;
+	width: 100%;
 `
 
 const MapContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+
   iframe {
     width: 100%;
-    height: 300px;
-    border: 0;
-    border-radius: 4px;
+	border-radius: 4px;
   }
 `
 
@@ -195,7 +211,7 @@ export const ListHoraire = [
 
 ]
 
-const ContactPage: React.FC = () => {
+function ContactPage()  {
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -274,11 +290,11 @@ const ContactPage: React.FC = () => {
 				<LeftFlexContainer>
 					<InformationsContainer>
 						<h3>Adresse</h3>
-						<span>20 Rue Jean Lurçat, 76610 Le Havre</span>
+						<p>20 Rue Jean Lurçat, 76610 Le Havre</p>
 					</InformationsContainer>
 
 					<InformationsContainer>
-						<h3>Horaire d'ouverture</h3>
+						<h3>Horaires d'ouverture</h3>
 						<ul>
 							{ListHoraire.map((horaire, index) => (
 								<li key={index}>
@@ -289,11 +305,22 @@ const ContactPage: React.FC = () => {
 					</InformationsContainer>
 
 					<InformationsContainer>
-						<h3>Nos reseau</h3>
+						<h3>Nos réseaux</h3>
 						<p>Téléphone : 02 78 34 10 63</p>
-						<span>Reseau sociaux</span>
-						<PetitLogo src={SnapBlack} />
-						<PetitLogo src={InstaBlack} />
+						<br />
+						<p>Reseaux sociaux</p>
+						<ReseauContainer>
+							
+							<Link to="https://oui.com">
+								<PetitLogo src={SnapBlack} />
+							</Link>
+
+							<Link to="https://www.instagram.com/sopermis76/">
+								<PetitLogo src={InstaBlack} />
+							</Link>
+
+						</ReseauContainer>
+
 					</InformationsContainer>
 
 				</LeftFlexContainer>
