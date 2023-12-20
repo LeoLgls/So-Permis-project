@@ -47,4 +47,16 @@ export default class ArticleController {
 
         return article
     }
+
+    // montre les 3 derniers articles
+    public async last () {
+        const articles = await prisma.article.findMany({
+            take: 3,
+            orderBy: {
+                date: 'desc'
+            }
+        })
+
+        return articles
+    }
 }
