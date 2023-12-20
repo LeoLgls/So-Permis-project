@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const PageContainer = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  padding-top: 150px
-  font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 150px 20px 20px;
+    font-family: 'Arial', sans-serif;
 `;
 
 const TableContainer = styled.div`
@@ -81,7 +80,7 @@ const dataMail = [
   'temp.test.email9@example.com',
 ];
 
-const NewsLetter: React.FC = () => {
+function NewsLetter() {
   const [value, setValue] = useState<string>('1');
 
   return (

@@ -1,14 +1,12 @@
 // InterfaceAdminPage.tsx
-import React from 'react';
 import styled from 'styled-components';
 import Tabs from '../../components/Tabs/tab'; // Assure-toi que le chemin est correct
 
 const PageContainer = styled.div`
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  padding-top: 150px;
-  font-family: 'Arial', sans-serif;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 150px 20px 20px;
+	font-family: 'Arial', sans-serif;
 `;
 
 const Button = styled.button`
@@ -54,23 +52,22 @@ const Td = styled.td`
   padding: 10px;
 `;
 
-const InterfaceAdminPage = () => {
-  const dataPermisB = [
-    {
-      id: 0,
-      nom: 'Forfait B',
-      prix: 890,
-      description: '20 leçon de conduite (sans code)',
-    },
-    {
-      id: 1,
-      nom: 'Forfait B Complet',
-      prix: 990,
-      description: 'Code + 20 leçons de conduite',
-    },
-  ];
+const dataPermisB = [
+	{
+		id: 0,
+		nom: 'Forfait B',
+		prix: 890,
+		description: '20 leçon de conduite (sans code)',
+	},
+	{
+		id: 1,
+		nom: 'Forfait B Complet',
+		prix: 990,
+		description: 'Code + 20 leçons de conduite',
+	},
+];
 
-  const dataPermisBExpress = [
+const dataPermisBExpress = [
 	{
 		id: 0,
 		nom: "Forfait B",
@@ -118,13 +115,16 @@ const dataCodeDeLaRoute = [
 	}
 ]
 
+function InterfaceAdminPage() {
+
+
   const tabs = [
     {
       label: 'Forfait Permis B',
       content: (
         <TableContainer>
           <Button>Ajouter</Button>
-		  <Table>
+					<Table>
             <TableCaption>Forfait Permis B</TableCaption>
             <Thead>
               <Tr>
@@ -157,30 +157,30 @@ const dataCodeDeLaRoute = [
 			<TableContainer>
 				<Button>Ajouter</Button>
 			<Table>
-			  <TableCaption>Forfait Permis B espress</TableCaption>
-			  <Thead>
+				<TableCaption>Forfait Permis B espress</TableCaption>
+				<Thead>
 				<Tr>
-				  <Th>Nom</Th>
-				  <Th>Prix</Th>
-				  <Th>Description</Th>
-				  <Th>Actions</Th>
+					<Th>Nom</Th>
+					<Th>Prix</Th>
+					<Th>Description</Th>
+					<Th>Actions</Th>
 				</Tr>
-			  </Thead>
-			  <tbody>
+				</Thead>
+				<tbody>
 				{dataPermisBExpress.map((permisBExpress, index) => (
-				  <Tr key={index}>
+					<Tr key={index}>
 					<Td>{permisBExpress.nom}</Td>
 					<Td>{permisBExpress.prix}</Td>
 					<Td>{permisBExpress.description}</Td>
 					<Td>
-					  <Button onClick={() => console.log('Modif')}>Modif</Button>
-					  <Button onClick={() => console.log('Suppr')}>Suppr</Button>
+						<Button onClick={() => console.log('Modif')}>Modif</Button>
+						<Button onClick={() => console.log('Suppr')}>Suppr</Button>
 					</Td>
-				  </Tr>
+					</Tr>
 				))}
-			  </tbody>
+				</tbody>
 			</Table>
-		  </TableContainer>
+			</TableContainer>
 
 		),
 
@@ -192,6 +192,6 @@ const dataCodeDeLaRoute = [
       <Tabs tabs={tabs} />
     </PageContainer>
   );
-};
+}
 
 export default InterfaceAdminPage;
