@@ -1,10 +1,13 @@
-import {AnnulationCode, Article, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataArticle, Forfait, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
+import {generateTableData} from "../views/Admin/InterfaceAdminPage.tsx";
+import {Tab} from "../components/Tabs/tab.tsx";
+
 
 export const articleList: Article[] = [
   {
@@ -29,7 +32,7 @@ export const articleList: Article[] = [
 export const forfaitList: Forfait[] = [
   {
     titre: "PERMIS DE CONDUIRE",
-    sousTitre:"",
+    sousTitre:"BABAJI",
     titreBtn: "Nos forfaits permis de conduire",
     lien: '/permis'
   },
@@ -46,6 +49,10 @@ export const forfaitList: Forfait[] = [
     lien: '/code'
   }
 ]
+
+export function getForfait(index: number): Forfait {
+  return forfaitList[index]
+}
 
 export const avisList: Avis[] = [
   {
@@ -336,3 +343,42 @@ Notre équipe jeune et dynamique saura vous mettre en confiance tout au long de 
 export const histoire5: string =`
 En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où prime avant tout l'écoute et le dialogue. Notre objectif commun ? Vous garantir l'obtention de votre permis de conduire dans les meilleures conditions !
 `
+
+
+export 	const donnees: DataArticle = {
+  permisB: [
+    {id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)'},
+    {id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite'},
+  ],
+  permisBExpress: [
+    {id: 0, nom: 'Forfait B Express', prix: 890, description: '20 leçon de conduite'},
+    {id: 1, nom: 'Forfait B Express EXPRESS', prix: 10, description: '2H SUR GTA'},
+  ],
+  conduiteAccompagnee: [
+    {id: 0, nom: 'Conduite Accompagnée', prix: 550, description: 'Chipi Chipi Chaba Chaba'},
+    {id: 1, nom: 'Conduite Accompagnée Rapide', prix: 1, description: 'Ta cru ?'},
+  ],
+  codeDeLaRoute: [
+    {id: 0, nom: 'Code de la route', prix: 1945, description: 'Qui est William ?'},
+    {id: 1, nom: 'Code du site', prix: 9999, description: 'Oussamma Amar'},
+  ],
+}
+
+export const tabs: Tab[] = [
+  {
+    label: 'Forfait Permis B',
+    content: generateTableData({ caption: 'Forfait Permis B', items: donnees.permisB }),
+  },
+  {
+    label: 'Forfait Permis B express',
+    content: generateTableData({ caption: 'Forfait Permis B express', items: donnees.permisBExpress }),
+  },
+  {
+    label: 'Conduite Accompagnée',
+    content: generateTableData({ caption: 'Conduite Accompagnée', items: donnees.conduiteAccompagnee }),
+  },
+  {
+    label: 'Code de la route',
+    content: generateTableData({ caption: 'Code de la route', items: donnees.codeDeLaRoute }),
+  },
+];

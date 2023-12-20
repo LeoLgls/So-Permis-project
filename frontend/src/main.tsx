@@ -21,6 +21,7 @@ import Cookies from "./views/Cookies/Cookies.tsx";
 import RGPD from "./views/RGPD/RGPD.tsx";
 import MentionLegales from "./views/MentionLegales/MentionLegales.tsx";
 import AdminHeader from "./components/Header/adminHeader.tsx";
+import ModifArticleForm from "./views/FormsAdmin/ModifArticleForm.tsx";
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -54,6 +55,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/admin/interfaceAdmin" element={<InterfaceAdminPage/>}></Route>
         <Route path="/admin/newsletter" element={<NewsLetter/>}></Route>
         <Route path='/admin/interfaceArticle' element={<InterfaceAdminArticle/>}></Route>
+        <Route path="/admin/interfaceArticle/modifier-forfait/:id"  element={<ModifArticleForm/>} ></Route>
+
 
         <Route path="*" element={<Error/>}></Route>
       </Routes>
