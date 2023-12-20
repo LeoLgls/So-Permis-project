@@ -135,7 +135,9 @@ const InformationsContainer = styled.div`
 
 const PetitLogo = styled.img`
   height: auto;
-  width: 14%;
+  width: 5%;
+  margin : 5px
+  
 `
 
 const MapContainer = styled.div`
@@ -147,53 +149,6 @@ const MapContainer = styled.div`
   }
 `
 
-
-
-export const ListHoraire = [
-	{
-		day: "Lundi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Mardi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Mercredi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Jeudi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Vendredi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Samedi",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: true,
-	},
-	{
-		day: "Dimanche",
-		openHour: "8h00",
-		closeHour: "18h00",
-		isOpen: false,
-	},
-
-]
 
 interface OpeningHour {
 	day: string;
@@ -211,21 +166,21 @@ const ContactPage: React.FC = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-		  try {
-			const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
-			const data = response.data;
-			
-			// Suppose that your API response has a structure like { openingHours: [...] }
-			setOpeningHours(data.openingHours);
-			setLoading(false);
-		  } catch (error) {
-			setLoading(false);
-		  }
+			try {
+				const response = await axios.get('http://localhost:3333/api/contact/opening-hours');
+				const data = response.data;
+
+				// Suppose that your API response has a structure like { openingHours: [...] }
+				setOpeningHours(data.openingHours);
+				setLoading(false);
+			} catch (error) {
+				setLoading(false);
+			}
 		};
-	
+
 		fetchData();
-	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
-	
+	}, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
+
 	const [formData, setFormData] = useState({
 		firstName: '',
 		lastName: '',
@@ -257,6 +212,8 @@ const ContactPage: React.FC = () => {
 			console.error('Erreur lors de la soumission du formulaire', error);
 		}
 	};
+
+
 
 
 	return (
@@ -310,28 +267,39 @@ const ContactPage: React.FC = () => {
 					<InformationsContainer>
 						<h3>Horaire d'ouverture</h3>
 						{loading && <p>Chargement en cours...</p>}
-      {error && <p>Erreur : {error}</p>}
-      {openingHours.length > 0 && (
-        <div>
-          <h2>Horaires d'ouverture :</h2>
-          <ul>
-            {openingHours.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-				
+						{error && <p>Erreur : {error}</p>}
+						{openingHours.length > 0 && (
+							<div>
+								<h2>Horaires d'ouverture :</h2>
+								<ul>
+									{openingHours.map((item, index) => (
+										<li key={index}>{item}</li>
+									))}
+								</ul>
+							</div>
+						)}
+
 
 					</InformationsContainer>
 
 					<InformationsContainer>
 						<h3>Nos reseau</h3>
-						<p>Téléphone : 02 78 34 10 63</p>
+						<p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
 						<span>Reseau sociaux</span>
-						<PetitLogo src={SnapBlack} />
-						<PetitLogo src={InstaBlack} />
+						<span>
+							<a target='blank_' href='https://t.snapchat.com/JWqJbzVO'><PetitLogo src={SnapBlack} /></a>
+							<a target='blank_' href='https://www.instagram.com/sopermis76/'><PetitLogo src={InstaBlack} /></a>
+						</span>
+
 					</InformationsContainer>
+
+					<FormContainer  onSubmit={handleSubmit}> 
+						<h3>Inscrivez-vous à notre Newsletter</h3>
+						<FormControl>
+							<input type='text' placeholder='Entrez votre adresse mail' />
+							<input type="submit" hidden />
+						</FormControl>
+					</FormContainer>
 
 				</LeftFlexContainer>
 				<RightFlexContainer>
@@ -347,7 +315,9 @@ const ContactPage: React.FC = () => {
 						></iframe>
 					</MapContainer>
 				</RightFlexContainer>
+
 			</FlexContainer>
+
 		</MainContainerContact>
 	);
 };
