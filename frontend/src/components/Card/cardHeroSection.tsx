@@ -99,7 +99,7 @@ interface CardProps {
   lien: string;
 }
 
-//Composant Card
+//Composant CardHeroSection
 function CardHeroSection({titre, sousTitre, titreBtn, lien}:CardProps) {
     return(
       <CardContainer>

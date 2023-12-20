@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import {forfaitList, txtHistoire, imgList} from '../../services/service.tsx'
-import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";

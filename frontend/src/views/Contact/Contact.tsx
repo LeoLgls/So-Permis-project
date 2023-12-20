@@ -115,7 +115,7 @@ const SubmitButton = styled.span`
   padding-top: 10%;
 
   input{
-	border: solid 2px white;
+	border: solid 2px ${colors.vert};
 	outline: none;
 	cursor: pointer;
 	padding: 10%;
@@ -158,13 +158,59 @@ const MapContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
+  border: solid 1px ${colors.noir};
 
   iframe {
     width: 100%;
+	height: 100%;
 	border-radius: 4px;
+  }
+
+  @media screen and (max-width: 800px) {
+	iframe {
+		height: revert-layer;
+	  }
   }
 `
 
+const FormContainerNewsletter = styled.form`
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+`
+
+const FormControlNewsletter = styled.div`
+  	padding-bottom: 5vw;
+
+	input{
+		margin-top: 3%;
+		font-size: 16px;
+		width: 100%;
+		color: ${colors.noir};
+		background: 0 0;
+		border: none;
+		outline: none;
+		border-bottom: solid 1px ${colors.noir};
+	}
+`
+
+const SubmitButtonNewsletter = styled.span`
+	width: 30%;
+	display: flex;
+	margin-top: 2vw;
+
+	input{
+		border: solid 2px ${colors.vert};
+		outline: none;
+		cursor: pointer;
+		font-size: 16px;
+		background: ${colors.vert};
+		font-weight: 700;
+		border-radius: 45px;
+		transition: all ease 0.5s;
+		width: 100%;
+	}
+`
 
 
 export const ListHoraire = [
@@ -343,23 +389,22 @@ interface OpeningHour {
 							</ul>
 							</div>
 						)}
-
-
 					</InformationsContainer>
+
 
 					<InformationsContainer>
 
 						<h3>Nos réseaux</h3>
-            <p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
+            			<p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
 						<br />
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
 							
-							<Link to="https://t.snapchat.com/JWqJbzVO">
+							<Link to="https://t.snapchat.com/JWqJbzVO" target="_blank" rel="noopener noreferrer">
 								<PetitLogo src={SnapBlack} />
 							</Link>
 
-							<Link to="https://www.instagram.com/sopermis76/">
+							<Link to="https://www.instagram.com/sopermis76/" target="_blank" rel="noopener noreferrer">
 								<PetitLogo src={InstaBlack} />
 							</Link>
 
@@ -368,13 +413,17 @@ interface OpeningHour {
 
 					</InformationsContainer>
 
-					<FormContainer  onSubmit={handleSubmit}> 
+					<FormContainerNewsletter  onSubmit={handleSubmit}> 
 						<h3>Inscrivez-vous à notre Newsletter</h3>
-						<FormControl>
+						<FormControlNewsletter>
 							<input type='text' placeholder='Entrez votre adresse mail' />
-							<input type="submit" hidden />
-						</FormControl>
-					</FormContainer>
+
+							<SubmitButtonNewsletter>
+								<input  type="submit" name="submit" value="S'inscrire"  />
+							</SubmitButtonNewsletter>
+
+						</FormControlNewsletter>
+					</FormContainerNewsletter>
 
 				</LeftFlexContainer>
 				<RightFlexContainer>
