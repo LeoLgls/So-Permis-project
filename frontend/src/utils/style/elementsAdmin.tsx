@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export const PageContainer = styled.div`
     max-width: 1000px;
     margin: 0 auto;
-    padding: 150px 20px 20px;
+    padding: 200px 20px 20px;
     font-family: 'Arial', sans-serif;
 `;
 

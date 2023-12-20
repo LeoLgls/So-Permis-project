@@ -49,9 +49,9 @@ function NewsLetter() {
 
   return (
     <PageContainer>
+      <TableCaption>Mail NewsLetter</TableCaption>
       <TableContainer>
         <Table>
-          <TableCaption>Mail NewsLetter</TableCaption>
           <Thead  >
             <Tr>
               <Th colSpan={2} >
@@ -64,7 +64,7 @@ function NewsLetter() {
               <Tr key={index}>
                 <Td >{mail}</Td>
                 <Td >
-                  <Button>Suppr</Button>
+                  <Button to={"/"}>Suppr</Button>
                 </Td>
               </Tr>
             ))}

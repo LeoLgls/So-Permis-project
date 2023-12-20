@@ -47,7 +47,7 @@ function InterfaceAdminArticle() {
               <Td>{article.source}</Td>
               <Td>{article.date}</Td>
               <Td>
-                <Button to={'/admin'}>Modif</Button>
+                <Button to={`/admin/interfaceArticle/modifier-forfait/${index}`}>Modif</Button>
                 <Button to={'/admin'}>Suppr</Button>
               </Td>
             </Tr>
