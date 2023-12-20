@@ -143,21 +143,21 @@ export const txtPermisExpress2: string = "Alors, si tu es prêt à relever le d�
 export const  horairesMatin = ['Fermé', '9H-12H', '9H-12H', '9H-12H', '9H-12H', '9H-12H', 'Fermé'];
 export const horairesAprem = ['14H-18H', '14H-18H', '14H-18H', '14H-18H', '14H-18H', 'Fermé', 'Fermé'];
 
+//intitule
+
+const reponseAnnulation = await axios.get('http://localhost:3333/annulation');
+export const annulationListRequette: [] = reponseAnnulation.data;
 export const listAnnulationCode: AnnulationCode[] = [
-  {
-    titre: "ANNULATION CODE",
-    prix: 150,
-  },{
-    titre: "ANNULATION CODE EXPRESS EN 4 JOURS",
-    prix: 250,
-  },{
-    titre: "ANNULATION CODE + CONDUITE",
-    prix: 410,
-  },{
-    titre: "ANNULATION CODE + CONDUITE EXPRESS EN 15 JOURS",
-    prix: 660,
-  },
 ]
+for (let i = 0; i < annulationListRequette.length; i++) {
+  const element = annulationListRequette[i];
+  const annulation: AnnulationCode = {
+    titre: element["intitule"],
+    prix: element["prix"],
+  }
+  listAnnulationCode.push(annulation)
+  
+}
 
 export const listForfaitPage: PageForfait[] = [
   {

@@ -42,6 +42,8 @@ Route.get('/newsletter', 'NewsletterController.index')
 
 Route.get('/voitures', 'VoitureController.index')
 
+Route.get('/annulation' , 'AnnulationCodeController.index')
+
 
 // les routes de willy sinon bb cadum
 
