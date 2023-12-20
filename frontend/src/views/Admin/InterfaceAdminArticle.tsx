@@ -12,7 +12,7 @@ import {
 
 
 function InterfaceAdminArticle() {
-  
+
   const dataArticle = [
     {
       id: 0,
@@ -30,8 +30,8 @@ function InterfaceAdminArticle() {
 
   return (
     <PageContainer>
+      <TableCaption>Article So'permis</TableCaption>
       <Table>
-        <TableCaption>Article So'permis</TableCaption>
         <Thead>
           <Tr>
             <Th>Titre</Th>

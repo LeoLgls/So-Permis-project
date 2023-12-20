@@ -1,35 +1,22 @@
-import React from 'react';
 import styled from 'styled-components';
 import Tabs from '../../components/Tabs/tab';
 import { Button, PageContainer, Table, TableCaption, Td, Th, Thead, Tr } from '../../utils/style/elementsAdmin.tsx';
+import { ForfaitItem } from "../../utils/models/models.tsx";
+import { tabs } from "../../services/service.tsx";
 
 const TableContainer = styled.div`
 	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 `;
 
-interface ForfaitItem {
-	id: number;
-	nom: string;
-	prix: number;
-	description: string;
-}
-
-interface Tab {
-	label: string;
-	content: React.ReactNode;
-}
-
-type Data = {
-	permisB: ForfaitItem[];
-	permisBExpress: ForfaitItem[];
-};
-
-function generateTableData(data: { caption: string; items: ForfaitItem[] }) {
+export function generateTableData(data: { caption: string; items: ForfaitItem[] }) {
 	return (
 		<TableContainer>
-			<Button>Ajouter</Button>
+			<TableCaption>{data.caption}</TableCaption>
 			<Table>
-				<TableCaption>{data.caption}</TableCaption>
 				<Thead>
 					<Tr>
 						<Th>Nom</Th>
@@ -45,8 +32,8 @@ function generateTableData(data: { caption: string; items: ForfaitItem[] }) {
 						<Td>{prix}</Td>
 						<Td>{description}</Td>
 						<Td>
-							<Button onClick={() => console.log('Modif')}>Modif</Button>
-							<Button onClick={() => console.log('Suppr')}>Suppr</Button>
+							<Button to={`/admin/interfaceArticle/modifier-forfait/${id}`}>Modif</Button>
+							<Button to={`/admin/interfaceArticle/supprimer-forfait/${id}`}>Suppr</Button>
 						</Td>
 					</Tr>
 				))}
@@ -57,25 +44,6 @@ function generateTableData(data: { caption: string; items: ForfaitItem[] }) {
 }
 
 function InterfaceAdminPage() {
-	const donnees: Data = {
-		permisB: [
-			{ id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)' },
-			{ id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite' },
-		],
-		permisBExpress: [
-			{ id: 0, nom: 'Forfait B Express', prix: 890, description: '20 leçon de conduite' },
-			{ id: 1, nom: 'Forfait B Express EXPRESS', prix: 10, description: '2H SUR GTA' },
-		],
-	};
-
-	const tabs: Tab[] = [
-		{ label: 'Forfait Permis B', content: generateTableData({ caption: 'Forfait Permis B', items: donnees.permisB }) },
-		{
-			label: 'Forfait Permis B express',
-			content: generateTableData({ caption: 'Forfait Permis B express', items: donnees.permisBExpress }),
-		},
-	];
-
 	return (
 		<PageContainer>
 			<Tabs tabs={tabs} />
