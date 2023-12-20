@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import {prisma} from '@ioc:Adonis/Addons/Prisma'
 
 export default class ForfaitController {
-    @ioc:Adonis/Addons/Prisma@ioc:Adonis/Addons/Prisma
+
     public async store ({request}: HttpContextContract) {
         const forfait = await prisma.forfait.create({
             data: request.only(['titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation']),
