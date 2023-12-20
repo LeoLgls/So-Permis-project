@@ -23,7 +23,8 @@
     "@adonisjs/session",
     "@adonisjs/view",
     "@adonisjs/shield",
-    "@wahyubucil/adonis-prisma"
+    "@wahyubucil/adonis-prisma",
+    "@adonisjs/mail"
   ],
   "metaFiles": [
     {
