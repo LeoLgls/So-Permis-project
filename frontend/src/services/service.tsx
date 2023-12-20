@@ -8,8 +8,12 @@ import img3 from "../assets/img/imgTest3.jpg";
 import {generateTableData} from "../views/Admin/InterfaceAdminPage.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
 
+import axios from 'axios';
 
 
+//ARTICLES
+
+const responseArticle = await axios.get('http://localhost:3333/articles');
 
 export const articleList: Article[] = [
   {
@@ -30,31 +34,45 @@ export const articleList: Article[] = [
   },
 ]
 
+//IMAGES
+
+const responseImg = await axios.get('http://localhost:3333/images');
+export const imgList: Image[] = responseImg.data;
+
+
+//CATEGORIES
+
+const responseCattegories = await axios.get('http://localhost:3333/categories');
+export const categoriesList: Forfait[] = responseCattegories.data;
+
+const Permis : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS DE CONDUIRE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ConduiteAccomp : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDUITE ACCOMPAGNÉE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const Code : Forfait = categoriesList.find(Forfait => Forfait.titre === "CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+
+const PermisB : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS B") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const PermisBExpress : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS B EXPRESS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+
+const ForfaitCode : Forfait = categoriesList.find(Forfait => Forfait.titre === "FORFAIT CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const CodeEnSalle : Forfait = categoriesList.find(Forfait => Forfait.titre === "CODE EN SALLE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ConditionAnnul : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDITION ANNULATION") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 
 export const forfaitList: Forfait[] = [
-  {
-    titre: "PERMIS DE CONDUIRE",
-    sousTitre:"BABAJI",
-    titreBtn: "Nos forfaits permis de conduire",
-    lien: '/permis'
-  },
-  {
-    titre: "CONDUITE ACCOMPAGNÉE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits conduite accompagnée",
-    lien: '/permis#conduiteAccompagnee'
-  },
-  {
-    titre: "CODE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits code",
-    lien: '/code'
-  }
+  Permis,ConduiteAccomp,Code
+]
+
+export const typeDeForfaits: Forfait[] = [
+  PermisB, PermisBExpress, ConduiteAccomp
+]
+
+export const codeList:Forfait[] = [
+  ForfaitCode, CodeEnSalle, ConditionAnnul
 ]
 
 export function getForfait(index: number): Forfait {
   return forfaitList[index]
 }
+
+//AVIS
 
 export const avisList: Avis[] = [
   {
@@ -69,28 +87,7 @@ export const avisList: Avis[] = [
   },
 ]
 
-export const imgList: Image[] = [
-  {
-    src: "./src/assets/img/camera.svg",
-    alt: "img1"
-  },
-  {
-    src: "./src/assets/img/identity-card.svg",
-    alt: "img2"
-  },
-  {
-    src: "./src/assets/img/home.svg",
-    alt: "img3"
-  },
-  {
-    src: "./src/assets/img/ASSR.svg",
-    alt: "img4"
-  },
-  {
-    src: "./src/assets/img/JAPD.svg",
-    alt: "img5"
-  }
-]
+
 
 export const carouselData: CarouselItem[] = [
   { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
@@ -98,26 +95,7 @@ export const carouselData: CarouselItem[] = [
   { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
 ]
 
-export const typeDeForfaits: Forfait[] = [
-  {
-    titre: "PERMIS B",
-    sousTitre:"",
-    titreBtn: "Nos forfaits permis B",
-    lien: '#permis'
-  },
-  {
-    titre: "PERMIS B EXPRESS",
-    sousTitre:"",
-    titreBtn: "Nos forfaits permis B express",
-    lien: '/permis#permisExpress'
-  },
-  {
-    titre: "CONDUITE ACCOMPAGNÉE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits conduite accompagnée",
-    lien: '/permis#conduiteAccompagnee'
-  }
-]
+
 
 export const permisList: Forfait[] = [
   {
@@ -201,26 +179,7 @@ export const txtPermisExpress: string = "Le permis B en 1 mois, c'est comme un m
 export const txtPermisExpress2: string = "Alors, si tu es prêt à relever le défi, lance-toi !"
 
 
-export const codeList:Forfait[] = [
-  {
-    titre: "FORFAIT CODE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits code",
-    lien: '/permis'
-  },
-  {
-    titre: "CODE EN SALLE",
-    sousTitre:"",
-    titreBtn: "Nos forfaits pour faire du code en salle",
-    lien: '/permis'
-  },
-  {
-    titre: "CONDITION ANNULATION",
-    sousTitre:"",
-    titreBtn: "Nos conditions d'annulation du code",
-    lien: '/permis'
-  },
-]
+
 
 export const codeForfaitList: Forfait[] = [
   {
@@ -333,7 +292,7 @@ Passionnée par son métier, Sonia a créé So'Permis après plusieurs années d
 `
 export const histoire3: string =`
 
-Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme. 
+Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme.
 `
 export const histoire4: string =`
 
