@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {forfaitList, backgroundImage, txtHistoire, imgList} from '../../services/service.tsx'
+import {forfaitList, txtHistoire, imgList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled from "styled-components";
 import colors from "../../utils/style/colors.tsx";
@@ -18,7 +18,7 @@ import sarool from '../../assets/img/sarool.png'
 import {TitreSection} from "../../utils/style/elements.tsx";
 import {MainContainer} from "../../utils/style/elements.tsx";
 import {CardBackground} from "../../utils/style/elements.tsx";
-
+import imgBackgroundAccueil from "../../assets/img/auto-ecole.jpg";
 
 
 
@@ -211,6 +211,10 @@ const ImgSarool = styled.img`
     object-fit: cover;
     max-width: 20rem;
     height: auto;
+
+    @media (max-width: 550px) {
+      max-width: 15rem;
+  }
 `
 
 const SaroolContainer = styled.div`
@@ -269,7 +273,7 @@ function Accueil() {
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
-        <HeroSection img={backgroundImage} forfaits={forfaitList} transitionNoir={true}/>
+        <HeroSection img={imgBackgroundAccueil} forfaits={forfaitList} transitionNoir={true}/>
         <SectionInscription>
           <TitreSection theme={'noir'}>Comment s'inscrire chez So'Permis ?</TitreSection>
           <Grid3>

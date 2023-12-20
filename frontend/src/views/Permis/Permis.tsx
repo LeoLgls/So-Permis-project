@@ -1,4 +1,4 @@
-import {permisList, backgroundImagePermis, typeDeForfaits, imgList, permisExpressList, txtPermisExpress, txtPermisExpress2, conduiteAccompagneeList} from '../../services/service.tsx'
+import {permisList, typeDeForfaits, imgList, permisExpressList, txtPermisExpress, txtPermisExpress2, conduiteAccompagneeList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
@@ -8,6 +8,8 @@ import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
 import CardEpress from "../../components/Card/cardExpress.tsx";
 import VoitureImg from '../../assets/img/c3.png'
+import imgBackgroundPermis from "../../assets/img/permis.png";
+
 
 
 
@@ -216,13 +218,15 @@ const TxtPresentation = styled.p`
 `
 
 
+
 function Permis() {
+  
 
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
 
-      <HeroSection img={backgroundImagePermis} forfaits={typeDeForfaits} transitionNoir={true}/>
+      <HeroSection img={imgBackgroundPermis} forfaits={typeDeForfaits} transitionNoir={true}/>
 
         <SectionInscription>
           <TitreSection theme={'noir'}>Documents à fournir</TitreSection>
