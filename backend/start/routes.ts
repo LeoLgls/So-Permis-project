@@ -40,4 +40,4 @@ Route.get('/images', 'ImageController.index')
 
 Route.get('/newsletter', 'NewsletterController.index')
 
-Route.get('/  n nvoitures', 'VoitureController.index')
+Route.get('/voitures', 'VoitureController.index')
