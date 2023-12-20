@@ -23,3 +23,26 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+Route.get('/administrateurs', 'AdministrateurController.index')
+
+Route.get('/articles', 'ArticleController.index')
+
+Route.get('/avis', 'AvisController.index')
+
+Route.get('/categories', 'CategorieController.index')
+
+Route.get('/forfaits', 'ForfaitController.index')
+
+Route.get('/histoires', 'HistoireController.index')
+
+Route.get('/images', 'ImageController.index')
+
+Route.get('/newsletter', 'NewsletterController.index')
+
+Route.get('/voitures', 'VoitureController.index')
+
+// les routes de willy sinon bb cadum
+
+Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
+Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');
