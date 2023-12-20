@@ -12,7 +12,7 @@ import {
 
 
 function InterfaceAdminArticle() {
-  
+
   const dataArticle = [
     {
       id: 0,
@@ -30,8 +30,8 @@ function InterfaceAdminArticle() {
 
   return (
     <PageContainer>
+      <TableCaption>Article So'permis</TableCaption>
       <Table>
-        <TableCaption>Article So'permis</TableCaption>
         <Thead>
           <Tr>
             <Th>Titre</Th>
@@ -47,8 +47,8 @@ function InterfaceAdminArticle() {
               <Td>{article.source}</Td>
               <Td>{article.date}</Td>
               <Td>
-                <Button>Modif</Button>
-                <Button>Suppr</Button>
+                <Button to={`/admin/interfaceArticle/modifier-forfait/${index}`}>Modif</Button>
+                <Button to={'/admin'}>Suppr</Button>
               </Td>
             </Tr>
           ))}

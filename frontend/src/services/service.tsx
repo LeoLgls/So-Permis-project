@@ -1,12 +1,15 @@
-import {AnnulationCode, Article, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataArticle, Forfait, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
+import {generateTableData} from "../views/Admin/InterfaceAdminPage.tsx";
+import {Tab} from "../components/Tabs/tab.tsx";
 
-import axios from 'axios';
+
+
 
 export const articleList: Article[] = [
   {
@@ -27,28 +30,31 @@ export const articleList: Article[] = [
   },
 ]
 
-//categories
-
-const responseCategories = await axios.get('http://localhost:3333/categories');
-export const categoriesList: Forfait[] = responseCategories.data;
-
-//PERMIS DE CONDUIRE 
-//CONDUITE ACCOMPAGNÉE
-//CODE
-// titre / sousTitre / titreBtn / lien
-
-console.log(categoriesList);
-
-console.log();
-
-const ele1 : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS DE CONDUIRE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-const ele2 : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDUITE ACCOMPAGNÉE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-const ele3 : Forfait = categoriesList.find(Forfait => Forfait.titre === "CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-
 
 export const forfaitList: Forfait[] = [
-  ele1,ele2,ele3
+  {
+    titre: "PERMIS DE CONDUIRE",
+    sousTitre:"BABAJI",
+    titreBtn: "Nos forfaits permis de conduire",
+    lien: '/permis'
+  },
+  {
+    titre: "CONDUITE ACCOMPAGNÉE",
+    sousTitre:"",
+    titreBtn: "Nos forfaits conduite accompagnée",
+    lien: '/permis#conduiteAccompagnee'
+  },
+  {
+    titre: "CODE",
+    sousTitre:"",
+    titreBtn: "Nos forfaits code",
+    lien: '/code'
+  }
 ]
+
+export function getForfait(index: number): Forfait {
+  return forfaitList[index]
+}
 
 export const avisList: Avis[] = [
   {
@@ -63,10 +69,28 @@ export const avisList: Avis[] = [
   },
 ]
 
-
-const responseImg = await axios.get('http://localhost:3333/images');
-export const imgList: Image[] = responseImg.data;
-
+export const imgList: Image[] = [
+  {
+    src: "./src/assets/img/camera.svg",
+    alt: "img1"
+  },
+  {
+    src: "./src/assets/img/identity-card.svg",
+    alt: "img2"
+  },
+  {
+    src: "./src/assets/img/home.svg",
+    alt: "img3"
+  },
+  {
+    src: "./src/assets/img/ASSR.svg",
+    alt: "img4"
+  },
+  {
+    src: "./src/assets/img/JAPD.svg",
+    alt: "img5"
+  }
+]
 
 export const carouselData: CarouselItem[] = [
   { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
@@ -79,13 +103,13 @@ export const typeDeForfaits: Forfait[] = [
     titre: "PERMIS B",
     sousTitre:"",
     titreBtn: "Nos forfaits permis B",
-    lien: '#Permis'
+    lien: '#permis'
   },
   {
     titre: "PERMIS B EXPRESS",
     sousTitre:"",
     titreBtn: "Nos forfaits permis B express",
-    lien: '/permis#PermisExpress'
+    lien: '/permis#permisExpress'
   },
   {
     titre: "CONDUITE ACCOMPAGNÉE",
@@ -170,9 +194,6 @@ export const conduiteAccompagneeList: Forfait[] = [
     lien: '/forfait/1'
   }
 ]
-
-export const backgroundImage : string = "https://static.vecteezy.com/system/resources/thumbnails/022/575/456/small/chamomile-flower-field-camomile-in-the-nature-field-of-camomiles-at-sunny-day-at-nature-camomile-daisy-flowers-in-summer-day-chamomile-flowers-field-wide-background-in-sun-light-generative-ai-photo.jpg"
-export const backgroundImagePermis : string = "https://www.justifit.fr/wp-content/uploads/2021/04/le-permis-de-conduire-est-il-une-piece-d-identite.jpeg"
 
 export const txtHistoire: string = "Chez So'Permis, nous redéfinissons l'expérience de l'auto-école au Havre. Notre engagement envers une formation de conduite personnalisée, proposée par des instructeurs dévoués, fait de nous le choix idéal. En tant qu'auto-école locale, nous comprenons les besoins spécifiques de nos élèves. Optez pour So'Permis et bénéficiez d'une formation efficace avec une approche moderne et des tarifs transparents."
 
@@ -321,3 +342,42 @@ Notre équipe jeune et dynamique saura vous mettre en confiance tout au long de 
 export const histoire5: string =`
 En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où prime avant tout l'écoute et le dialogue. Notre objectif commun ? Vous garantir l'obtention de votre permis de conduire dans les meilleures conditions !
 `
+
+
+export 	const donnees: DataArticle = {
+  permisB: [
+    {id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)'},
+    {id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite'},
+  ],
+  permisBExpress: [
+    {id: 0, nom: 'Forfait B Express', prix: 890, description: '20 leçon de conduite'},
+    {id: 1, nom: 'Forfait B Express EXPRESS', prix: 10, description: '2H SUR GTA'},
+  ],
+  conduiteAccompagnee: [
+    {id: 0, nom: 'Conduite Accompagnée', prix: 550, description: 'Chipi Chipi Chaba Chaba'},
+    {id: 1, nom: 'Conduite Accompagnée Rapide', prix: 1, description: 'Ta cru ?'},
+  ],
+  codeDeLaRoute: [
+    {id: 0, nom: 'Code de la route', prix: 1945, description: 'Qui est William ?'},
+    {id: 1, nom: 'Code du site', prix: 9999, description: 'Oussamma Amar'},
+  ],
+}
+
+export const tabs: Tab[] = [
+  {
+    label: 'Forfait Permis B',
+    content: generateTableData({ caption: 'Forfait Permis B', items: donnees.permisB }),
+  },
+  {
+    label: 'Forfait Permis B express',
+    content: generateTableData({ caption: 'Forfait Permis B express', items: donnees.permisBExpress }),
+  },
+  {
+    label: 'Conduite Accompagnée',
+    content: generateTableData({ caption: 'Conduite Accompagnée', items: donnees.conduiteAccompagnee }),
+  },
+  {
+    label: 'Code de la route',
+    content: generateTableData({ caption: 'Code de la route', items: donnees.codeDeLaRoute }),
+  },
+];

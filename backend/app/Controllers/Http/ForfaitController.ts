@@ -5,7 +5,7 @@ export default class ForfaitController {
 
     public async store ({request}: HttpContextContract) {
         const forfait = await prisma.forfait.create({
-            data: request.only(['titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation']),
+            data: request.only(['type','titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation']),
         })
 
         return forfait
@@ -15,6 +15,17 @@ export default class ForfaitController {
         const forfait = await prisma.forfait.findUnique({
             where: {
                 id: params.id
+            }
+        })
+
+        return forfait
+    }
+
+    // cette fonction permet de récupérer les forfaits en fonction de leur type ("PERMIS B", "PERMIS B EXPRESS", "CONDUITE" ou "CODE")
+    public async showByType ({params}: HttpContextContract) {
+        const forfait = await prisma.forfait.findMany({
+            where: {
+                type: params.type
             }
         })
 
@@ -42,7 +53,7 @@ export default class ForfaitController {
             where: {
                 id: params.id
             },
-            data: request.only(['titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation'])
+            data: request.only(['type','titre','sousTitre','titreBtn','lien','duree','theorique','pratique','horaireLecon','tarif','annulation'])
         })
 
         return forfait

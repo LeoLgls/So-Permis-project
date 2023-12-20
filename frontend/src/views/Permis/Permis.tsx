@@ -1,4 +1,4 @@
-import {permisList, backgroundImagePermis, typeDeForfaits, imgList, permisExpressList, txtPermisExpress, txtPermisExpress2, conduiteAccompagneeList} from '../../services/service.tsx'
+import {permisList, typeDeForfaits, imgList, permisExpressList, txtPermisExpress, txtPermisExpress2, conduiteAccompagneeList} from '../../services/service.tsx'
 import HeroSection from "../../components/HeroSection/heroSection.tsx";
 import styled, {DefaultTheme} from "styled-components";
 import colors from "../../utils/style/colors.tsx";
@@ -7,7 +7,9 @@ import React from "react";
 import {Transition} from "../../utils/style/transition.tsx";
 import Card from "../../components/Card/card.tsx";
 import CardEpress from "../../components/Card/cardExpress.tsx";
-import VoitureImg from '../../assets/img/voiture-golf.png'
+import VoitureImg from '../../assets/img/c3.png'
+import imgBackgroundPermis from "../../assets/img/permis.png";
+
 
 
 
@@ -65,6 +67,10 @@ const GridItemP = styled.p`
     font-size: ${fontSize.p}px;
     text-align: center;
     font-weight: 600;
+
+    @media (max-width: 550px) {
+      padding: 0% 10%;
+    }
 `
 
 const GridItemImg = styled.img`
@@ -72,6 +78,16 @@ const GridItemImg = styled.img`
     width:70%;
     max-height: 8vw;
     padding: 5%;
+    
+    @media (max-width: 1090px) {
+      max-width: 20vw;
+      max-height: 20vh;
+    }
+
+    @media (max-width: 550px) {
+      min-height: 4vh;
+      min-width: 20vw;
+    }
 `
 
 const Grid3 = styled.div`
@@ -89,7 +105,7 @@ const Grid2 = styled.div`
 
     @media (max-width: 1090px) {
         grid-template-columns: repeat(1, minmax(100px, 1fr));
-    }
+    }   
 `
 
 const TitreSection = styled.h1<Theme>`
@@ -124,7 +140,13 @@ const ImageRoute = styled.div`
   height: 70rem;
   margin-top: -70rem;
 
-  background-color: ${colors.backgroundBlanc}
+  background-color: ${colors.backgroundBlanc};
+
+  @media (max-width: 550px) {
+    height: 19rem;
+    margin-top: -19rem;
+  }
+ 
 `
 
 
@@ -196,13 +218,15 @@ const TxtPresentation = styled.p`
 `
 
 
+
 function Permis() {
+  
 
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
 
-      <HeroSection img={backgroundImagePermis} forfaits={typeDeForfaits} transitionNoir={true}/>
+      <HeroSection img={imgBackgroundPermis} forfaits={typeDeForfaits} transitionNoir={true}/>
 
         <SectionInscription>
           <TitreSection theme={'noir'}>Documents à fournir</TitreSection>
@@ -227,7 +251,7 @@ function Permis() {
               <GridItemP>Né(e) à partir de 1988</GridItemP>
             </GridItem>
             <GridItem>
-              <GridItemImg src={imgList[4].src} alt={imgList[4].alt}/>
+              <GridItemImg className="test" src={imgList[4].src} alt={imgList[4].alt}/>
               <GridItemP>Pour les moins de 25 ans</GridItemP>
             </GridItem>
           </Grid2>

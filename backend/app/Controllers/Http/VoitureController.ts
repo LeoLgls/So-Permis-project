@@ -48,4 +48,14 @@ export default class VoitureController {
         return voiture
     }
 
+
+    public async showByNomVoiture ({params}: HttpContextContract) {
+        const voitures = await prisma.voiture.findMany({
+            where: {
+                nomVoiture: params.nomVoiture
+            }
+        })
+
+        return voitures
+    }
 }

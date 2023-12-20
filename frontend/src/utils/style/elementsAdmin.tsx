@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 export const PageContainer = styled.div`
     max-width: 1000px;
     margin: 0 auto;
-    padding: 150px 20px 20px;
+    padding: 200px 20px 20px;
     font-family: 'Arial', sans-serif;
 `;
 
@@ -16,6 +17,7 @@ export const Table = styled.table`
 export const TableCaption = styled.caption`
   font-size: 1.2em;
   margin-bottom: 10px;
+    display: flex;
 `;
 
 export const Thead = styled.thead`
@@ -39,7 +41,7 @@ export const Td = styled.td`
   padding: 10px;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   background-color: #008080;
   color: #fff;
   padding: 8px 16px;
@@ -47,4 +49,5 @@ export const Button = styled.button`
   border-radius: 4px;
   margin-right: 5px;
   cursor: pointer;
+  text-decoration: none;
 `;

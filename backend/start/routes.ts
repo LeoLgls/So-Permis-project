@@ -42,6 +42,7 @@ Route.get('/newsletter', 'NewsletterController.index')
 
 Route.get('/voitures', 'VoitureController.index')
 
+
 // les routes de willy sinon bb cadum
 
 Route.post('/api/contact/sendEmail','ContactsController.sendEmail');

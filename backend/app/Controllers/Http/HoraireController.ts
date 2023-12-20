@@ -77,4 +77,14 @@ export default class HoraireController {
 
         return horaire
     }
+
+    public async showByType ({params}: HttpContextContract) {
+        const horaire = await prisma.horaire.findFirst({
+            where: {
+                type: params.type
+            }
+        })
+
+        return horaire
+    }
 }
