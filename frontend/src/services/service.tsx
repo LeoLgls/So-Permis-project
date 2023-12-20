@@ -109,13 +109,13 @@ export const typeDeForfaits: Forfait[] = [
     titre: "PERMIS B EXPRESS",
     sousTitre:"",
     titreBtn: "Nos forfaits permis B express",
-    lien: '/permis#permisExpress'
+    lien: '#permisExpress'
   },
   {
     titre: "CONDUITE ACCOMPAGNÉE",
     sousTitre:"",
     titreBtn: "Nos forfaits conduite accompagnée",
-    lien: '/permis#conduiteAccompagnee'
+    lien: '#conduiteAccompagnee'
   }
 ]
 
@@ -206,19 +206,19 @@ export const codeList:Forfait[] = [
     titre: "FORFAIT CODE",
     sousTitre:"",
     titreBtn: "Nos forfaits code",
-    lien: '/permis'
+    lien: '#code'
   },
   {
     titre: "CODE EN SALLE",
     sousTitre:"",
     titreBtn: "Nos forfaits pour faire du code en salle",
-    lien: '/permis'
+    lien: '#horaires'
   },
   {
     titre: "CONDITION ANNULATION",
     sousTitre:"",
     titreBtn: "Nos conditions d'annulation du code",
-    lien: '/permis'
+    lien: '#annulation'
   },
 ]
 

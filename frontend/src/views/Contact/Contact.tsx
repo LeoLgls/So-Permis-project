@@ -350,7 +350,7 @@ interface OpeningHour {
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
 							
-							<Link to="https://www.snapchat.com/add/leo_lgls?share_id=bVi3vXZ17uA&locale=fr-FR">
+							<Link to="https://t.snapchat.com/JWqJbzVO">
 								<PetitLogo src={SnapBlack} />
 							</Link>
 

@@ -19,6 +19,7 @@ import {TitreSection} from "../../utils/style/elements.tsx";
 import {MainContainer} from "../../utils/style/elements.tsx";
 import {CardBackground} from "../../utils/style/elements.tsx";
 import imgBackgroundAccueil from "../../assets/img/auto-ecole.jpg";
+import HeroSectionAccueil from '../../components/HeroSection/heroSectionAccueil.tsx';
 
 
 
@@ -273,7 +274,7 @@ function Accueil() {
   return (
     <React.StrictMode>
       <MainContainer theme={'noir'}>
-        <HeroSection img={imgBackgroundAccueil} forfaits={forfaitList} transitionNoir={true}/>
+        <HeroSectionAccueil img={imgBackgroundAccueil} forfaits={forfaitList} transitionNoir={true}/>
         <SectionInscription>
           <TitreSection theme={'noir'}>Comment s'inscrire chez So'Permis ?</TitreSection>
           <Grid3>

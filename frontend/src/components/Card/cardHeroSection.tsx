@@ -1,128 +1,117 @@
-// Importez les bibliothèques nécessaires
-import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import colors from "../../utils/style/colors.tsx";
 import fontSize from "../../utils/style/font-size.tsx";
 
-// Définissez les styles pour le composant CardHeroSection
-const CardHeroContainer = styled.div`
-  background-color: ${colors.vert};
-  min-width: 20rem;
-  min-height: 30rem;
-  border-radius: 45px 45px 20px 20px;
-  box-shadow: 10px 10px 4px ${colors.noirOmbre};
-  position: relative;
-  opacity: 0.9;
-  transition: opacity 0.25s ease-out;
-  z-index: 2;
+//CSS
+const CardContainer = styled.div`
+    background-color: ${colors.vert};
+    min-width: 20rem;
+    min-height: 30rem;
+    border-radius: 45px 45px 20px 20px;
+    box-shadow: 10px 10px 4px ${colors.noirOmbre};
+    position: relative;
+    opacity: 0.9; /* Opacité par défaut pour la carte */
+    transition: opacity 0.25s ease-out;
+    z-index: 2;
 
-  &:hover {
-    opacity: 1;
-  }
+    &:hover {
+        opacity: 1; /* Opacité au survol pour la carte */
+    }
 
-  @media (max-width: 550px) {
-    min-height: 25rem;
-  }
-`;
+    
+    @media (max-width: 550px) {
+      min-height: 25rem;
+    }
+`
 
-const CardHeroInfosContainer = styled.div`
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  min-height: 15rem;
-  padding: 10% 1rem 10rem;
-`;
+const CardInfosContainer = styled.div`
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 15rem;
+    padding: 10% 1rem 10rem;
+`
 
-const CardHeroInfosTexts = styled.div`
-  text-align: center;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
+const CardInfosTexts = styled.div`
+    text-align: center;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 
-  @media (max-width: 550px) {
-    width: 100%;
-  }
-`;
+    @media (max-width: 550px) {
+      width: 100%;
+    }
+`
 
-const CardHeroTitre = styled.h1`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: ${colors.txtBlanc};
-  font-size: ${fontSize.titre}px;
-`;
+const CardTitre = styled.h1`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: ${colors.txtBlanc};
+    font-size: ${fontSize.titre}px;
+`
 
-const CardHeroButton = styled.button`
-  background-color: ${colors.noir};
-  border-radius: 30px;
-  color: white;
-  width: 80%;
-  min-height: 3rem;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  bottom: 3rem;
-  position: absolute;
-  font-size: ${fontSize.button}px;
-  text-align: center;
-  padding: 1em;
-  text-decoration: none;
-  transition: background-color 0.25s ease-out;
+const CardButton = styled.a`
+    background-color: ${colors.noir};
+    border-radius: 30px;
+    color: white;
+    width: 80%;
+    min-height: 3rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    bottom: 3rem;
+    position: absolute;
+    font-size: ${fontSize.button}px;
+    text-align: center;
+    padding: 1em;
+    text-decoration: none;
+    transition: background-color 0.25s ease-out; /* Ajout de la transition pour la couleur de fond */   
 
-  @media (max-width: 550px) {
-    font-size: 24px;
-    padding: 5%;
-  }
+    @media (max-width: 550px) {
+      font-size: 24px;
+      padding: 5%;
+    }
+    
+    &:hover {
+        background-color: ${colors.noirHover};
+    }
+`
 
-  &:hover {
-    background-color: ${colors.noirHover};
-  }
-`;
-
-const CardHeroSousTitre = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: ${fontSize.sousTitre}px;
-  padding-top: 1em;
-`;
-
-// Interface pour les propriétés du composant CardHeroSection
-interface CardHeroSectionProps {
+const CardSousTitre = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: ${fontSize.sousTitre}px;
+    padding-top: 1em;
+`
+interface CardProps {
   titre: string;
   sousTitre: string;
   titreBtn: string;
-  sectionId: string; // Nouvelle propriété pour stocker l'ID de la section
-  scrollToSection: (sectionId: string) => void; // Nouvelle propriété pour déclencher le défilement
+  lien: string;
 }
 
-// Composant CardHeroSection
-function CardHeroSection({
-  titre,
-  sousTitre,
-  titreBtn,
-  sectionId,
-  scrollToSection,
-}: CardHeroSectionProps) {
-  return (
-    <CardHeroContainer>
-      <CardHeroInfosContainer>
-        <CardHeroInfosTexts>
-          <CardHeroTitre>{titre}</CardHeroTitre>
-          <CardHeroSousTitre>{sousTitre}</CardHeroSousTitre>
-        </CardHeroInfosTexts>
-        {/* Utilisez un bouton au lieu d'un lien */}
-        <CardHeroButton onClick={() => scrollToSection(sectionId)}>{titreBtn}</CardHeroButton>
-      </CardHeroInfosContainer>
-    </CardHeroContainer>
-  );
+//Composant Card
+function CardHeroSection({titre, sousTitre, titreBtn, lien}:CardProps) {
+    return(
+      <CardContainer>
+        <CardInfosContainer>
+          <CardInfosTexts>
+            <CardTitre>{titre}</CardTitre>
+            <CardSousTitre>{sousTitre}</CardSousTitre>
+          </CardInfosTexts>
+          <CardButton href={lien}>{titreBtn}</CardButton>
+        </CardInfosContainer>
+      </CardContainer>
+    )
 }
 
-export default CardHeroSection;
+export default CardHeroSection
