@@ -61,3 +61,17 @@ export type DataForfait = {
   codeDeLaRoute: ForfaitItem[];
 }
 
+export interface ArticleItem {
+  id: number;
+  titre: string;
+  contenu: string;
+  source: string;
+  date: Date;
+}
+
+export interface Newsletter {
+  id: number;
+  email: string;
+  nomp: string;
+  prenom: string;
+}

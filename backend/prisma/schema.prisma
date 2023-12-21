@@ -71,8 +71,8 @@ model Histoire {
 model Horaire {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   type       String
-  matin      Json
-  apresMidi  Json
+  matin      String[]
+  apresMidi  String[]
 }
 
 model Image {

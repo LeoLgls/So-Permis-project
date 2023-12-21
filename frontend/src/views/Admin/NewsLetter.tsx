@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { newsletterList } from '../../services/service.tsx';
 import styled from 'styled-components';
 import {
   Button,
@@ -11,6 +13,7 @@ import {
   Thead,
   Tr
 } from "../../utils/style/elementsAdmin.tsx";
+import { redirect } from 'react-router-dom';
 
 
 const TableContainer = styled.div`
@@ -31,18 +34,13 @@ const Radio = styled.input.attrs({ type: 'radio' })`
   margin-right: 10px;
 `;
 
-const dataMail = [
-  'testuser1@example.com',
-  'example.test2@mail.com',
-  'temp.email.3@mailbox.net',
-  'user4.test@mailprovider.org',
-  'testing.email5@example.org',
-  'temporary.user@mailservice.com',
-  'testmail6@example.net',
-  'example.test7@temporarymail.org',
-  'user8.testmail@mailprovider.net',
-  'temp.test.email9@example.com',
-];
+const dataMail = newsletterList;
+
+const handleDelete = (id: string) => {
+  axios.get(`http://localhost:3333/admin/newsletter/delete/${id}`)
+
+  window.location.reload();
+};
 
 function NewsLetter() {
   const [value, setValue] = useState<string>('1');
@@ -52,7 +50,7 @@ function NewsLetter() {
       <TableCaption>Mail NewsLetter</TableCaption>
       <TableContainer>
         <Table>
-          <Thead  >
+          <Thead>
             <Tr>
               <Th colSpan={2} >
                 Nom
@@ -60,11 +58,11 @@ function NewsLetter() {
             </Tr>
           </Thead>
           <Tbody>
-            {dataMail.map((mail, index) => (
-              <Tr key={index}>
-                <Td >{mail}</Td>
+            {dataMail.map((newsletter, index) => (
+              <Tr key={newsletter.id.toString()}>
+                <Td >{newsletter.email}</Td>
                 <Td >
-                  <Button to={"/"}>Suppr</Button>
+                  <Button to={"/admin/newsletter"} onClick={() => handleDelete(newsletter.id.toString())}>Suppr</Button>
                 </Td>
               </Tr>
             ))}

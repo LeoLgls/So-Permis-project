@@ -6,34 +6,6 @@ export default class HoraireController {
     public async store ({request}: HttpContextContract) {
         const requestData = request.only(['type','matin','apresMidi']);
     
-        const defaultMatin = {
-            "Lundi": "08:00-12:00",
-            "Mardi": "08:00-12:00",
-            "Mercredi": "08:00-12:00",
-            "Jeudi": "08:00-12:00",
-            "Vendredi": "08:00-12:00",
-            "Samedi": "08:00-12:00",
-            "Dimanche": "Fermé"
-        };
-
-        const defaultApresMidi = {
-            "Lundi": "13:00-17:00",
-            "Mardi": "13:00-17:00",
-            "Mercredi": "13:00-17:00",
-            "Jeudi": "13:00-17:00",
-            "Vendredi": "13:00-17:00",
-            "Samedi": "13:00-17:00",
-            "Dimanche": "Fermé"
-        };
-    
-        if (!requestData.matin) {
-            requestData.matin = defaultMatin;
-        }
-    
-        if (!requestData.apresMidi) {
-            requestData.apresMidi = defaultApresMidi;
-        }
-    
         const horaire = await prisma.horaire.create({
             data: requestData,
         })
@@ -78,6 +50,7 @@ export default class HoraireController {
         return horaire
     }
 
+    // cette fonction permet de récupérer les forfaits en fonction de leur type ("CONDUITE" ou "CODE")
     public async showByType ({params}: HttpContextContract) {
         const horaire = await prisma.horaire.findFirst({
             where: {
