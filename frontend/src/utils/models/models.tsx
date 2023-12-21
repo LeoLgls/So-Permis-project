@@ -27,7 +27,7 @@ export interface AnnulationCode {
   prix: number;
 }
 
-export interface  Article {
+export interface Article {
   titre: string;
   date: Date;
   contenu: string;
@@ -43,13 +43,6 @@ export interface PageForfait {
   indexForfait: number;
 }
 
-export type DataArticle = {
-  permisB: ForfaitItem[];
-  permisBExpress: ForfaitItem[];
-  conduiteAccompagnee: ForfaitItem[];
-  codeDeLaRoute: ForfaitItem[];
-}
-
 
 
 export interface ForfaitItem {
@@ -58,3 +51,20 @@ export interface ForfaitItem {
   prix: number;
   description: string;
 }
+
+export type DataForfait = {
+  permisB: ForfaitItem[];
+  permisBExpress: ForfaitItem[];
+  conduiteAccompagnee: ForfaitItem[];
+  codeDeLaRoute: ForfaitItem[];
+}
+
+
+export interface ArticleItem {
+  id: number;
+  titre: string;
+  contenu: string;
+  source: string;
+  date: Date;
+}
+

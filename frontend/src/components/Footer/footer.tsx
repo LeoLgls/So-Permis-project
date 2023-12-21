@@ -202,11 +202,11 @@ function Footer() {
 
               <ReseauContainer>
                   
-                  <Link to="https://t.snapchat.com/JWqJbzVO">
+                  <Link to="https://t.snapchat.com/JWqJbzVO" target="_blank" rel="noopener noreferrer">
                     <PetitLogo src={Snap} />
                   </Link>
 
-                  <Link to="https://www.instagram.com/sopermis76/">
+                  <Link to="https://www.instagram.com/sopermis76/" target="_blank" rel="noopener noreferrer">
                     <PetitLogo src={Insta} />
                   </Link>
 

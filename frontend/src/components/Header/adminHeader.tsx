@@ -206,9 +206,9 @@ function HeaderAdmin() {
         </Link>
 
         <LinkContainer>
-          <StyledLink onClick={linkScroll} to="/admin/interfaceAdmin">FORFAIT</StyledLink>
+          <StyledLink onClick={linkScroll} to="/admin/forfait">FORFAIT</StyledLink>
           <StyledLink onClick={linkScroll} to="/admin/newsletter">NEWSLETTER</StyledLink>
-          <StyledLink onClick={linkScroll} to="/admin/interfaceArticle">ARTICLES</StyledLink>
+          <StyledLink onClick={linkScroll} to="/admin/article">ARTICLES</StyledLink>
         </LinkContainer>
 
         <HamburgerIconWrapper onClick={toggleMenu}>
