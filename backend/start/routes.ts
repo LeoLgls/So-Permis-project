@@ -51,6 +51,7 @@ Route.post('/admin/image/create', 'ImageController.store')
 Route.post('/admin/newsletter/create', 'NewsletterController.store')
 Route.post('/admin/voiture/create', 'VoitureController.store')
 
+
 Route.get('/administrateur/show/:id', 'AdministrateurController.show')
 Route.get('/annulationcode/show/:id', 'AnnulationCodeController.show')
 Route.get('/article/show/:id', 'ArticleController.show')

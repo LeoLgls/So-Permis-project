@@ -25,9 +25,9 @@ for (let i = 0; i < listArticle.length; i++) {
     id: element["id"],
     titre: element["titre"],
     date: element["date"],
-    contenu: element["contenu"],
+    contenu: element["texte"],
     sources: element["sources"],
-    urlImage: element["image"],
+    urlImage: element["idImage"],
   }
   articleList.push(article)
   
@@ -59,7 +59,6 @@ const CodeEnSalle : Forfait = categoriesList.find(Forfait => Forfait.titre === "
 const ConditionAnnul : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDITION D'ANNULATION") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 
 
-console.log(categoriesList)
 
 export const forfaitList: Forfait[] = [
   Permis,ConduiteAccomp,Code
@@ -113,27 +112,32 @@ export const carouselData: CarouselItem[] = [
 ]
 
 const responseForfait = await axios.get('http://localhost:3333/forfaits');
-export const permisList: Forfait[] = responseForfait.data;
 
-export function getPermis(index: number) {return permisList[index]}
+export const permisListFull: Forfait[] = responseForfait.data;
+
+
+
+
+
+
 
 //FORFAIT B EXPRESS
-const ForfaitBExpress : Forfait = permisList.find(Forfait => Forfait.titre === "FORFAIT B EXPRESS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ForfaitBExpress : Forfait = permisListFull.find(Forfait => Forfait.titre === "FORFAIT B EXPRESS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 export const permisExpressList: Forfait[] = [
   ForfaitBExpress
 ]
 
 //FORFAIT CONDUITE ACCOMPAGNÉE CODE + 20 LEÇONS + CODE / FORFAIT CONDUITE ACCOMPAGNÉE + 20 LEÇONS
-const ConduiteAcc20LeconCode : Forfait = permisList.find(Forfait => Forfait.titre === "FORFAIT CONDUITE ACCOMPAGNÉE CODE + 20 LEÇONS + CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-const ConduiteAcc20Lecon : Forfait = permisList.find(Forfait => Forfait.titre === "FORFAIT CONDUITE ACCOMPAGNÉE + 20 LEÇONS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ConduiteAcc20LeconCode : Forfait = permisListFull.find(Forfait => Forfait.titre === "FORFAIT CONDUITE ACCOMPAGNÉE CODE + 20 LEÇONS + CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ConduiteAcc20Lecon : Forfait = permisListFull.find(Forfait => Forfait.titre === "FORFAIT CONDUITE ACCOMPAGNÉE + 20 LEÇONS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 
 export const conduiteAccompagneeList: Forfait[] = [
   ConduiteAcc20LeconCode, ConduiteAcc20Lecon
 ]
 
 //FORFAIT CODE SEUL  / FORFAIT CODE EXPRESS
-const ForfaitCodeSeul : Forfait = permisList.find(Forfait => Forfait.titre === "FORFAIT CODE SEUL") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-const ForfaitCodeExpress : Forfait = permisList.find(Forfait => Forfait.titre === "FORFAIT CODE EXPRESS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ForfaitCodeSeul : Forfait = permisListFull.find(Forfait => Forfait.titre === "FORFAIT CODE SEUL") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ForfaitCodeExpress : Forfait = permisListFull.find(Forfait => Forfait.titre === "FORFAIT CODE EXPRESS") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 export const codeForfaitList: Forfait[] = [
   ForfaitCodeSeul, ForfaitCodeExpress
 ]
@@ -188,75 +192,7 @@ for (let i = 0; i < annulationListRequette.length; i++) {
   
 }
 
-export const listForfaitPage: PageForfait[] = [
-  {
-    duree: "La formation dure 1 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-  },{
-    duree: "La formation dure 2 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 1,
 
-  },{
-    duree: "La formation dure 3 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 2,
-
-  },{
-    duree: "La formation dure 4 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-
-  },{
-    duree: "La formation dure 5 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-
-  },{
-    duree: "La formation dure 6 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-
-  },{
-    duree: "La formation dure 7 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-
-  },{
-    duree: "La formation dure 8 mois",
-    theorique: "Le code de la route tu vois",
-    pratique: "Tokyo Drift TMTC",
-    horaire: "Toute la journéé t'es un fois",
-    tarif: "Autant de thune qu'Oussamma Amar a sur son compte en banque",
-    indexForfait: 4,
-  },
-]
-
-export function getPageForfait(index: number) : PageForfait {
-  return listForfaitPage[index]
-}
 
 
 const reponsePermisB = await axios.get('http://localhost:3333/forfaits/PERMIS_B');
@@ -360,3 +296,115 @@ export const newsletterList:Newsletter [] = responseNewsletter.data;
 
 const responseArticles = await axios.get('http://localhost:3333/articles');
 export const articlesList: Article[] = responseArticles.data;
+
+export const permisList: any[] = []
+for (let i = 0; i < reponsePermisBList.length; i++) {
+
+  const element = reponsePermisBList[i];
+
+  const permis = {
+    titre : element["titre"],
+    sousTitre : element["sousTitre"],
+    titreBtn : element["titreBtn"],
+    lien : element["lien"],
+    duree : element["duree"],
+    theorique : element["theorique"],
+    pratique : element["pratique"],
+    horaire : element["horaireLecon"],
+    tarif : element["tarif"],
+  }
+  permisList.push(permis);
+  
+}
+
+for (let i = 0; i < reponsePermisBExpressList.length; i++) {
+
+  const element = reponsePermisBExpressList[i];
+  const permis = {
+    titre : element["titre"],
+    sousTitre : element["sousTitre"],
+    titreBtn : element["titreBtn"],
+    lien : element["lien"],
+    duree : element["duree"],
+    theorique : element["theorique"],
+    pratique : element["pratique"],
+    horaire : element["horaireLecon"],
+    tarif : element["tarif"],
+  }
+  permisList.push(permis);
+  
+}
+
+
+export const conduiteCodeList: any[] = []
+for (let i = 0; i < reponseConduiteList.length; i++) {
+
+  const element = reponseConduiteList[i];
+  const permis = {
+    titre : element["titre"],
+    sousTitre : element["sousTitre"],
+    titreBtn : element["titreBtn"],
+    lien : element["lien"],
+    duree : element["duree"],
+    theorique : element["theorique"],
+    pratique : element["pratique"],
+    horaire : element["horaireLecon"],
+    tarif : element["tarif"],
+  }
+  conduiteCodeList.push(permis);
+  
+}
+for (let i = 0; i < reponseCodeList.length; i++) {
+
+  const element = reponseCodeList[i];
+  const permis = {
+    titre : element["titre"],
+    sousTitre : element["sousTitre"],
+    titreBtn : element["titreBtn"],
+    lien : element["lien"],
+    duree : element["duree"],
+    theorique : element["theorique"],
+    pratique : element["pratique"],
+    horaire : element["horaireLecon"],
+    tarif : element["tarif"],
+  }
+  conduiteCodeList.push(permis);
+  
+}
+
+export function getPermis(index: number) {return permisListFull[index]}
+
+export const listForfaitPage: PageForfait[] = []
+
+
+for(let i = 0; i < permisList.length; i++) {
+  const element = permisList[i];
+  const forfait: PageForfait = {
+    duree: element["duree"],
+    theorique: element["theorique"],
+    pratique: element["pratique"],
+    horaire: element["horaire"],
+    tarif: element["tarif"],
+    indexForfait: listForfaitPage.length+1
+  }
+  listForfaitPage.push(forfait)
+
+}
+
+for(let i = 0; i < conduiteCodeList.length; i++) {
+  const element = conduiteCodeList[i];
+  const forfait: PageForfait = {
+    duree: element["duree"],
+    theorique: element["theorique"],
+    pratique: element["pratique"],
+    horaire: element["horaire"],
+    tarif: element["tarif"],
+    indexForfait: listForfaitPage.length+1
+  }
+  listForfaitPage.push(forfait)
+}
+
+
+export function getPageForfait(index: number) : PageForfait {
+  return listForfaitPage[index]
+}
