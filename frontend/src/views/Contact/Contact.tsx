@@ -341,8 +341,12 @@ interface OpeningHour {
 
 	async function handleSubmitNewsletter(e: {preventDefault: () => void;}) {
 		e.preventDefault();
-		//Envoie dans la BDD
-		//TODO
+
+		const emailData = {
+			email: newsLetter
+		  };
+
+		await axios.post(`http://localhost:3333/newsletter/add`,emailData)
 		console.log(newsLetter)
 
 	}
@@ -367,7 +371,7 @@ interface OpeningHour {
 
 				<FormControl>
 					<label htmlFor="mail">Mail :</label>
-					<input type="text" name="email" value={formData.email} onChange={handleChange} required />
+					<input type="email" name="email" value={formData.email} onChange={handleChange} required />
 				</FormControl>
 
 				<FormControl>
@@ -443,7 +447,7 @@ interface OpeningHour {
 					<FormContainerNewsletter  onSubmit={handleSubmitNewsletter}>
 						<h3>Inscrivez-vous à notre Newsletter</h3>
 						<FormControlNewsletter>
-							<input type='text' value={newsLetter} placeholder='Entrez votre adresse mail' onChange={handleChangeNewsletter}/>
+							<input type='email' value={newsLetter} placeholder='Entrez votre adresse mail' onChange={handleChangeNewsletter}/>
 
 							<SubmitButtonNewsletter>
 								<InputInscrire type="submit" name="submit" value="S'inscrire"  />
