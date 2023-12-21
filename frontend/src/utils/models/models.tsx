@@ -33,7 +33,6 @@ export interface Article {
   contenu: string;
   source: string;
   urlImage: string;
-
 }
 
 export interface PageForfait {
