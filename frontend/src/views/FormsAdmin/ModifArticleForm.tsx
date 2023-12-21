@@ -73,10 +73,10 @@ const BoutonRetour = styled.button`
 `;
 
 const ImageContainer = styled.div`
-  input{
+  input {
     padding-bottom: 5%;
   }
-`
+`;
 
 function ArticleForm({ articleToEdit }: ArticleFormProps) {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -86,10 +86,11 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   const [contenu, setContenu] = useState('');
   const [source, setSource] = useState('');
   const [date, setDate] = useState('');
+  const [urlImage, setUrlImage] = useState<string>(''); // Nouvel état pour stocker le lien de l'image
   const {id} = useParams()
   const navigate = useNavigate()
 
-  //Chercher le forfait dans la bado
+  // Chercher l'article dans la base de données
   if (typeof id === "string") {
     articleToEdit = getArticle(parseInt(id))
   }
@@ -99,52 +100,49 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
       setTitre(articleToEdit.titre);
       setContenu(articleToEdit.contenu);
       setSource(articleToEdit.source);
+
       // Formatage de la date en une chaîne (exemple de format)
       const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
       setDate(dateString);
+
+      setUrlImage(articleToEdit.urlImage); // Mettez à jour le lien de l'image
 
     } else {
       setTitre('');
       setContenu('');
       setSource('');
       setDate('');
+      setUrlImage('');
     }
   }, [articleToEdit]);
 
-  //Si id existe : modifier
-  //Sinon add
   function onSave(article: Article) {
-    console.log(article)
+    console.log(article);
   }
-
 
   // Convertir la chaîne de date en objet Date
   const parsedDate = new Date(date);
 
   function handleSave() {
-    console.log(id)
     const newArticle: Article = {
       titre: `${titre}`,
       contenu: `${contenu}`,
       source: `${source}`,
       date: parsedDate,
-    }
-
+      urlImage: urlImage, // Utilisez le lien de l'image dans newArticle
+    };
 
     onSave(newArticle);
     setTitre('');
     setContenu('');
     setSource('');
     setDate('');
+    setUrlImage('');
 
-    navigate('/admin')
-
+    navigate('/admin');
   }
 
-
-
   function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
-    // Vérifiez s'il y a un fichier sélectionné
     const file = event.target.files?.[0];
 
     if (file) {
@@ -153,22 +151,18 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
 
       if (allowedExtensions.includes(extension) && file.type.startsWith('image/')) {
         setSelectedImage(file);
-
-        // Créer une URL d'objet pour la prévisualisation
         const previewURL = URL.createObjectURL(file);
         setImagePreview(previewURL);
+        setUrlImage(previewURL); // Mettez à jour le lien de l'image
       } else {
-        // Gérez le cas où l'utilisateur sélectionne un fichier non autorisé
         console.error('Veuillez sélectionner un fichier image avec une extension .jpg, .jpeg ou .png.');
       }
     }
   }
 
   function handleBack() {
-    // Utilisez la fonction goBack pour revenir à la page précédente
     navigate(-1);
   }
-
 
   return (
     <MainContainer>
@@ -180,27 +174,25 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         <FormInput type="text" value={contenu} onChange={(e) => setContenu(e.target.value)} />
 
         <TextareaContainer>
-            <FormLabel>Description:</FormLabel>
-            <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
+          <FormLabel>Description:</FormLabel>
+          <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
         </TextareaContainer>
 
         <ImageContainer>
-            <FormLabel>Sélectionner une image :</FormLabel>
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+          <FormLabel>Sélectionner une image :</FormLabel>
+          <input type="file" accept="image/*" onChange={handleImageChange} />
 
-            {imagePreview && (
+          {imagePreview && (
             <img src={imagePreview} alt="Prévisualisation" style={{ maxWidth: '100%', maxHeight: '200px' }} />
-            )}
+          )}
         </ImageContainer>
 
         <ButtonContainer>
-            <FormButton onClick={handleSave}>{articleToEdit ? 'Modifier' : 'Ajouter'}</FormButton>
-            <BoutonRetour onClick={handleBack}> Retour </BoutonRetour>
+          <FormButton onClick={handleSave}>{articleToEdit ? 'Modifier' : 'Ajouter'}</FormButton>
+          <BoutonRetour onClick={handleBack}> Retour </BoutonRetour>
         </ButtonContainer>
-
       </FormContainer>
     </MainContainer>
-
   );
 }
 
