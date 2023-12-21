@@ -30,10 +30,16 @@ import RGPD from "./views/RGPD/RGPD.tsx";
 import MentionLegales from "./views/MentionLegales/MentionLegales.tsx";
 import AdminHeader from "./components/Header/adminHeader.tsx";
 import AnimatedPage from "./components/Animation/AnimPage.tsx";
+import { AuthProvider, useAuth } from './utils/hooks/AuthContext.tsx'
 
 
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+
+function App() {
+
+  const { user } = useAuth();
+
+  return(
   <React.StrictMode>
     <Router>
       <ScrollToTop/>
@@ -60,16 +66,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path={"/article/:articleNumberParam"} element={<AnimatedPage><ArticlePage /></AnimatedPage>}></Route>
 
 
-        <Route path="/admin" element={<Connexion/>}></Route>
+        {user ? (
+          <>
+          <Route path="/admin/newsletter" element={<NewsLetter/>}></Route>
 
-        <Route path="/admin/newsletter" element={<NewsLetter/>}></Route>
+          <Route path='/admin/forfait' element={<ForfaitAdmin/>}></Route>
+          <Route path="/admin/forfait/modifier-forfait/:id"  element={<ModifForfaitForm/>} ></Route>
 
-        <Route path='/admin/forfait' element={<ForfaitAdmin/>}></Route>
-        <Route path="/admin/forfait/modifier-forfait/:id"  element={<ModifForfaitForm/>} ></Route>
-
-        <Route path="/admin/article" element={<ArticleAdmin/>}></Route>
-        <Route path="/admin/article/modifier-article/:id" element={<ModifArticleForm/>}></Route>
-
+          <Route path="/admin/article" element={<ArticleAdmin/>}></Route>
+          <Route path="/admin/article/modifier-article/:id" element={<ModifArticleForm/>}></Route>
+        </>
+        ):(
+          <Route path="/admin" element={<Connexion/>}></Route>
+        )}
 
 
 
@@ -78,13 +87,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="*" element={<Error/>}></Route>
       </Routes>
 
-      {window.location.pathname.startsWith('/admin') ? (
-        ""
-      ) : (
-        <Footer />
-      )}
-
-
     </Router>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+
+)}
+
+ReactDOM.createRoot(document.getElementById('root')!).render(<AuthProvider><App/></AuthProvider>);
+
+

@@ -112,8 +112,7 @@
       ],
       "aliases": [],
       "flags": []
-    
-  }, 
+    },
     "prisma-seeder:init": {
       "settings": {},
       "commandPath": "@wahyubucil/adonis-prisma/build/commands/PrismaSeederInit",

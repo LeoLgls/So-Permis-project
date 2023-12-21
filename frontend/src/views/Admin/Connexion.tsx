@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import React, { useState, FormEvent } from 'react';
 import styled from 'styled-components';
+import { useAuth } from '../../utils/hooks/AuthContext';
 
 const Container = styled.div`
   display: flex;
@@ -52,15 +53,45 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+interface FormState {
+  identifier: string;
+  password: string;
+}
+
 function Connection() {
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<FormState>({
     identifier: '',
     password: '',
   });
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const { login } = useAuth(); // Utilisez le hook useAuth
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Identifiant:', formState.identifier, 'Password:', formState.password);
+
+    try {
+      const response = await fetch('http://127.0.0.1:3333/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        // Authentification réussie
+        const responseData = await response.json();
+        console.log('Utilisateur connecté:', responseData);
+
+        // Stockez le jeton d'authentification dans le contexte d'authentification
+        login(responseData.token);
+      } else {
+        // Gestion des erreurs d'authentification
+        console.error('Erreur lors de l\'authentification');
+      }
+    } catch (error) {
+      console.error('Erreur réseau:', error);
+    }
   };
 
   return (
@@ -71,7 +102,7 @@ function Connection() {
           <FormControl>
             <FormLabel>Identifiant</FormLabel>
             <Input
-            required
+              required
               type="text"
               placeholder="Entrez votre identifiant"
               value={formState.identifier}
@@ -81,7 +112,7 @@ function Connection() {
           <FormControl>
             <FormLabel>Mot de passe</FormLabel>
             <Input
-            required
+              required
               type="password"
               placeholder="Entrez votre mot de passe"
               value={formState.password}
@@ -93,6 +124,6 @@ function Connection() {
       </FormContainer>
     </Container>
   );
-};
+}
 
 export default Connection;

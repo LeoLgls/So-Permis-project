@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/img/logo.png';
 import { StyledLink } from '../../utils/style/Atoms';
 import styled from 'styled-components';
+import { useAuth } from '../../utils/hooks/AuthContext';
 
 const HomeLogo = styled.img<{ onTop: boolean }>`
   transition : all 0.3s ease;
@@ -133,6 +134,10 @@ const MobileMenuItem = styled(Link)`
 `;
 
 function HeaderAdmin() {
+
+  const { user } = useAuth();
+
+  
   const [onTop, setOnTop] = useState(true);
   const [isMenuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -201,22 +206,20 @@ function HeaderAdmin() {
     <MenuContainer>
       <NavContainer onTop={onTop} ref={headerRef}>
 
-        <Link to="/admin/">
           <HomeLogo src={Logo} onTop={onTop} onClick={linkScroll} />
-        </Link>
-
+          {user && (
         <LinkContainer>
           <StyledLink onClick={linkScroll} to="/admin/forfait">FORFAIT</StyledLink>
           <StyledLink onClick={linkScroll} to="/admin/newsletter">NEWSLETTER</StyledLink>
           <StyledLink onClick={linkScroll} to="/admin/article">ARTICLES</StyledLink>
         </LinkContainer>
-
+          )}{user && (
         <HamburgerIconWrapper onClick={toggleMenu}>
           <HamburgerIcon isOpen={isMenuOpen} />
           <HamburgerIcon isOpen={isMenuOpen} />
           <HamburgerIcon isOpen={isMenuOpen} />
         </HamburgerIconWrapper>
-
+          )}
       </NavContainer>
 
 
