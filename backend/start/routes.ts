@@ -28,6 +28,8 @@ Route.get('/administrateurs', 'AdministrateurController.index')
 
 Route.get('/articles', 'ArticleController.index')
 
+Route.get('/articles/last' ,'ArticleController.last' )
+
 Route.get('/avis', 'AvisController.index')
 
 Route.get('/categories', 'CategorieController.index')

@@ -102,13 +102,28 @@ for (let i = 0; i < avisListRequette.length; i++) {
   avisList.push(avis)
   
 }
+const reponseCarrousel = await axios.get('http://localhost:3333/articles/last');
+export const carouselList: [] = reponseCarrousel.data;
 
+export const carouselData: CarouselItem[] = []
 
-export const carouselData: CarouselItem[] = [
-  { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
-  { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
-  { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
-]
+for (let i = 0; i < carouselList.length; i++) {
+  const element = carouselList[i];
+  const carousel: CarouselItem = {
+    index: i,
+    src: element["idImage"],
+    alt: element["titre"],
+    lien: "/article/" + element["id"],
+  }
+  carouselData.push(carousel)
+  
+}
+
+// export const carouselData: CarouselItem[] = [
+//   { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
+//   { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
+//   { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
+// ]
 
 const responseForfait = await axios.get('http://localhost:3333/forfaits');
 export const permisList: Forfait[] = responseForfait.data;
