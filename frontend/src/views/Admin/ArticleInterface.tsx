@@ -46,12 +46,12 @@ function InterfaceAdminArticle() {
         </Thead>
         <Tbody>
           {dataArticle.map((article, index) => (
-            <Tr key={index}>
+            <Tr key={article.id}>
               <Td>{article.titre}</Td>
-              <Td>{article.source}</Td>
+              <Td>{article.sources}</Td>
               <Td>{new Date().toLocaleDateString()}</Td>
               <Td>
-                <Button to={`/admin/article/modifier-article/${index}`}>Modif</Button>
+                <Button to={`/admin/article/modifier-article/${article.id}`}>Modif</Button>
                 <Button to={'/admin/article'} onClick={() => handleDelete(article.id.toString())}>Suppr</Button>
               </Td>
             </Tr>

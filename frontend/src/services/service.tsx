@@ -26,7 +26,7 @@ for (let i = 0; i < listArticle.length; i++) {
     titre: element["titre"],
     date: element["date"],
     contenu: element["texte"],
-    source: element["sources"],
+    sources: element["sources"],
     urlImage: element["image"],
   }
   articleList.push(article)
@@ -77,8 +77,8 @@ export function getForfait(index: number): Forfait {
   return forfaitList[index]
 }
 
-export function getArticle(index: number): Article {
-  return articleList[index]
+export async function getArticle(id: number) {
+  return articleList.find(article => article.id === id);
 }
 
 //AVIS

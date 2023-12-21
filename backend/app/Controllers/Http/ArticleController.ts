@@ -5,7 +5,7 @@ export default class ArticleController {
 
     public async store ({request}: HttpContextContract) {
         const article = await prisma.article.create({
-            data: request.only(['titre', 'texte', 'idImage','date','sources']),
+            data: request.only(['titre', 'contenu', 'urlImage','date','sources']),
         })
 
         return article
@@ -37,12 +37,18 @@ export default class ArticleController {
         return article
     }
 
+    public async destroyAll () {
+        const article = await prisma.article.deleteMany()
+
+        return article
+    }
+
     public async update ({request, params}: HttpContextContract) {
         const article = await prisma.article.update({
             where: {
                 id: params.id
             },
-            data: request.only(['titre', 'texte', 'image','date','sources'])
+            data: request.only(['titre', 'contenu', 'urlImage','date','sources'])
         })
 
         return article

@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import colors from "../../utils/style/colors.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {Article} from "../../utils/models/models.tsx";
+import {NewArticle} from "../../utils/models/models.tsx";
 import {getArticle} from "../../services/service.tsx";
+import axios from 'axios';
 
 interface ArticleFormProps {
   articleToEdit?: Article | null;
@@ -86,7 +88,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
 
   const [titre, setTitre] = useState('');
   const [contenu, setContenu] = useState('');
-  const [source, setSource] = useState('');
+  const [sources, setSources] = useState('');
   const [date, setDate] = useState('');
 
   const [urlImage, setUrlImage] = useState<string>(''); // Nouvel état pour stocker le lien de l'image
@@ -94,15 +96,32 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   const navigate = useNavigate()
 
   // Chercher l'article dans la base de données
-  if (typeof id === "string") {
-    articleToEdit = getArticle(parseInt(id))
-  }
+  useEffect(() => {
+    if (id) {
+      getArticle(parseInt(id)).then((article) => {
+        if (article) {
+          setTitre(article.titre);
+          setContenu(article.contenu);
+          setSources(article.sources);
+
+          if (article.date instanceof Date) {
+            const dateString = article.date.toLocaleDateString('fr-FR');
+            setDate(dateString);
+          } else {
+            setDate('');
+          }
+
+          setUrlImage(article.urlImage); // Mettez à jour le lien de l'image
+        }
+      });
+    }
+  }, [id]);
 
   useEffect(() => {
     if (articleToEdit) {
       setTitre(articleToEdit.titre);
       setContenu(articleToEdit.contenu);
-      setSource(articleToEdit.source);
+      setSources(articleToEdit.sources);
 
       if (articleToEdit.date instanceof Date) {
         const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
@@ -118,42 +137,42 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
     } else {
       setTitre('');
       setContenu('');
-      setSource('');
+      setSources('');
       setDate('');
       setUrlImage('');
     }
   }, [articleToEdit]);
 
-  function onSave(article: Article) {
-    console.log(article);
+  async function onSave(newArticle: NewArticle) {
+    console.log(newArticle);
+
+    //Si id existe : modifier
+    axios.post(`http://localhost:3333/admin/article/create`, newArticle)
   }
-
-  //Si id existe : modifier
-  //Sinon add
-
 
 
 
   // Convertir la chaîne de date en objet Date
-  const parsedDate = new Date(date);
+  let parsedDate = new Date(date);
+  if (isNaN(parsedDate.getTime())) {
+    // Si la date n'est pas valide, utilisez la date actuelle
+    parsedDate = new Date();
+  }
 
   function handleSave() {
 
-    console.log(id)
-
-    const newArticle: Article = {
+    const newArticle = {
       titre: `${titre}`,
       contenu: `${contenu}`,
-      source: `${source}`,
+      sources: `${sources}`,
       date: parsedDate,
-      urlImage: urlImage, // Utilisez le lien de l'image dans newArticle
+      urlImage: urlImage,
     };
-
 
     onSave(newArticle);
     setTitre('');
     setContenu('');
-    setSource('');
+    setSources('');
     setDate('');
 
     setUrlImage('');
@@ -193,13 +212,13 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         <FormLabel>Titre :</FormLabel>
         <FormInput type="text" value={titre} onChange={(e) => setTitre(e.target.value)} />
 
-        <FormLabel>Source :</FormLabel>
-        <FormInput type="text" value={contenu} onChange={(e) => setContenu(e.target.value)} />
+        <FormLabel>Sources :</FormLabel>
+        <FormInput type="text" value={sources} onChange={(e) => setSources(e.target.value)} />
 
         <TextareaContainer>
 
             <FormLabel>Description:</FormLabel>
-            <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
+            <FormInputTextarea value={contenu} onChange={(e) => setContenu(e.target.value)} />
         </TextareaContainer>
 
         <ImageContainer>

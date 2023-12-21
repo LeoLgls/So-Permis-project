@@ -32,7 +32,15 @@ export interface Article {
   titre: string;
   date: Date;
   contenu: string;
-  source: string;
+  sources: string;
+  urlImage: string;
+}
+
+export interface NewArticle {
+  titre: string;
+  date: Date;
+  contenu: string;
+  sources: string;
   urlImage: string;
 }
 
