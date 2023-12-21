@@ -5,10 +5,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Article} from "../../utils/models/models.tsx";
 import {getArticle} from "../../services/service.tsx";
 
-interface ArticleFormProps {
-  articleToEdit?: Article | null;
-}
 
+
+/* STYLES */
 const MainContainer = styled.main`
     padding-left: 15vw;
     padding-right: 15vw;
@@ -79,68 +78,90 @@ const ImageContainer = styled.div`
   }
 `
 
+/* Données qui sont données à la fonction ArticleForm ( c'est surtout pour typé les données transmises )*/
+interface ArticleFormProps {
+  articleToEdit?: Article | null;
+}
 
+
+//Un article prend donc soit un article existant : Article ou rien pour créer un nouvelle article : null
 function ArticleForm({ articleToEdit }: ArticleFormProps) {
+
+  //Méthode set liées à la variable image, prenant soit un fichier image soit rien
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
+
+  //Méthode set liées à la variable image, prenant soit un fichier image soit rien pour prévisualiser l'image téléchargé
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
+  //Variables et setter pour entrer les données du forms
   const [titre, setTitre] = useState('');
   const [contenu, setContenu] = useState('');
   const [source, setSource] = useState('');
   const [date, setDate] = useState('');
 
+  //Lien de l'image à définir dans la bado
   const [urlImage, setUrlImage] = useState<string>(''); // Nouvel état pour stocker le lien de l'image
+
+  //Prend l'ID de l'article ( existant si existe, ou généré si non existant ) pour ajouter ou modifier l'article
   const {id} = useParams()
+
+  //Permet la redirection
   const navigate = useNavigate()
 
-  // Chercher l'article dans la base de données
+  /*
+  * Prend l'id de l'article dans l'URL, et le transforme en number
+  * TODO : a modifier car l'id en MongoDB != un number
+  */
   if (typeof id === "string") {
     articleToEdit = getArticle(parseInt(id))
   }
 
   useEffect(() => {
+    //Si l'article existe on met dans le formulaire les données
     if (articleToEdit) {
       setTitre(articleToEdit.titre);
       setContenu(articleToEdit.contenu);
       setSource(articleToEdit.source);
 
+      // On vérifie que la date est un type Date
       if (articleToEdit.date instanceof Date) {
+        //On met en fr la date et en string
         const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
-        setDate(dateString);
+        setDate(dateString); // On met la date
       } else {
-        setDate('');
+        setDate(''); // Sinon rien
       }
 
 
-      setUrlImage(articleToEdit.urlImage); // Mettez à jour le lien de l'image
+      //On défini l'url de l'image si elle existe déjà
+      setUrlImage(articleToEdit.urlImage);
 
 
     } else {
+      //Sinon formulaire vide
       setTitre('');
       setContenu('');
       setSource('');
       setDate('');
       setUrlImage('');
     }
+    //Maj des vars quand l'article apparait
   }, [articleToEdit]);
 
+  //TODO : A modifier pour stocker l'article passé en param dans la bado
   function onSave(article: Article) {
     console.log(article);
   }
 
-  //Si id existe : modifier
-  //Sinon add
-
-
-
-
   // Convertir la chaîne de date en objet Date
   const parsedDate = new Date(date);
 
+  //Fonction active quand on submit le form
   function handleSave() {
 
     console.log(id)
 
+    //Il manque l'id de l'article, mais sinon on crée l'article avec les données du form
     const newArticle: Article = {
       titre: `${titre}`,
       contenu: `${contenu}`,
@@ -150,7 +171,10 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
     };
 
 
+    //On sauvegarde l'article
     onSave(newArticle);
+
+    //Reset du formulaire
     setTitre('');
     setContenu('');
     setSource('');
@@ -158,38 +182,52 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
 
     setUrlImage('');
 
+    //Redirection vers la page article
     navigate('/admin/article');
   }
 
+  //Fonction quand on change l'image, prenant en param un event ( change je présume ? )
   function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
 
+    //On récupère le fichier de l'input
     const file = event.target.files?.[0];
 
+    //Si le fichier existe
     if (file) {
+      //On autorise que les images dans ces formats là
       const allowedExtensions = ['jpg', 'jpeg', 'png'];
+      //On récupère l'extension du fichier
       const extension = file.name.split('.').pop()?.toLowerCase() || '';
 
+      //Si le fichier commence par "image" dans la base64 ( donc pas une url ), et que l'extension est bonne
       if (allowedExtensions.includes(extension) && file.type.startsWith('image/')) {
+        //On met à la variable selectedImage, la valeur de file
         setSelectedImage(file);
+
+        //On fait la preview de l'image
         const previewURL = URL.createObjectURL(file);
         setImagePreview(previewURL);
         setUrlImage(previewURL); // Mettez à jour le lien de l'image
       } else {
+        //Sinon erreur
         console.error('Veuillez sélectionner un fichier image avec une extension .jpg, .jpeg ou .png.');
       }
     }
   }
 
+  //Fonction pour revenir à la page précédente
   function handleBack() {
-    // Utilisez la fonction goBack pour revenir à la page précédente
     navigate(-1);
   }
 
 
 
+  //HTML de la page
   return (
     <MainContainer>
       <FormContainer>
+        {/*Formulaire pour modifier l'article, avec la value donné dans titre ( donc soit '' soit le titre de l'article existant
+        Quand il y a un changement, on change la valeur de la variable */}
         <FormLabel>Titre :</FormLabel>
         <FormInput type="text" value={titre} onChange={(e) => setTitre(e.target.value)} />
 
@@ -197,12 +235,12 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         <FormInput type="text" value={contenu} onChange={(e) => setContenu(e.target.value)} />
 
         <TextareaContainer>
-
             <FormLabel>Description:</FormLabel>
             <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
         </TextareaContainer>
 
         <ImageContainer>
+          {/* Même principe pour l'image*/}
             <FormLabel>Sélectionner une image :</FormLabel>
             <input type="file" accept="image/*" onChange={handleImageChange} />
 
@@ -212,6 +250,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         </ImageContainer>
 
         <ButtonContainer>
+            {/* Si l'article existe, on met modifier sinon ajouter */}
             <FormButton onClick={handleSave}>{articleToEdit ? 'Modifier' : 'Ajouter'}</FormButton>
             <BoutonRetour onClick={handleBack}> Retour </BoutonRetour>
         </ButtonContainer>
