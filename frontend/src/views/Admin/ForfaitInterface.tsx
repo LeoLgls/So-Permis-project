@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Tabs from '../../components/Tabs/tab';
+import Tabs from '../../components/Tabs/tab.tsx';
 import { Button, PageContainer, Table, TableCaption, Td, Th, Thead, Tr } from '../../utils/style/elementsAdmin.tsx';
 import { ForfaitItem } from "../../utils/models/models.tsx";
 import { tabs } from "../../services/service.tsx";
@@ -16,7 +16,7 @@ const TableContainer = styled.div`
 	justify-content: space-between;
 `;
 
-const ArticleContainer = styled.div`
+const ForfaitsContainer = styled.div`
 	display: flex;
 	width: 100%;
 	flex-direction: column;
@@ -39,7 +39,7 @@ export function generateTableData(data: { caption: string; items: ForfaitItem[] 
 
 	return (
 		<React.StrictMode>
-			<ArticleContainer>
+			<ForfaitsContainer>
 				<TableContainer>
 					<TableCaption>{data.caption}</TableCaption>
 					<Table>
@@ -58,16 +58,16 @@ export function generateTableData(data: { caption: string; items: ForfaitItem[] 
 								<Td>{prix}</Td>
 								<Td>{description}</Td>
 								<Td>
-									<Button to={`/admin/interfaceArticle/modifier-forfait/${id}`}>Modif</Button>
-									<Button to={`/admin/interfaceArticle/supprimer-forfait/${id}`}>Suppr</Button>
+									<Button to={`/admin/forfait/modifier-forfait/${id}`}>Modif</Button>
+									<Button to={`/admin/forfait/supprimer-forfait/${id}`}>Suppr</Button>
 								</Td>
 							</Tr>
 						))}
 						</tbody>
 					</Table>
 				</TableContainer>
-				<ButtonAdd to={`/admin/interfaceArticle/modifier-forfait/${maxSize}`}>Ajouter</ButtonAdd>
-			</ArticleContainer>
+				<ButtonAdd to={`/admin/forfait/modifier-forfait/${maxSize}`}>Ajouter</ButtonAdd>
+			</ForfaitsContainer>
 		</React.StrictMode>
 
 
