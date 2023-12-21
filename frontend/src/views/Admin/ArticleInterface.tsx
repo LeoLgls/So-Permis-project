@@ -39,6 +39,7 @@ function InterfaceAdminArticle() {
         <Thead>
           <Tr>
             <Th>Titre</Th>
+            <Th>Contenu</Th>
             <Th>Source</Th>
             <Th>Date</Th>
             <Th>Actions</Th>
@@ -48,6 +49,7 @@ function InterfaceAdminArticle() {
           {dataArticle.map((article, index) => (
             <Tr key={article.id}>
               <Td>{article.titre}</Td>
+              <Td>{article.contenu}</Td>
               <Td>{article.sources}</Td>
               <Td>{new Date().toLocaleDateString()}</Td>
               <Td>

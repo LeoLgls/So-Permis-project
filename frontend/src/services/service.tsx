@@ -25,7 +25,7 @@ for (let i = 0; i < listArticle.length; i++) {
     id: element["id"],
     titre: element["titre"],
     date: element["date"],
-    contenu: element["texte"],
+    contenu: element["contenu"],
     sources: element["sources"],
     urlImage: element["image"],
   }
