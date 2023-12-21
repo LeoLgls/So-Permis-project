@@ -401,7 +401,7 @@ interface OpeningHour {
 
 					<InformationsContainer>
 
-						<h3>Horaire d'ouverture</h3>
+						
 						{loading && <p>Chargement en cours...</p>}
 						{error && <p>Erreur : {error}</p>}
 						{openingHours.length > 0 && (
