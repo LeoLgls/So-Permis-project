@@ -169,14 +169,14 @@ console.log(mapHistoire);
 
 export const txtHistoire: string = mapHistoire["Histoire"]
 export const histoire1: string = mapHistoire["histoire1"]
-export const histoire2: string =mapHistoire["histoire1"]
-export const histoire3: string =mapHistoire["histoire1"]
-export const histoire4: string =mapHistoire["histoire1"]
-export const histoire5: string =mapHistoire["histoire1"]
+export const histoire2: string =mapHistoire["histoire2"]
+export const histoire3: string =mapHistoire["histoire3"]
+export const histoire4: string =mapHistoire["histoire4"]
+export const histoire5: string =mapHistoire["histoire5"]                                                                     
 
 
-export const txtPermisExpress: string = "Le permis B en 1 mois, c'est comme un marathon. C'est un challenge qui demande de la motivation, de la concentration et de la persévérance. Mais c'est aussi une expérience fun et enrichissante. En 7 semaines, tu apprendras à conduire en sécurité, mais aussi à t'adapter à des situations de conduite variées."
-export const txtPermisExpress2: string = "Alors, si tu es prêt à relever le défi, lance-toi !"
+export const txtPermisExpress: string = mapHistoire["txtPermisExpress"]   
+export const txtPermisExpress2: string = mapHistoire["txtPermisExpress2"]  
 
 
 
