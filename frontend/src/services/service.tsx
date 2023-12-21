@@ -27,7 +27,8 @@ for (let i = 0; i < listArticle.length; i++) {
     date: element["date"],
     contenu: element["texte"],
     source: element["sources"],
-    urlImage: element["image"],
+    urlImage: element["idImage"],
+
   }
   articleList.push(article)
   
