@@ -48,7 +48,7 @@ Route.post('/forfait', 'ForfaitController.store')
 Route.post('/histoire', 'HistoireController.store')
 Route.post('/horaire', 'HoraireController.store')
 Route.post('/image', 'ImageController.store')
-Route.post('/newsletter', 'NewsletterController.store')
+Route.post('/newsletter/add/', 'NewsletterController.store')
 Route.post('/voiture', 'VoitureController.store')
 
 Route.get('/administrateur/show/:id', 'AdministrateurController.show')

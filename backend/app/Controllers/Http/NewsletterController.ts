@@ -4,6 +4,7 @@ import {prisma} from '@ioc:Adonis/Addons/Prisma'
 export default class NewsletterController {
 
     public async store ({request}: HttpContextContract) {
+        console.log(request)
         const newsletter = await prisma.newsletter.create({
             data: request.only(['email']),
         })
