@@ -12,19 +12,16 @@ import imgBackgroundCodeRoute from "../../assets/img/code-de-la-route.jpeg";
 
 
 const CodeSections = styled.section`
-
+  background-color: ${colors.backgroundNoir};
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 `
 
 const ForfaitContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    flex: 1;
-
-    @media (max-width: 1090px) {
-        flex-direction: column;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  width: 100%;
+  gap: 40px;
 `
 
 const HoraireSection = styled.section`
@@ -68,9 +65,11 @@ const PlanningContainer = styled.div`
 function CodeRoute() {
   return (
     <React.StrictMode>
-      <HeroSection img={imgBackgroundCodeRoute} forfaits={codeList} transitionNoir={true}/>
       <MainContainer theme={'noir'}>
-        <CodeSections>
+      
+        <HeroSection img={imgBackgroundCodeRoute} forfaits={codeList} transitionNoir={true}/>
+
+        <CodeSections id="code">
           <TitreSection theme={'noir'}>Forfait Code</TitreSection>
           <ForfaitContainer>
             {codeForfaitList.map((forfait, index) => (
@@ -78,16 +77,20 @@ function CodeRoute() {
             ))}
           </ForfaitContainer>
         </CodeSections>
-        <HoraireSection>
+
+        <HoraireSection id="horaires">
           <TitreSection theme={'noir'}>Horaire code en salle</TitreSection>
           <PlanningContainer>
             <Planning/>
           </PlanningContainer>
         </HoraireSection>
+
       </MainContainer>
+
       <Transition orientation={'0deg'} theme={'blanc'}/>
+
       <MainContainer theme={'blanc'}>
-        <TitreSection theme={'blanc'}>Condition d'annulation de code</TitreSection>
+        <TitreSection id="annulation" theme={'blanc'}>Condition d'annulation de code</TitreSection>
         <CardContainer>
           <CardBackground>
             <LayoutAnnulation>
@@ -102,8 +105,8 @@ function CodeRoute() {
             </LayoutAnnulation>
           </CardBackground>
         </CardContainer>
-
       </MainContainer>
+
     </React.StrictMode>
   )
 }
