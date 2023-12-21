@@ -1,11 +1,11 @@
-import {AnnulationCode, Article, DataArticle, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataForfait, Forfait, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
-import {generateTableData} from "../views/Admin/InterfaceAdminPage.tsx";
+import {generateTableData} from "../views/Admin/ForfaitInterface.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
 
 import axios from 'axios';
@@ -46,7 +46,7 @@ const responseCattegories = await axios.get('http://localhost:3333/categories');
 export const categoriesList: Forfait[] = responseCattegories.data;
 
 const Permis : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS DE CONDUIRE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
-const ConduiteAccomp : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDUITE ACCOMPAGNÉE")|| { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+const ConduiteAccomp : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDUITE ACCOMPAGNÉE")|| { titre: "", sousTitre: "", titreBtn: "caca", lien: "" }
 const Code : Forfait = categoriesList.find(Forfait => Forfait.titre === "CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 
 const PermisB : Forfait = categoriesList.find(Forfait => Forfait.titre === "PERMIS B") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
@@ -55,6 +55,9 @@ const PermisBExpress : Forfait = categoriesList.find(Forfait => Forfait.titre ==
 const ForfaitCode : Forfait = categoriesList.find(Forfait => Forfait.titre === "FORFAIT CODE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 const CodeEnSalle : Forfait = categoriesList.find(Forfait => Forfait.titre === "CODE EN SALLE") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
 const ConditionAnnul : Forfait = categoriesList.find(Forfait => Forfait.titre === "CONDITION D'ANNULATION") || { titre: "", sousTitre: "", titreBtn: "", lien: "" }
+
+
+console.log(categoriesList)
 
 export const forfaitList: Forfait[] = [
   Permis,ConduiteAccomp,Code
@@ -70,6 +73,10 @@ export const codeList:Forfait[] = [
 
 export function getForfait(index: number): Forfait {
   return forfaitList[index]
+}
+
+export function getArticle(index: number): Article {
+  return articleList[index]
 }
 
 //AVIS
@@ -248,7 +255,7 @@ En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où p
 `
 
 
-export 	const donnees: DataArticle = {
+export 	const donnees: DataForfait = {
   permisB: [
     {id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)'},
     {id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite'},
