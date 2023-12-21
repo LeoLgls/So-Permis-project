@@ -14,6 +14,7 @@ export default class ContactsController {
         {
           params: {
             place_id: placeId,
+            language: 'fr',
             fields: 'name,current_opening_hours',
             key: apiKey,
           },
@@ -50,3 +51,5 @@ export default class ContactsController {
     }
   }
 }
+
+
