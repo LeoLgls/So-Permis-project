@@ -10,36 +10,47 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Post {
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  content          String
+  Administrateur   Administrateur? @relation(fields: [administrateurId], references: [id])
+  administrateurId String?         @db.ObjectId
+}
+
 model Administrateur {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  email    String   @unique
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
   password String
+
+  rememberMeToken String?
+  posts           Post[]
 }
 
 model AnnulationCode {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   intitule String
   prix     String
 }
 
 model Article {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
   titre   String
-  texte   String
+  contenu   String
   idImage String?
   date    String
   sources String
 }
 
 model Avis {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
   nom         String
   note        Int
   commentaire String
 }
 
 model Categorie {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
   type      String
   titre     String
   sousTitre String
@@ -48,7 +59,7 @@ model Categorie {
 }
 
 model Forfait {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
   type         String
   titre        String
   sousTitre    String
@@ -62,34 +73,34 @@ model Forfait {
 }
 
 model Histoire {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  txtCourt      String
-  txtComplet    String
-  idImage       String?
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  txtCourt   String
+  txtComplet String
+  idImage    String?
 }
 
 model Horaire {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  type       String
-  matin      String[]
-  apresMidi  String[]
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
+  matin     String[]
+  apresMidi String[]
 }
 
 model Image {
-  id     String   @id @default(auto()) @map("_id") @db.ObjectId
-  src    String
-  alt    String
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  src String
+  alt String
 }
 
 model Newsletter {
-  id     String   @id @default(auto()) @map("_id") @db.ObjectId
-  email  String   @unique
-  nom    String   @default("")
-  prenom String   @default("")
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  email  String @unique
+  nom    String @default("")
+  prenom String @default("")
 }
 
 model Voiture {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
   nomVoiture String
   idImage    String
   type       String

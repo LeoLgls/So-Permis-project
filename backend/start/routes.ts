@@ -79,5 +79,13 @@ Route.get('/forfaits/:type', 'ForfaitController.showByType')
 
 // les routes de willy sinon bb cadum
 
+Route.resource('posts','PostController').middleware({
+  store:['auth'],
+  update:['auth'],
+  destroy:['auth'],
+});
+
+Route.post('login','AuthController.login');
+
 Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
 Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');

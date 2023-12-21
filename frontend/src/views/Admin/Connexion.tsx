@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {useState} from 'react';
 import styled from 'styled-components';
 
@@ -54,13 +55,16 @@ const Button = styled.button`
 
 function Connection() {
   const [formState, setFormState] = useState({
-    identifier: '',
+    email: '',
     password: '',
   });
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    console.log('Identifiant:', formState.identifier, 'Password:', formState.password);
+    axios.get(`http://localhost:3333/login`)
+
+    console.log('Identifiant:', formState.email, 'Password:', formState.password);
+
   };
 
   return (
@@ -74,8 +78,8 @@ function Connection() {
             required
               type="text"
               placeholder="Entrez votre identifiant"
-              value={formState.identifier}
-              onChange={(e) => setFormState({ ...formState, identifier: e.target.value })}
+              value={formState.email}
+              onChange={(e) => setFormState({ ...formState, email: e.target.value })}
             />
           </FormControl>
           <FormControl>
