@@ -34,6 +34,12 @@ Route.get('/categories', 'CategorieController.index')
 
 Route.get('/forfaits', 'ForfaitController.index')
 
+//forfaits route using he ForfaitController.showByType with the type in param
+
+Route.get('/forfaits/:type', 'ForfaitController.showByType')
+//can you show me an exemple request
+//http://localhost:3333/forfaits/PERMIS%20B%20EXPRESS
+
 Route.get('/histoires', 'HistoireController.index')
 
 Route.get('/images', 'ImageController.index')

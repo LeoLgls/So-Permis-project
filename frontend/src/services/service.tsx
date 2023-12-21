@@ -136,6 +136,12 @@ export const codeForfaitList: Forfait[] = [
   ForfaitCodeSeul, ForfaitCodeExpress
 ]
 
+const responseHistoire = await axios.get('http://localhost:3333/histoires');
+export const histoireList: [] = responseHistoire.data;
+
+
+
+
 
 export const txtHistoire: string = "Chez So'Permis, nous redéfinissons l'expérience de l'auto-école au Havre. Notre engagement envers une formation de conduite personnalisée, proposée par des instructeurs dévoués, fait de nous le choix idéal. En tant qu'auto-école locale, nous comprenons les besoins spécifiques de nos élèves. Optez pour So'Permis et bénéficiez d'une formation efficace avec une approche moderne et des tarifs transparents."
 
@@ -255,23 +261,77 @@ En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où p
 `
 
 
+const reponsePermisB = await axios.get('http://localhost:3333/forfaits/PERMIS_B');
+export const reponsePermisBList: [] = reponsePermisB.data;
+const reponsePermisBExpress = await axios.get('http://localhost:3333/forfaits/PERMIS_B_EXPRESS');
+export const reponsePermisBExpressList: [] = reponsePermisBExpress.data;
+const reponseConduite = await axios.get('http://localhost:3333/forfaits/CONDUITE');
+export const reponseConduiteList: [] = reponseConduite.data;
+const reponseCode = await axios.get('http://localhost:3333/forfaits/CODE');
+export const reponseCodeList: [] = reponseCode.data;
+
+
+const permisBLst = []
+const permisBExprLst =[]
+const permisConduiteLst= []
+const permisCodeLst =[]
+
+for (let i = 0; i < reponsePermisBList.length; i++) {
+  const element = reponsePermisBList[i];
+  const permis = {
+    id : element["id"],
+    nom : element["titre"],
+    prix : element["tarif"],
+    description : element["sousTitre"]
+  }
+  permisBLst.push(permis)
+  
+}
+
+
+for (let i = 0; i < reponsePermisBExpressList.length; i++) {
+  const element = reponsePermisBExpressList[i];
+  const permis = {
+    id : element["id"],
+    nom : element["titre"],
+    prix : element["tarif"],
+    description : element["sousTitre"]
+  }
+  permisBExprLst.push(permis)
+  
+}
+
+
+for (let i = 0; i < reponseConduiteList.length; i++) {
+  const element = reponseConduiteList[i];
+  const permis = {
+    id : element["id"],
+    nom : element["titre"],
+    prix : element["tarif"],
+    description : element["sousTitre"]
+  }
+  permisConduiteLst.push(permis)
+  
+}
+
+for (let i = 0; i < reponseCodeList.length; i++) {
+  const element = reponseCodeList[i];
+  const permis = {
+    id : element["id"],
+    nom : element["titre"],
+    prix : element["tarif"],
+    description : element["sousTitre"]
+  }
+  permisCodeLst.push(permis)
+  
+}
+
+
 export 	const donnees: DataForfait = {
-  permisB: [
-    {id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)'},
-    {id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite'},
-  ],
-  permisBExpress: [
-    {id: 0, nom: 'Forfait B Express', prix: 890, description: '20 leçon de conduite'},
-    {id: 1, nom: 'Forfait B Express EXPRESS', prix: 10, description: '2H SUR GTA'},
-  ],
-  conduiteAccompagnee: [
-    {id: 0, nom: 'Conduite Accompagnée', prix: 550, description: 'Chipi Chipi Chaba Chaba'},
-    {id: 1, nom: 'Conduite Accompagnée Rapide', prix: 1, description: 'Ta cru ?'},
-  ],
-  codeDeLaRoute: [
-    {id: 0, nom: 'Code de la route', prix: 1945, description: 'Qui est William ?'},
-    {id: 1, nom: 'Code du site', prix: 9999, description: 'Oussamma Amar'},
-  ],
+  permisB: permisBLst,
+  permisBExpress : permisBExprLst,
+  conduiteAccompagnee : permisConduiteLst,
+  codeDeLaRoute : permisCodeLst
 }
 
 export const tabs: Tab[] = [
