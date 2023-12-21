@@ -20,6 +20,9 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
+Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');
+
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
@@ -51,9 +54,3 @@ Route.get('/newsletter', 'NewsletterController.index')
 Route.get('/voitures', 'VoitureController.index')
 
 Route.get('/annulation' , 'AnnulationCodeController.index')
-
-
-// les routes de willy sinon bb cadum
-
-Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
-Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');

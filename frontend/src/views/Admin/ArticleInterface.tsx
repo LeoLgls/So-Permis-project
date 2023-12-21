@@ -40,7 +40,7 @@ function InterfaceAdminArticle() {
             <Tr key={index}>
               <Td>{titre}</Td>
               <Td>{source}</Td>
-              <Td>{date.toLocaleDateString()}</Td>
+              <Td>{new Date(date).toLocaleDateString()}</Td>
               <Td>
                 <Button to={`/admin/article/modifier-article/${index}`}>Modif</Button>
                 <Button to={'/admin'}>Suppr</Button>

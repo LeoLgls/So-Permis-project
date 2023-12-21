@@ -8,6 +8,7 @@ import img3 from "../assets/img/imgTest3.jpg";
 import {generateTableData} from "../views/Admin/ForfaitInterface.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
 
+
 import axios from 'axios';
 
 
@@ -78,6 +79,7 @@ export function getForfait(index: number): Forfait {
 export function getArticle(index: number): Article {
   return articleList[index]
 }
+
 
 //AVIS
 
@@ -163,8 +165,6 @@ for (let i = 0; i < histoireList.length; i++) {
   
 }
 
-console.log(mapHistoire);
-
 
 
 export const txtHistoire: string = mapHistoire["Histoire"]
@@ -180,11 +180,9 @@ export const txtPermisExpress2: string = mapHistoire["txtPermisExpress2"]
 
 
 
-
-
-
 export const  horairesMatin = ['Fermé', '9H-12H', '9H-12H', '9H-12H', '9H-12H', '9H-12H', 'Fermé'];
 export const horairesAprem = ['14H-18H', '14H-18H', '14H-18H', '14H-18H', '14H-18H', 'Fermé', 'Fermé'];
+
 
 //intitule
 
