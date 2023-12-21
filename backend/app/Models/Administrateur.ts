@@ -1,16 +1,12 @@
-// app/Models/Administrateur.ts
 
-import { Ozone } from '@adonisjs/ozone'
+export default class Administrateur extends BaseModel {
+  @column({ isPrimary: true })
+  public id: number
 
-export default class Administrateur extends Ozone {
-  @Ozone.Attribute.Primary()
-  public _id: Ozone.Types.Id
-
-  @Ozone.Attribute()
+  @column()
   public email: string
 
-  @Ozone.Attribute()
+  @column()
   public password: string
 
-  // Ajoutez d'autres champs au besoin
 }
