@@ -29,6 +29,7 @@ import Cookies from "./views/Cookies/Cookies.tsx";
 import RGPD from "./views/RGPD/RGPD.tsx";
 import MentionLegales from "./views/MentionLegales/MentionLegales.tsx";
 import AdminHeader from "./components/Header/adminHeader.tsx";
+import AnimatedPage from "./components/Animation/AnimPage.tsx";
 
 
 
@@ -43,23 +44,20 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Header />
       )}
       <Routes>
-        <Route path="/"           element={<Accueil/>}></Route>
-        <Route path="/permis"     element={<Permis/>}></Route>
-        <Route path="/code"       element={<CodeRoute/>}></Route>
-        <Route path={"/histoire"} element={<Histoire />}></Route>
+        <Route path="/"           element={<AnimatedPage><Accueil/></AnimatedPage>}></Route>
+        <Route path="/permis"     element={<AnimatedPage><Permis/></AnimatedPage>}></Route>
+        <Route path="/code"       element={<AnimatedPage><CodeRoute/></AnimatedPage>}></Route>
+        <Route path={"/histoire"} element={<AnimatedPage><Histoire /></AnimatedPage>}></Route>
 
-        <Route path="/contact"    element={<Contact />}></Route>
+        <Route path="/contact"    element={<AnimatedPage><Contact /></AnimatedPage>}></Route>
 
-        <Route path="/cookies"    element={<Cookies />}></Route>
-        <Route path="/mentionsLegales"    element={<MentionLegales />}></Route>
-        <Route path="/rgpd"    element={<RGPD />}></Route>
-
-
-        <Route path={"/forfait/:forfaitParam"}       element={<ForfaitView />}></Route>
-        <Route path={"/article/:articleNumberParam"} element={<ArticlePage />}></Route>
+        <Route path="/cookies"    element={<AnimatedPage><Cookies /></AnimatedPage>}></Route>
+        <Route path="/mentionsLegales"    element={<AnimatedPage><MentionLegales /></AnimatedPage>}></Route>
+        <Route path="/rgpd"    element={<AnimatedPage><RGPD /></AnimatedPage>}></Route>
 
 
-
+        <Route path={"/forfait/:forfaitParam"}       element={<AnimatedPage><ForfaitView /></AnimatedPage>}></Route>
+        <Route path={"/article/:articleNumberParam"} element={<AnimatedPage><ArticlePage /></AnimatedPage>}></Route>
 
 
         <Route path="/admin" element={<Connexion/>}></Route>
