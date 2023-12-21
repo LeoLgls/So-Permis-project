@@ -13,21 +13,24 @@ import {Tab} from "../components/Tabs/tab.tsx";
 export const articleList: Article[] = [
   {
     titre: "Premier article",
-    date: new Date("10/10/10"),
+    date: new Date(),
     contenu: "Ceci est le contenu de mon premier article",
     source: "Les cheveux de zizou",
+    urlImage: "",
   },
   {
     titre: "Deuxième article",
     date: new Date(),
     contenu: "Ceci est le contenu de mon 2e article",
     source: "Les CDM à Haaland",
+    urlImage: "",
   },
   {
     titre: "3e article",
     date: new Date(),
     contenu: "ça fait bcp là",
     source: "Fortnite",
+    urlImage: "",
   }
 
 ]

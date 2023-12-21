@@ -32,6 +32,7 @@ export interface Article {
   date: Date;
   contenu: string;
   source: string;
+  urlImage: string;
 }
 
 export interface PageForfait {
@@ -58,13 +59,3 @@ export type DataForfait = {
   conduiteAccompagnee: ForfaitItem[];
   codeDeLaRoute: ForfaitItem[];
 }
-
-
-export interface ArticleItem {
-  id: number;
-  titre: string;
-  contenu: string;
-  source: string;
-  date: Date;
-}
-
