@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import colors from "../../utils/style/colors.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 import {Article} from "../../utils/models/models.tsx";
+import {NewArticle} from "../../utils/models/models.tsx";
 import {getArticle} from "../../services/service.tsx";
+import axios from 'axios';
 
 
 
@@ -96,7 +98,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   //Variables et setter pour entrer les données du forms
   const [titre, setTitre] = useState('');
   const [contenu, setContenu] = useState('');
-  const [source, setSource] = useState('');
+  const [sources, setSources] = useState('');
   const [date, setDate] = useState('');
 
   //Lien de l'image à définir dans la bado
@@ -108,20 +110,34 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   //Permet la redirection
   const navigate = useNavigate()
 
-  /*
-  * Prend l'id de l'article dans l'URL, et le transforme en number
-  * TODO : a modifier car l'id en MongoDB != un number
-  */
-  if (typeof id === "string") {
-    articleToEdit = getArticle(parseInt(id))
-  }
+  // Chercher l'article dans la base de données
+  useEffect(() => {
+    if (id) {
+      getArticle(parseInt(id)).then((article) => {
+        if (article) {
+          setTitre(article.titre);
+          setContenu(article.contenu);
+          setSources(article.sources);
+
+          if (article.date instanceof Date) {
+            const dateString = article.date.toLocaleDateString('fr-FR');
+            setDate(dateString);
+          } else {
+            setDate('');
+          }
+
+          setUrlImage(article.urlImage); // Mettez à jour le lien de l'image
+        }
+      });
+    }
+  }, [id]);
 
   useEffect(() => {
     //Si l'article existe on met dans le formulaire les données
     if (articleToEdit) {
       setTitre(articleToEdit.titre);
       setContenu(articleToEdit.contenu);
-      setSource(articleToEdit.source);
+      setSources(articleToEdit.sources);
 
       // On vérifie que la date est un type Date
       if (articleToEdit.date instanceof Date) {
@@ -141,35 +157,41 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
       //Sinon formulaire vide
       setTitre('');
       setContenu('');
-      setSource('');
+      setSources('');
       setDate('');
       setUrlImage('');
     }
     //Maj des vars quand l'article apparait
   }, [articleToEdit]);
-
+  
   //TODO : A modifier pour stocker l'article passé en param dans la bado
-  function onSave(article: Article) {
-    console.log(article);
+  async function onSave(newArticle: NewArticle) {
+    console.log(newArticle);
+
+    //Si id existe : modifier
+    axios.post(`http://localhost:3333/admin/article/create`, newArticle)
   }
 
+
+
   // Convertir la chaîne de date en objet Date
-  const parsedDate = new Date(date);
+  let parsedDate = new Date(date);
+  if (isNaN(parsedDate.getTime())) {
+    // Si la date n'est pas valide, utilisez la date actuelle
+    parsedDate = new Date();
+  }
 
   //Fonction active quand on submit le form
   function handleSave() {
 
-    console.log(id)
+    const newArticle = {
 
-    //Il manque l'id de l'article, mais sinon on crée l'article avec les données du form
-    const newArticle: Article = {
       titre: `${titre}`,
       contenu: `${contenu}`,
-      source: `${source}`,
+      sources: `${sources}`,
       date: parsedDate,
-      urlImage: urlImage, // Utilisez le lien de l'image dans newArticle
+      urlImage: urlImage,
     };
-
 
     //On sauvegarde l'article
     onSave(newArticle);
@@ -177,7 +199,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
     //Reset du formulaire
     setTitre('');
     setContenu('');
-    setSource('');
+    setSources('');
     setDate('');
 
     setUrlImage('');
@@ -231,12 +253,12 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         <FormLabel>Titre :</FormLabel>
         <FormInput type="text" value={titre} onChange={(e) => setTitre(e.target.value)} />
 
-        <FormLabel>Source :</FormLabel>
-        <FormInput type="text" value={contenu} onChange={(e) => setContenu(e.target.value)} />
+        <FormLabel>Sources :</FormLabel>
+        <FormInput type="text" value={sources} onChange={(e) => setSources(e.target.value)} />
 
         <TextareaContainer>
             <FormLabel>Description:</FormLabel>
-            <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
+            <FormInputTextarea value={contenu} onChange={(e) => setContenu(e.target.value)} />
         </TextareaContainer>
 
         <ImageContainer>

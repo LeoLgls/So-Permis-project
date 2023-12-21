@@ -23,12 +23,12 @@ model AnnulationCode {
 }
 
 model Article {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  titre   String
-  texte   String
-  idImage String?
-  date    String
-  sources String
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  titre    String
+  contenu  String
+  urlImage String?
+  date     String
+  sources  String
 }
 
 model Avis {
