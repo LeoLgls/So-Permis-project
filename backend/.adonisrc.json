@@ -5,7 +5,7 @@
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands",
 
-    "@adonisjs/mail/build/commands"
+    "@adonisjs/mail/build/commands",
 
     "@wahyubucil/adonis-prisma/build/commands"
 
