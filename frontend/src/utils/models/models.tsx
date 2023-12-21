@@ -28,12 +28,12 @@ export interface AnnulationCode {
 }
 
 export interface Article {
+  id: number;
   titre: string;
   date: Date;
   contenu: string;
   source: string;
   urlImage: string;
-
 }
 
 export interface PageForfait {
