@@ -1,35 +1,36 @@
-import {AnnulationCode, Article, DataArticle, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataForfait, Forfait, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
 import img1 from "../assets/img/imgTest1.jpg";
 import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
-import {generateTableData} from "../views/Admin/InterfaceAdminPage.tsx";
+import {generateTableData} from "../views/Admin/ForfaitInterface.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
-
 
 
 
 export const articleList: Article[] = [
   {
     titre: "Premier article",
-    date: new Date(),
+    date: new Date("10/10/10"),
     contenu: "Ceci est le contenu de mon premier article",
-    source: "Les cheveux de zizou"
-  },{
+    source: "Les cheveux de zizou",
+  },
+  {
     titre: "Deuxième article",
     date: new Date(),
     contenu: "Ceci est le contenu de mon 2e article",
-    source: "Les CDM à Haaland"
-  },{
+    source: "Les CDM à Haaland",
+  },
+  {
     titre: "3e article",
     date: new Date(),
     contenu: "ça fait bcp là",
-    source: "Fortnite"
-  },
-]
+    source: "Fortnite",
+  }
 
+]
 
 export const forfaitList: Forfait[] = [
   {
@@ -54,6 +55,10 @@ export const forfaitList: Forfait[] = [
 
 export function getForfait(index: number): Forfait {
   return forfaitList[index]
+}
+
+export function getArticle(index: number): Article {
+  return articleList[index]
 }
 
 export const avisList: Avis[] = [
@@ -344,7 +349,9 @@ En optant pour So'Permis, vous rejoignez une auto-école à taille humaine où p
 `
 
 
-export 	const donnees: DataArticle = {
+
+
+export const donnees: DataForfait = {
   permisB: [
     {id: 0, nom: 'Forfait B', prix: 890, description: '20 leçon de conduite (sans code)'},
     {id: 1, nom: 'Forfait B Complet', prix: 990, description: 'Code + 20 leçons de conduite'},

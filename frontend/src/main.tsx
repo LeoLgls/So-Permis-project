@@ -12,16 +12,24 @@ import Error from "./views/Error/Error.tsx";
 import ArticlePage from "./views/Article/Article.tsx";
 import ForfaitView from "./views/Forfait/Forfait.tsx";
 import Contact from './views/Contact/Contact'
-import Connexion from './views/Admin/Connexion'
-import InterfaceAdminPage from './views/Admin/InterfaceAdminPage'
-import NewsLetter from './views/Admin/NewsLetter'
-import InterfaceAdminArticle from './views/Admin/InterfaceAdminArticle.tsx'
+
+import Connexion            from './views/Admin/Connexion'
+
+import NewsLetter           from './views/Admin/NewsLetter'
+
+import ForfaitAdmin         from './views/Admin/ForfaitInterface.tsx'
+import ModifForfaitForm     from './views/FormsAdmin/ModifForfaitForm.tsx';
+
+import ArticleAdmin         from './views/Admin/ArticleInterface.tsx'
+import ModifArticleForm     from './views/FormsAdmin/ModifArticleForm.tsx'
+
+
 import Histoire from './views/HistoireSoPermis/Histoire.tsx'
 import Cookies from "./views/Cookies/Cookies.tsx";
 import RGPD from "./views/RGPD/RGPD.tsx";
 import MentionLegales from "./views/MentionLegales/MentionLegales.tsx";
 import AdminHeader from "./components/Header/adminHeader.tsx";
-import ModifArticleForm from "./views/FormsAdmin/ModifArticleForm.tsx";
+
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -51,11 +59,22 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path={"/article/:articleNumberParam"} element={<ArticlePage />}></Route>
 
 
+
+
+
         <Route path="/admin" element={<Connexion/>}></Route>
-        <Route path="/admin/interfaceAdmin" element={<InterfaceAdminPage/>}></Route>
+
         <Route path="/admin/newsletter" element={<NewsLetter/>}></Route>
-        <Route path='/admin/interfaceArticle' element={<InterfaceAdminArticle/>}></Route>
-        <Route path="/admin/interfaceArticle/modifier-forfait/:id"  element={<ModifArticleForm/>} ></Route>
+
+        <Route path='/admin/forfait' element={<ForfaitAdmin/>}></Route>
+        <Route path="/admin/forfait/modifier-forfait/:id"  element={<ModifForfaitForm/>} ></Route>
+
+        <Route path="/admin/article" element={<ArticleAdmin/>}></Route>
+        <Route path="/admin/article/modifier-article/:id" element={<ModifArticleForm/>}></Route>
+
+
+
+
 
 
         <Route path="*" element={<Error/>}></Route>
