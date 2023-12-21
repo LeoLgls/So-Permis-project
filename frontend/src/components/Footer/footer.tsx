@@ -143,6 +143,16 @@ const TextCoordonnees = styled.p`
   font-weight : 800;
   padding-bottom: 6%;
   
+  a{
+    text-decoration : none;
+    color: white;
+  }
+
+  a:hover{
+    text-decoration : underline;
+    color: white;
+  }
+
   @media (max-width: 1090px) {
     font-size : 16px;
   }
@@ -230,9 +240,9 @@ function Footer() {
 
           <CoordonneesContainer>
               <UnderlineText>Coordonnées</UnderlineText>
-              <TextCoordonnees> 20 rue Jean Lurcat, <br/> 76610 Le Havre </TextCoordonnees>
-              <TextCoordonnees> 02 78 34 10 63 </TextCoordonnees>
-              <TextCoordonnees> sopermis76@gmail.com </TextCoordonnees>
+              <TextCoordonnees> <a target='_blank' href='https://maps.app.goo.gl/fzJGUywUip1XmQtS9'>20 rue Jean Lurcat, <br/> 76610 Le Havre</a> </TextCoordonnees>
+              <TextCoordonnees> <a href='tel:0278341063'>02 78 34 10 63</a>  </TextCoordonnees>
+              <TextCoordonnees> <a href='mailto:sopermis76@gmail.com'>sopermis76@gmail.com</a>  </TextCoordonnees>
           </CoordonneesContainer>
       </RightPart>
 

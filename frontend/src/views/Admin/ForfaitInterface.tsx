@@ -6,6 +6,7 @@ import { tabs } from "../../services/service.tsx";
 import React from 'react';
 import {Link} from "react-router-dom";
 import colors from "../../utils/style/colors.tsx";
+import axios from 'axios';
 
 const TableContainer = styled.div`
 	margin-top: 20px;
@@ -31,6 +32,12 @@ const ButtonAdd = styled(Link)`
 	height: fit-content;
 	padding: 1rem;
 `
+
+const handleDelete = async(id: string) => {
+	await axios.get(`http://localhost:3333/admin/forfait/delete/${id}`)
+  
+	window.location.reload();
+};
 
 export function generateTableData(data: { caption: string; items: ForfaitItem[] }) {
 
@@ -59,7 +66,7 @@ export function generateTableData(data: { caption: string; items: ForfaitItem[] 
 								<Td>{description}</Td>
 								<Td>
 									<Button to={`/admin/forfait/modifier-forfait/${id}`}>Modif</Button>
-									<Button to={`/admin/forfait/supprimer-forfait/${id}`}>Suppr</Button>
+									<Button to={`/admin/forfait/`} onClick ={() => handleDelete(id.toString())}>Suppr</Button>
 								</Td>
 							</Tr>
 						))}
