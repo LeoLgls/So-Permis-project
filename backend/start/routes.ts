@@ -27,21 +27,17 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.group(() => {
-
-  Route.get('/articles', 'ArticleController.index')
-  Route.get('/forfaits', 'ForfaitController.index')
-  Route.get('/newsletter', 'NewsletterController.index')
-  
-}).middleware('auth');
-
 Route.get('/administrateurs', 'AdministrateurController.index')
+
+Route.get('/articles', 'ArticleController.index')
 
 Route.get('/articles/last' ,'ArticleController.last' )
 
 Route.get('/avis', 'AvisController.index')
 
 Route.get('/categories', 'CategorieController.index')
+
+Route.get('/forfaits', 'ForfaitController.index')
 
 //forfaits route using he ForfaitController.showByType with the type in param
 
@@ -53,8 +49,8 @@ Route.get('/histoires', 'HistoireController.index')
 
 Route.get('/images', 'ImageController.index')
 
+Route.get('/newsletter', 'NewsletterController.index')
+
 Route.get('/voitures', 'VoitureController.index')
 
 Route.get('/annulation' , 'AnnulationCodeController.index')
-
-Route.post('/login', 'AuthController.login');

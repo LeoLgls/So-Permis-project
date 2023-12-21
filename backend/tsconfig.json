@@ -33,9 +33,7 @@
       "@adonisjs/shield",
       "@japa/preset-adonis/build/adonis-typings",
       "@wahyubucil/adonis-prisma",
-      "@adonisjs/mail",
-      "@adonisjs/auth",
-      "@adonisjs/redis"
+      "@adonisjs/mail"
     ]
   }
 }
