@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+
+
 
 import axios from 'axios';
 import styled from 'styled-components';
@@ -68,7 +70,7 @@ const FormContainer = styled.form`
 `
 
 const FormControl = styled.div`
-  padding: 2% 0%;
+  padding: 2% 0;
   width: 45%;
 
   &:last-of-type{
@@ -97,8 +99,8 @@ const FormControl = styled.div`
   textarea {
     font-size: 16px;
     width: 99.5%;
-	height: 100%;
-	margin-top: 3%;
+		height: 100%;
+		margin-top: 3%;
   }
 
   @media screen and (max-width: 800px) {
@@ -108,39 +110,35 @@ const FormControl = styled.div`
 `
 
 const SubmitButton = styled.span`
-  width: 100%;
-  padding-right: 2%;
-  padding-left: 80%;
-  padding-bottom: 10%;
-  padding-top: 10%;
-
-  input{
-	border: solid 2px ${colors.vert};
-	outline: none;
-	cursor: pointer;
-	padding: 10%;
-	font-size: 25px;
-	background: ${colors.vert};
-	font-weight: 800;
-	border-radius: 45px;
-	transition: all ease 0.5s;
 	width: 100%;
-  }
+	padding: 3rem 1rem 1rem;
+	text-align: right;
 
-
-  @media screen and (max-width: 800px) {
-	padding-right: 0;
-    padding-top: 15%;
-    justify-content: end;
-    display: flex;
-    padding-left: 0;
-  
-	input{
-	  padding: 2%;
-	  font-size: 4vw;
-	  width: 25%;
+	input {
+		border: solid 2px ${colors.vert};
+		outline: none;
+		cursor: pointer;
+		font-size: 25px;
+		background: ${colors.vert};
+		font-weight: 800;
+		border-radius: 45px;
+		transition: all ease 0.5s;
 	}
-  }
+
+
+	@media screen and (max-width: 800px) {
+		padding-right: 0;
+		padding-top: 15%;
+		justify-content: end;
+		display: flex;
+		padding-left: 0;
+
+		input {
+			padding: 2%;
+			font-size: 4vw;
+			width: 25%;
+		}
+	}
 `
 
 
@@ -181,6 +179,10 @@ const FormContainerNewsletter = styled.form`
 
 const FormControlNewsletter = styled.div`
   	padding-bottom: 5vw;
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+
 
 	input{
 		margin-top: 3%;
@@ -195,9 +197,10 @@ const FormControlNewsletter = styled.div`
 `
 
 const SubmitButtonNewsletter = styled.span`
-	width: 30%;
+	width: fit-content;
 	display: flex;
-	margin-top: 2vw;
+	padding-top: 1rem;
+
 
 	input{
 		border: solid 2px ${colors.vert};
@@ -212,6 +215,9 @@ const SubmitButtonNewsletter = styled.span`
 	}
 `
 
+const InputInscrire = styled.input`
+	padding: 1rem;
+`
 
 export const ListHoraire = [
 	{
@@ -270,7 +276,8 @@ interface OpeningHour {
 
 	const [openingHours, setOpeningHours] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState(false);
+
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -282,13 +289,14 @@ interface OpeningHour {
 				setOpeningHours(data.openingHours);
 				setLoading(false);
 			} catch (error) {
-				setLoading(false);
+				setError(true)
+				setLoading(false)
 			}
 		};
 
 		fetchData();
+		}, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
 
-	  }, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
 
 
 	const [formData, setFormData] = useState({
@@ -300,15 +308,17 @@ interface OpeningHour {
 		message: '',
 	});
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+	const[newsLetter, setNewsletter] = useState('')
+
+	function handleChange (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
 		const { name, value } = e.target;
 		setFormData({
 			...formData,
 			[name]: value,
 		});
-	};
+	}
 
-	const handleSubmit = async (e: { preventDefault: () => void; }) => {
+	async function handleSubmit (e: { preventDefault: () => void; }) {
 		e.preventDefault();
 		console.log('Form Data:', formData);
 
@@ -321,7 +331,22 @@ interface OpeningHour {
 			// Gérer les erreurs
 			console.error('Erreur lors de la soumission du formulaire', error);
 		}
-	};
+	}
+
+	function handleChangeNewsletter (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+		const  value: string = e.target.value;
+		setNewsletter(value)
+
+	}
+
+	async function handleSubmitNewsletter(e: {preventDefault: () => void;}) {
+		e.preventDefault();
+		//Envoie dans la BDD
+		//TODO
+		console.log(newsLetter)
+
+	}
+
 
 
 
@@ -362,7 +387,7 @@ interface OpeningHour {
 				</FormControl>
 
 				<SubmitButton>
-					<input type="submit" name="submit" value="Valider" />
+					<InputInscrire type="submit" name="submit" value="Valider" />
 				</SubmitButton>
 
 			</FormContainer>
@@ -395,17 +420,19 @@ interface OpeningHour {
 					<InformationsContainer>
 
 						<h3>Nos réseaux</h3>
-            			<p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
+
+						<p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
+
 						<br />
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
 							
 							<Link to="https://t.snapchat.com/JWqJbzVO" target="_blank" rel="noopener noreferrer">
-								<PetitLogo src={SnapBlack} />
+								<PetitLogo src={SnapBlack} alt={'Logo Snap'} />
 							</Link>
 
 							<Link to="https://www.instagram.com/sopermis76/" target="_blank" rel="noopener noreferrer">
-								<PetitLogo src={InstaBlack} />
+								<PetitLogo src={InstaBlack} alt={'Logo Insta'}/>
 							</Link>
 
 						</ReseauContainer>
@@ -413,13 +440,13 @@ interface OpeningHour {
 
 					</InformationsContainer>
 
-					<FormContainerNewsletter  onSubmit={handleSubmit}> 
+					<FormContainerNewsletter  onSubmit={handleSubmitNewsletter}>
 						<h3>Inscrivez-vous à notre Newsletter</h3>
 						<FormControlNewsletter>
-							<input type='text' placeholder='Entrez votre adresse mail' />
+							<input type='text' value={newsLetter} placeholder='Entrez votre adresse mail' onChange={handleChangeNewsletter}/>
 
 							<SubmitButtonNewsletter>
-								<input  type="submit" name="submit" value="S'inscrire"  />
+								<InputInscrire type="submit" name="submit" value="S'inscrire"  />
 							</SubmitButtonNewsletter>
 
 						</FormControlNewsletter>
@@ -445,6 +472,7 @@ interface OpeningHour {
 
 		</MainContainerContact>
 	);
-};
+}
+
 
 export default ContactPage;
