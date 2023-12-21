@@ -101,7 +101,7 @@ const authConfig: AuthConfig = {
         | field and `remember_me_token` column.
         |
         */
-        model: 'Administrateur',
+        model: 'administrateur',
       },
     },
   },

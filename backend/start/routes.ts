@@ -85,7 +85,7 @@ Route.resource('posts','PostController').middleware({
   destroy:['auth'],
 });
 
-Route.post('login','AuthController.login');
+Route.post('/login','AuthController.login');
 
 Route.post('/api/contact/sendEmail','ContactsController.sendEmail');
 Route.get('/api/contact/opening-hours', 'ContactsController.getOpeningHours');
