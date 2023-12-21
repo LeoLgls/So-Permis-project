@@ -302,7 +302,7 @@ export const permisList: any[] = []
 for (let i = 0; i < reponsePermisBList.length; i++) {
 
   const element = reponsePermisBList[i];
-  console.log(element)
+
   const permis = {
     titre : element["titre"],
     sousTitre : element["sousTitre"],
@@ -314,7 +314,6 @@ for (let i = 0; i < reponsePermisBList.length; i++) {
     horaire : element["horaireLecon"],
     tarif : element["tarif"],
   }
-  console.log(permis)
   permisList.push(permis);
   
 }
@@ -322,7 +321,6 @@ for (let i = 0; i < reponsePermisBList.length; i++) {
 for (let i = 0; i < reponsePermisBExpressList.length; i++) {
 
   const element = reponsePermisBExpressList[i];
-  console.log(element)
   const permis = {
     titre : element["titre"],
     sousTitre : element["sousTitre"],
@@ -334,7 +332,6 @@ for (let i = 0; i < reponsePermisBExpressList.length; i++) {
     horaire : element["horaireLecon"],
     tarif : element["tarif"],
   }
-  console.log(permis)
   permisList.push(permis);
   
 }
@@ -344,7 +341,6 @@ export const conduiteCodeList: any[] = []
 for (let i = 0; i < reponseConduiteList.length; i++) {
 
   const element = reponseConduiteList[i];
-  console.log(element)
   const permis = {
     titre : element["titre"],
     sousTitre : element["sousTitre"],
@@ -356,14 +352,12 @@ for (let i = 0; i < reponseConduiteList.length; i++) {
     horaire : element["horaireLecon"],
     tarif : element["tarif"],
   }
-  console.log(permis)
   conduiteCodeList.push(permis);
   
 }
 for (let i = 0; i < reponseCodeList.length; i++) {
 
   const element = reponseCodeList[i];
-  console.log(element)
   const permis = {
     titre : element["titre"],
     sousTitre : element["sousTitre"],
@@ -375,7 +369,6 @@ for (let i = 0; i < reponseCodeList.length; i++) {
     horaire : element["horaireLecon"],
     tarif : element["tarif"],
   }
-  console.log(permis)
   conduiteCodeList.push(permis);
   
 }
@@ -410,7 +403,6 @@ for(let i = 0; i < conduiteCodeList.length; i++) {
     indexForfait: listForfaitPage.length+1
   }
   listForfaitPage.push(forfait)
-  console.log(listForfaitPage)
 }
 
 

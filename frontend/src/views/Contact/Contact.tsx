@@ -341,8 +341,12 @@ interface OpeningHour {
 
 	async function handleSubmitNewsletter(e: {preventDefault: () => void;}) {
 		e.preventDefault();
-		//Envoie dans la BDD
-		//TODO
+
+		const emailData = {
+			email: newsLetter
+		  };
+
+		await axios.post(`http://localhost:3333/newsletter/add`,emailData)
 		console.log(newsLetter)
 
 	}
