@@ -104,9 +104,12 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
       setContenu(articleToEdit.contenu);
       setSource(articleToEdit.source);
 
-      // Formatage de la date en une chaîne (exemple de format)
-      const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
-      setDate(dateString);
+      if (articleToEdit.date instanceof Date) {
+        const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
+        setDate(dateString);
+      } else {
+        setDate('');
+      }
 
 
       setUrlImage(articleToEdit.urlImage); // Mettez à jour le lien de l'image
@@ -155,7 +158,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
 
     setUrlImage('');
 
-    navigate('/admin');
+    navigate('/admin/article');
   }
 
   function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
