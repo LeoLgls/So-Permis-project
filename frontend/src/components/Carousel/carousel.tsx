@@ -13,7 +13,7 @@ const CarouselWrapper = styled.div`
     width: 100%;
     height: 80vh;
     @media (max-width: 1090px) {
-        height: 50vh;
+        height: 50vh;   
     }
 `;
 
