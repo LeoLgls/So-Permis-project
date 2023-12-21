@@ -73,10 +73,12 @@ const BoutonRetour = styled.button`
 `;
 
 const ImageContainer = styled.div`
-  input {
+
+  input{
     padding-bottom: 5%;
   }
-`;
+`
+
 
 function ArticleForm({ articleToEdit }: ArticleFormProps) {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -86,6 +88,7 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   const [contenu, setContenu] = useState('');
   const [source, setSource] = useState('');
   const [date, setDate] = useState('');
+
   const [urlImage, setUrlImage] = useState<string>(''); // Nouvel état pour stocker le lien de l'image
   const {id} = useParams()
   const navigate = useNavigate()
@@ -105,7 +108,9 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
       const dateString = articleToEdit.date.toLocaleDateString('fr-FR');
       setDate(dateString);
 
+
       setUrlImage(articleToEdit.urlImage); // Mettez à jour le lien de l'image
+
 
     } else {
       setTitre('');
@@ -120,10 +125,19 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
     console.log(article);
   }
 
+  //Si id existe : modifier
+  //Sinon add
+
+
+
+
   // Convertir la chaîne de date en objet Date
   const parsedDate = new Date(date);
 
   function handleSave() {
+
+    console.log(id)
+
     const newArticle: Article = {
       titre: `${titre}`,
       contenu: `${contenu}`,
@@ -132,17 +146,20 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
       urlImage: urlImage, // Utilisez le lien de l'image dans newArticle
     };
 
+
     onSave(newArticle);
     setTitre('');
     setContenu('');
     setSource('');
     setDate('');
+
     setUrlImage('');
 
     navigate('/admin');
   }
 
   function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
+
     const file = event.target.files?.[0];
 
     if (file) {
@@ -161,8 +178,11 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
   }
 
   function handleBack() {
+    // Utilisez la fonction goBack pour revenir à la page précédente
     navigate(-1);
   }
+
+
 
   return (
     <MainContainer>
@@ -174,25 +194,29 @@ function ArticleForm({ articleToEdit }: ArticleFormProps) {
         <FormInput type="text" value={contenu} onChange={(e) => setContenu(e.target.value)} />
 
         <TextareaContainer>
-          <FormLabel>Description:</FormLabel>
-          <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
+
+            <FormLabel>Description:</FormLabel>
+            <FormInputTextarea value={source} onChange={(e) => setSource(e.target.value)} />
         </TextareaContainer>
 
         <ImageContainer>
-          <FormLabel>Sélectionner une image :</FormLabel>
-          <input type="file" accept="image/*" onChange={handleImageChange} />
+            <FormLabel>Sélectionner une image :</FormLabel>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
 
-          {imagePreview && (
+            {imagePreview && (
             <img src={imagePreview} alt="Prévisualisation" style={{ maxWidth: '100%', maxHeight: '200px' }} />
-          )}
+            )}
         </ImageContainer>
 
         <ButtonContainer>
-          <FormButton onClick={handleSave}>{articleToEdit ? 'Modifier' : 'Ajouter'}</FormButton>
-          <BoutonRetour onClick={handleBack}> Retour </BoutonRetour>
+            <FormButton onClick={handleSave}>{articleToEdit ? 'Modifier' : 'Ajouter'}</FormButton>
+            <BoutonRetour onClick={handleBack}> Retour </BoutonRetour>
         </ButtonContainer>
+
       </FormContainer>
     </MainContainer>
+
+
   );
 }
 

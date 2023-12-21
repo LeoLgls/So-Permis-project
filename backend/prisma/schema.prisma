@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Administrateur {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String   @unique
+  password String
+}
+
+model AnnulationCode {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  intitule String
+  prix     String
+}
+
+model Article {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  titre   String
+  texte   String
+  idImage String?
+  date    String
+  sources String
+}
+
+model Avis {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  nom         String
+  note        Int
+  commentaire String
+}
+
+model Categorie {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  type      String
+  titre     String
+  sousTitre String
+  titreBtn  String
+  lien      String
+}
+
+model Forfait {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  type         String
+  titre        String
+  sousTitre    String
+  titreBtn     String
+  lien         String
+  duree        String
+  theorique    String
+  pratique     String
+  horaireLecon String
+  tarif        String
+}
+
+model Histoire {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  txtCourt      String
+  txtComplet    String
+  idImage       String?
+}
+
+model Horaire {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  type       String
+  matin      Json
+  apresMidi  Json
+}
+
+model Image {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  src    String
+  alt    String
+}
+
+model Newsletter {
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  email  String   @unique
+  nom    String   @default("")
+  prenom String   @default("")
+}
+
+model Voiture {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  nomVoiture String
+  idImage    String
+  type       String
+  txtVoiture String
+}

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, ChangeEvent } from 'react';
 
+
+
 import axios from 'axios';
 import styled from 'styled-components';
 import SnapBlack from '../../assets/img/Snap-black.png';
@@ -181,6 +183,7 @@ const FormControlNewsletter = styled.div`
 		flex-direction: column;
 		align-items: end;
 
+
 	input{
 		margin-top: 3%;
 		font-size: 16px;
@@ -198,6 +201,7 @@ const SubmitButtonNewsletter = styled.span`
 	display: flex;
 	padding-top: 1rem;
 
+
 	input{
 		border: solid 2px ${colors.vert};
 		outline: none;
@@ -214,7 +218,6 @@ const SubmitButtonNewsletter = styled.span`
 const InputInscrire = styled.input`
 	padding: 1rem;
 `
-
 
 export const ListHoraire = [
 	{
@@ -275,6 +278,7 @@ interface OpeningHour {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -291,8 +295,8 @@ interface OpeningHour {
 		};
 
 		fetchData();
-
 		}, []); // La dépendance vide signifie que cela ne s'exécute qu'une fois lors du montage initial
+
 
 
 	const [formData, setFormData] = useState({
@@ -342,6 +346,7 @@ interface OpeningHour {
 		console.log(newsLetter)
 
 	}
+
 
 
 
@@ -415,7 +420,9 @@ interface OpeningHour {
 					<InformationsContainer>
 
 						<h3>Nos réseaux</h3>
+
 						<p>Téléphone : <a href='tel:02 78 34 10 63'>02 78 34 10 63</a></p>
+
 						<br />
 						<p>Reseaux sociaux</p>
 						<ReseauContainer>
@@ -439,7 +446,7 @@ interface OpeningHour {
 							<input type='text' value={newsLetter} placeholder='Entrez votre adresse mail' onChange={handleChangeNewsletter}/>
 
 							<SubmitButtonNewsletter>
-								<InputInscrire  type="submit" name="submit" value="S'inscrire"  />
+								<InputInscrire type="submit" name="submit" value="S'inscrire"  />
 							</SubmitButtonNewsletter>
 
 						</FormControlNewsletter>
@@ -466,5 +473,6 @@ interface OpeningHour {
 		</MainContainerContact>
 	);
 }
+
 
 export default ContactPage;
