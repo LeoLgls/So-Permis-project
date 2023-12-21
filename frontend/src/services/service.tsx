@@ -1,4 +1,4 @@
-import {AnnulationCode, Article, DataForfait, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataForfait, Forfait, Newsletter, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
@@ -7,7 +7,6 @@ import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
 import {generateTableData} from "../views/Admin/ForfaitInterface.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
-
 
 import axios from 'axios';
 
@@ -80,7 +79,6 @@ export function getArticle(index: number): Article {
   return articleList[index]
 }
 
-
 //AVIS
 
 //nom
@@ -104,28 +102,13 @@ for (let i = 0; i < avisListRequette.length; i++) {
   avisList.push(avis)
   
 }
-const reponseCarrousel = await axios.get('http://localhost:3333/articles/last');
-export const carouselList: [] = reponseCarrousel.data;
 
-export const carouselData: CarouselItem[] = []
 
-for (let i = 0; i < carouselList.length; i++) {
-  const element = carouselList[i];
-  const carousel: CarouselItem = {
-    index: i,
-    src: element["idImage"],
-    alt: element["titre"],
-    lien: "/article/" + element["id"],
-  }
-  carouselData.push(carousel)
-  
-}
-
-// export const carouselData: CarouselItem[] = [
-//   { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
-//   { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
-//   { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
-// ]
+export const carouselData: CarouselItem[] = [
+  { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
+  { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
+  { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
+]
 
 const responseForfait = await axios.get('http://localhost:3333/forfaits');
 export const permisList: Forfait[] = responseForfait.data;
@@ -160,7 +143,6 @@ export const histoireList: [] = responseHistoire.data;
 
 
 
-
 export const txtHistoire: string = "Chez So'Permis, nous redéfinissons l'expérience de l'auto-école au Havre. Notre engagement envers une formation de conduite personnalisée, proposée par des instructeurs dévoués, fait de nous le choix idéal. En tant qu'auto-école locale, nous comprenons les besoins spécifiques de nos élèves. Optez pour So'Permis et bénéficiez d'une formation efficace avec une approche moderne et des tarifs transparents."
 
 export const txtPermisExpress: string = "Le permis B en 1 mois, c'est comme un marathon. C'est un challenge qui demande de la motivation, de la concentration et de la persévérance. Mais c'est aussi une expérience fun et enrichissante. En 7 semaines, tu apprendras à conduire en sécurité, mais aussi à t'adapter à des situations de conduite variées."
@@ -168,13 +150,15 @@ export const txtPermisExpress2: string = "Alors, si tu es prêt à relever le d�
 
 
 
+
+
+
 export const  horairesMatin = ['Fermé', '9H-12H', '9H-12H', '9H-12H', '9H-12H', '9H-12H', 'Fermé'];
 export const horairesAprem = ['14H-18H', '14H-18H', '14H-18H', '14H-18H', '14H-18H', 'Fermé', 'Fermé'];
 
-
 //intitule
 
-const reponseAnnulation = await axios.get('http://localhost:3333/annulation');
+const reponseAnnulation = await axios.get('http://localhost:3333/annulationcodes');
 export const annulationListRequette: [] = reponseAnnulation.data;
 export const listAnnulationCode: AnnulationCode[] = [
 ]
@@ -265,10 +249,11 @@ export const histoire2: string =`
 Passionnée par son métier, Sonia a créé So'Permis après plusieurs années d'expérience en tant que monitrice d'auto-école. Son objectif : proposer des formations au permis B accessibles à tous, dans une ambiance conviviale et avec des méthodes pédagogiques efficaces.
 `
 export const histoire3: string =`
-Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme.
 
+Chez So'Permis, nous mettons à profit notre expérience du terrain pour former les futurs conducteurs havrais. Grâce à notre approche flexible et individuelle, nous adapterons votre parcours d'apprentissage à votre rythme.
 `
 export const histoire4: string =`
+
 Notre équipe jeune et dynamique saura vous mettre en confiance tout au long de votre formation. Nos moniteurs diplômés et passionnés auront à cœur de vous transmettre leur savoir-faire et leur expérience de la route.
 `
 export const histoire5: string =`
@@ -367,3 +352,13 @@ export const tabs: Tab[] = [
     content: generateTableData({ caption: 'Code de la route', items: donnees.codeDeLaRoute }),
   },
 ];
+
+// NEWSLETTER
+
+const responseNewsletter = await axios.get('http://localhost:3333/newsletters');
+export const newsletterList:Newsletter [] = responseNewsletter.data;
+
+// ARTICLES
+
+const responseArticles = await axios.get('http://localhost:3333/articles');
+export const articlesList: Article[] = responseArticles.data;

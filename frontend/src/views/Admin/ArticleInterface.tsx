@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import { articleList } from "../../services/service.tsx";
 import {Button, PageContainer, Table, TableCaption, Tbody, Td, Th, Thead, Tr} from "../../utils/style/elementsAdmin.tsx";
 import colors from "../../utils/style/colors.tsx";
