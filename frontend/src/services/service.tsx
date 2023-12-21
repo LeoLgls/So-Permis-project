@@ -1,4 +1,4 @@
-import {AnnulationCode, Article, DataForfait, Forfait, PageForfait} from "../utils/models/models.tsx";
+import {AnnulationCode, Article, DataForfait, Forfait, Newsletter, PageForfait} from "../utils/models/models.tsx";
 import {Avis} from "../utils/models/models.tsx";
 import {Image} from "../utils/models/models.tsx";
 import {CarouselItem} from "../components/Carousel/carousel.tsx";
@@ -7,7 +7,6 @@ import img2 from "../assets/img/imgTest2.jfif";
 import img3 from "../assets/img/imgTest3.jpg";
 import {generateTableData} from "../views/Admin/ForfaitInterface.tsx";
 import {Tab} from "../components/Tabs/tab.tsx";
-
 
 import axios from 'axios';
 
@@ -23,11 +22,13 @@ export const articleList: Article[] = []
 for (let i = 0; i < listArticle.length; i++) {
   const element = listArticle[i];
   const article: Article = {
+    id: element["id"],
     titre: element["titre"],
     date: element["date"],
     contenu: element["texte"],
     source: element["sources"],
     urlImage: element["idImage"],
+
   }
   articleList.push(article)
   
@@ -81,7 +82,6 @@ export function getArticle(index: number): Article {
   return articleList[index]
 }
 
-
 //AVIS
 
 //nom
@@ -105,28 +105,13 @@ for (let i = 0; i < avisListRequette.length; i++) {
   avisList.push(avis)
   
 }
-const reponseCarrousel = await axios.get('http://localhost:3333/articles/last');
-export const carouselList: [] = reponseCarrousel.data;
 
-export const carouselData: CarouselItem[] = []
 
-for (let i = 0; i < carouselList.length; i++) {
-  const element = carouselList[i];
-  const carousel: CarouselItem = {
-    index: i,
-    src: element["idImage"],
-    alt: element["titre"],
-    lien: "/article/" + element["id"],
-  }
-  carouselData.push(carousel)
-  
-}
-
-// export const carouselData: CarouselItem[] = [
-//   { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
-//   { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
-//   { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
-// ]
+export const carouselData: CarouselItem[] = [
+  { index: 1, src: img1, alt: 'Image 1', lien: '/article/1' },
+  { index: 2, src: img2, alt: 'Image 2', lien: '/article/2' },
+  { index: 3, src: img3, alt: 'Image 3', lien: '/article/3' },
+]
 
 const responseForfait = await axios.get('http://localhost:3333/forfaits');
 export const permisList: Forfait[] = responseForfait.data;
@@ -168,6 +153,7 @@ for (let i = 0; i < histoireList.length; i++) {
 
 
 
+
 export const txtHistoire: string = mapHistoire["Histoire"]
 export const histoire1: string = mapHistoire["histoire1"]
 export const histoire2: string =mapHistoire["histoire2"]
@@ -181,13 +167,15 @@ export const txtPermisExpress2: string = mapHistoire["txtPermisExpress2"]
 
 
 
+
+
+
 export const  horairesMatin = ['Fermé', '9H-12H', '9H-12H', '9H-12H', '9H-12H', '9H-12H', 'Fermé'];
 export const horairesAprem = ['14H-18H', '14H-18H', '14H-18H', '14H-18H', '14H-18H', 'Fermé', 'Fermé'];
 
-
 //intitule
 
-const reponseAnnulation = await axios.get('http://localhost:3333/annulation');
+const reponseAnnulation = await axios.get('http://localhost:3333/annulationcodes');
 export const annulationListRequette: [] = reponseAnnulation.data;
 export const listAnnulationCode: AnnulationCode[] = [
 ]
@@ -270,7 +258,6 @@ export const listForfaitPage: PageForfait[] = [
 export function getPageForfait(index: number) : PageForfait {
   return listForfaitPage[index]
 }
-
 
 
 const reponsePermisB = await axios.get('http://localhost:3333/forfaits/PERMIS_B');
@@ -364,3 +351,13 @@ export const tabs: Tab[] = [
     content: generateTableData({ caption: 'Code de la route', items: donnees.codeDeLaRoute }),
   },
 ];
+
+// NEWSLETTER
+
+const responseNewsletter = await axios.get('http://localhost:3333/newsletters');
+export const newsletterList:Newsletter [] = responseNewsletter.data;
+
+// ARTICLES
+
+const responseArticles = await axios.get('http://localhost:3333/articles');
+export const articlesList: Article[] = responseArticles.data;
