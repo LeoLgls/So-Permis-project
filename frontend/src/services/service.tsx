@@ -22,10 +22,12 @@ export const articleList: Article[] = []
 for (let i = 0; i < listArticle.length; i++) {
   const element = listArticle[i];
   const article: Article = {
+    id: element["id"],
     titre: element["titre"],
     date: element["date"],
     contenu: element["texte"],
     source: element["sources"],
+    urlImage: element["image"],
   }
   articleList.push(article)
   

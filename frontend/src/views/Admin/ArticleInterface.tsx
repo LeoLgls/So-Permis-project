@@ -22,6 +22,14 @@ const ButtonAddContainer = styled.div`
 
 const maxSize = articleList.length;
 
+const dataArticle = articleList;
+
+const handleDelete = async(id: string) => {
+  axios.get(`http://localhost:3333/admin/article/delete/${id}`)
+
+  window.location.reload();
+};
+
 function InterfaceAdminArticle() {
 
   return (
@@ -37,14 +45,14 @@ function InterfaceAdminArticle() {
           </Tr>
         </Thead>
         <Tbody>
-          {articleList.map(({titre, source, date}, index) => (
+          {dataArticle.map((article, index) => (
             <Tr key={index}>
-              <Td>{titre}</Td>
-              <Td>{source}</Td>
-              <Td>{new Date(date).toLocaleDateString()}</Td>
+              <Td>{article.titre}</Td>
+              <Td>{article.source}</Td>
+              <Td>{new Date().toLocaleDateString()}</Td>
               <Td>
                 <Button to={`/admin/article/modifier-article/${index}`}>Modif</Button>
-                <Button to={'/admin'}>Suppr</Button>
+                <Button to={'/admin/article'} onClick={() => handleDelete(article.id.toString())}>Suppr</Button>
               </Td>
             </Tr>
           ))}

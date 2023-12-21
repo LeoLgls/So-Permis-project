@@ -13,7 +13,6 @@ import {
   Thead,
   Tr
 } from "../../utils/style/elementsAdmin.tsx";
-import { redirect } from 'react-router-dom';
 
 
 const TableContainer = styled.div`
@@ -36,8 +35,8 @@ const Radio = styled.input.attrs({ type: 'radio' })`
 
 const dataMail = newsletterList;
 
-const handleDelete = (id: string) => {
-  axios.get(`http://localhost:3333/admin/newsletter/delete/${id}`)
+const handleDelete = async(id: string) => {
+  await axios.get(`http://localhost:3333/admin/newsletter/delete/${id}`)
 
   window.location.reload();
 };
@@ -62,7 +61,7 @@ function NewsLetter() {
               <Tr key={newsletter.id.toString()}>
                 <Td >{newsletter.email}</Td>
                 <Td >
-                  <Button to={"/admin/newsletter"} onClick={() => handleDelete(newsletter.id.toString())}>Suppr</Button>
+                  <Button to={"/admin/newsletter"} onClick ={() => handleDelete(newsletter.id.toString())}>Suppr</Button>
                 </Td>
               </Tr>
             ))}
