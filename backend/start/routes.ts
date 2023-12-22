@@ -39,17 +39,18 @@ Route.get('/images', 'ImageController.index')
 Route.get('/newsletters', 'NewsletterController.index')
 Route.get('/voitures', 'VoitureController.index')
 
-Route.post('/administrateur', 'AdministrateurController.store')
-Route.post('/annulationcode', 'AnnulationCodeController.store')
-Route.post('/article', 'ArticleController.store')
-Route.post('/avis', 'AvisController.store')
-Route.post('/categorie', 'CategorieController.store')
-Route.post('/forfait', 'ForfaitController.store')
-Route.post('/histoire', 'HistoireController.store')
-Route.post('/horaire', 'HoraireController.store')
-Route.post('/image', 'ImageController.store')
-Route.post('/newsletter/add/', 'NewsletterController.store')
-Route.post('/voiture', 'VoitureController.store')
+Route.post('/admin/administrateur/create', 'AdministrateurController.store')
+Route.post('/admin/annulationcode/create', 'AnnulationCodeController.store')
+Route.post('/admin/article/create', 'ArticleController.store')
+Route.post('/admin/avis/create', 'AvisController.store')
+Route.post('/admin/categorie/create', 'CategorieController.store')
+Route.post('/admin/forfait/create', 'ForfaitController.store')
+Route.post('/admin/histoire/create', 'HistoireController.store')
+Route.post('/admin/horaire/create', 'HoraireController.store')
+Route.post('/admin/image/create', 'ImageController.store')
+Route.post('/admin/newsletter/create', 'NewsletterController.store')
+Route.post('/admin/voiture/create', 'VoitureController.store')
+
 
 Route.get('/administrateur/show/:id', 'AdministrateurController.show')
 Route.get('/annulationcode/show/:id', 'AnnulationCodeController.show')
@@ -76,6 +77,7 @@ Route.get('/admin/newsletter/delete/:id', 'NewsletterController.destroy')
 Route.get('/admin/voiture/delete/:id', 'VoitureController.destroy')
 
 Route.get('/forfaits/:type', 'ForfaitController.showByType')
+
 
 // les routes de willy sinon bb cadum
 
