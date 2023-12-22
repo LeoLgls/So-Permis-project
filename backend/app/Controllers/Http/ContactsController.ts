@@ -38,8 +38,8 @@ export default class ContactsController {
     try {
       await Mail.send((message) => {
         message
-          .from(formData.email) // Update with the sender's email address
-          .to("comptepoubellewalla@gmail.com")
+          .from(formData.email)
+          .to("william.lefort76@gmail.com")
           .subject(`Contacte depuis le site - ${formData.object}`)
           .htmlView('emails/contact', { formData });
       });
