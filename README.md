@@ -13,7 +13,7 @@ Si ce n'est pas le cas, vous pouvez les télécharger et les installer en suivan
 Clonez le dépôt depuis GitHub :
     
     
-    git clone https://github.com/LeoLgls/So-Permis-project.git
+        git clone https://github.com/LeoLgls/So-Permis-project.git
     
 
 ## Lancez le projet
@@ -25,12 +25,12 @@ Clonez le dépôt depuis GitHub :
 
 1. Accédez au répertoire du projet :
     
-    cd So-Permis-project
+       cd So-Permis-project
 
 2. Installez les dépendances du front-end :
-
-    cd frontend
-    npm install
+        
+        cd frontend
+        npm install
 
 3. Depuis un second terminal, installez les dépendances du back-end :
     ```bash
