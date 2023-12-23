@@ -1,3 +1,27 @@
+/**
+ * Composant : Tabs
+ * 
+ * Ce composant React crée une interface à onglets simple. Il se compose d'un conteneur pour les onglets,
+ * chaque onglet ayant un libellé, et une zone de contenu qui affiche le contenu de l'onglet actuellement actif.
+ * 
+ * Composants :
+ * - TabsContainer : Un conteneur stylisé pour contenir les éléments d'onglet.
+ * - Tab : Un élément d'onglet stylisé représentant un onglet individuel. Il devient visuellement distinct lorsqu'il est actif.
+ * - TabContent : Un conteneur stylisé pour afficher le contenu de l'onglet actif.
+ * 
+ * Propriétés :
+ * - tabs : Un tableau d'objets représentant chaque onglet. Chaque objet a un 'label' (chaîne) pour le titre de l'onglet
+ *          et 'content' (React.ReactNode) pour le contenu à afficher lorsque l'onglet est actif.
+ * 
+ * État :
+ * - activeTab : Une variable d'état indiquant l'index de l'onglet actuellement actif.
+ * 
+ * Méthodes :
+ * - handleTabClick(index) : Fonction gestionnaire d'événements pour définir l'état activeTab lorsqu'un onglet est cliqué.
+ * 
+ */
+
+
 import React, { useState } from 'react';
 import styled from 'styled-components';
 

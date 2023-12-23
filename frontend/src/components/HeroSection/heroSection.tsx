@@ -1,3 +1,36 @@
+/**
+ * Composant : HeroSection
+ * 
+ * Ce composant React représente une section héroïque avec une image de fond, des forfaits affichés sous forme de cartes,
+ * et une transition de couleur en fonction d'une propriété. Il utilise des styled-components pour le style et inclut
+ * des fonctionnalités de transition dynamique de hauteur d'image en fonction de la hauteur des cartes affichées.
+ * 
+ * Styles :
+ * - HeroSectionContainer : Un conteneur stylisé pour la section héroïque avec alignement centré, espacement interne,
+ *                          et ajustement dynamique de la marge supérieure sur les écrans plus petits.
+ * - HeroImg : Une image stylisée en position absolue, en couvrant la largeur et la hauteur du conteneur avec une position
+ *             fixe au-dessus du contenu.
+ * - CardContainer : Un conteneur de cartes stylisé en utilisant une disposition de grille pour s'adapter automatiquement
+ *                   à la taille de l'écran avec un espacement entre les cartes.
+ * - Transition : Une transition de couleur en fonction d'une propriété, utilisée comme fond pour créer un effet de transition
+ *                en dégradé.
+ * - HeroImgDiv : Un conteneur pour l'image héroïque avec une position absolue pour couvrir la largeur de son parent.
+ * 
+ * Propriétés :
+ * - img : L'URL de l'image de fond pour la section héroïque.
+ * - forfaits : Un tableau d'objets de type Forfait, représentant les données des forfaits à afficher.
+ * - transitionNoir : Un booléen indiquant si la transition de couleur doit être vers le noir.
+ * 
+ * État :
+ * - heroImgHeight : Une variable d'état pour stocker dynamiquement la hauteur de l'image héroïque en fonction de la hauteur
+ *                   des cartes affichées.
+ * 
+ * Effets :
+ * - useEffect : Met à jour dynamiquement la hauteur de l'image héroïque en fonction de la hauteur des cartes affichées.
+ * 
+ */
+
+
 import { useEffect, useState } from "react";
 import Card from "../Card/card.tsx";
 import styled from "styled-components";
