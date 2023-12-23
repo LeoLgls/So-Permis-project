@@ -24,13 +24,13 @@ Clonez le dépôt depuis GitHub :
 ### Ouvrez le projet
 
 1. Accédez au répertoire du projet :
-    ```bash
-    cd So-Permis-project```
+    
+    cd So-Permis-project
 
 2. Installez les dépendances du front-end :
-    ```bash
+
     cd frontend
-    npm install```
+    npm install
 
 3. Depuis un second terminal, installez les dépendances du back-end :
     ```bash
