@@ -13,7 +13,8 @@ Si ce n'est pas le cas, vous pouvez les télécharger et les installer en suivan
 Clonez le dépôt depuis GitHub :
     
     ```bash
-    git clone https://github.com/LeoLgls/So-Permis-project.git```
+    git clone https://github.com/LeoLgls/So-Permis-project.git
+    ```
 
 ## Lancez le projet
 
