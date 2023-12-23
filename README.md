@@ -33,17 +33,17 @@ Clonez le dépôt depuis GitHub :
         npm install
 
 3. Depuis un second terminal, installez les dépendances du back-end :
-    ```bash
-    cd backend
-    npm install```
+   
+        cd backend
+        npm install
 
 6. Depuis le terminal de frontend, démarrez le serveur du front-end :
-    ```bash
-    npm run dev```
+   
+        npm run dev
     
 6. Depuis le terminal de backend, démarrez le serveur du back-end :
-    ```bash
-    node ace serve --watch```
+   
+        node ace serve --watch
 
 ### Accédez au projet
 
