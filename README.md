@@ -46,6 +46,6 @@ Clonez le dépôt depuis GitHub :
 
 ### Accédez au projet
 
-Dans votre navigateur, accédez à [ce lien](https://localhost:5173/) : https://localhost:5173/.
+Dans votre navigateur, accédez à ce lien : https://localhost:5173/.
 
 Vous devriez avoir accès au site sans problème !
