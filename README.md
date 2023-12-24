@@ -40,11 +40,11 @@ Clonez le dépôt depuis GitHub :
         cd backend
         npm install
 
-6. Depuis le terminal de frontend, démarrez le serveur du front-end :
+4. Depuis le terminal de frontend, démarrez le serveur du front-end :
    
         npm run dev
     
-6. Depuis le terminal de backend, démarrez le serveur du back-end :
+5. Depuis le terminal de backend, démarrez le serveur du back-end :
    
         node ace serve --watch
 
