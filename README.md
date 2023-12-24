@@ -1,7 +1,7 @@
 # So'Permis
 
 So'Pemris est une auto école située au Havre. Dans le cadre d'un projet académique, nous avons réalisé un site web pour cette entreprise en prenant en compte les besoins du client.
-Nous sommes une équipe de 5 étudiants en 3ème année de BUT Informatique pour une durée de 3 semaines. Nous avons travaillé avec un groupe d'étudiant du département Techniques Commerciales qui ont démarché une entreprise pour faire un recueil de besoin. Nous avons reçu les besoins afin de les annalyser et nous avons fait un cahier des charges techniques. Après avoir terminé une phase de conception, nous avons développé une solution web pour l'auto école.
+Nous sommes une équipe de 5 étudiants en 3ème année de BUT Informatique pour une durée de 3 semaines. Nous avons travaillé avec un groupe d'étudiant du département Techniques Commerciales qui ont démarché une entreprise pour faire un recueil de besoin. Nous avons reçu les besoins afin de les analyser et nous avons fait un cahier des charges techniques. Après avoir terminé une phase de conception, nous avons développé une solution web pour l'auto école.
 
 Dans ce texte, vous découvrirez comment installer et lancer notre projet.
 
